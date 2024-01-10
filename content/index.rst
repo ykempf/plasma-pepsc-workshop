@@ -18,7 +18,19 @@ resolutions and levels of physical fidelity. These simulations have been produci
 wealth of knowledge and enabling key applications for science, industry, and society.
 
 
-[Vlasiator](https://www.helsinki.fi/en/researchgroups/vlasiator) ([GitHub](https://github.com/fmihpc/vlasiator)) is 
+**Plasma-PEPSC** (Plasma Exascale-Performance Simulation Centre) is a European Centre of Excellence leading 
+plasma science into the era of exascale computing to drive scientific breakthroughs in plasma science’s most 
+significant challenges (fusion energy, accelerator devices and space physics) through cutting-edge hardware and 
+software advancements.
+The overarching goal of Plasma-PEPSC is to take this technological development to the next level, enabling unprecedented 
+simulations on current pre-exascale and future exascale platforms across Europe. Four flagship plasma codes with a 
+large user base – BIT, GENE, PIConGPU, and Vlasiator – serve as the focal points of the centre of excellence. 
+By maximising their parallel performance and efficiency, we aim to achieve breakthroughs in controlling plasma-material 
+interfaces, optimising magnetically confined fusion plasmas, designing next-generation plasma accelerators and predicting 
+space plasma dynamics within the Earth’s magnetosphere.
+
+
+[**Vlasiator**](https://www.helsinki.fi/en/researchgroups/vlasiator) ([GitHub](https://github.com/fmihpc/vlasiator)) is 
 the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global 
 magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating 
 the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, 
@@ -95,7 +107,9 @@ After attending this workshop, you will:
 See also
 --------
 
-
+- ENCCS: https://enccs.se/
+- Plasma-PEPSC CoE: https://plasma-pepsc.eu/
+- Follow ENCCS on `LinkedIn <https://www.linkedin.com/company/enccs>`__, or `Twitter <https://twitter.com/EuroCC_Sweden>`__
 
 
 

@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
+project = "Space Plasma Simulations with Vlasiator on LUMI Supercomputer"
 copyright = "2021, The contributors"
-author = "The contributors"
+author = "Plasma-PEPSC CoE"
 github_user = "ENCCS"
 github_repo_name = ""  # auto-detected from dirname if blank
 github_version = "main"
