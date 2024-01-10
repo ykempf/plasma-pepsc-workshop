@@ -1,14 +1,43 @@
-LESSON NAME
-===========
+Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+=============================================================
 
-Intro
 
+Plasma is one of four fundamental states of matter, characterized by the presence of 
+a significant portion of charged particles in any combination of ions or electrons. 
+Plasma is a powerful phase of matter as it is key to many applications and technologies, 
+from astrophysics to space physics, from clean energy production based on fusion to 
+compact and cheap particle accelerators. However, it is still a mysterious phase of matter 
+as its dynamics is inherently nonlinear, multidimensional and multiscale.
+
+
+The theoretical description of plasma using analytic modeling tools is somewhat limited and 
+great progress in plasma physics has been achieved using computer simulations. 
+Indeed, advances in massively parallel simulations using high performance computing (HPC) 
+resources have have further boosted our understanding of plasma science at an unprecedented 
+resolutions and levels of physical fidelity. These simulations have been producing a new 
+wealth of knowledge and enabling key applications for science, industry, and society.
+
+
+[Vlasiator](https://www.helsinki.fi/en/researchgroups/vlasiator) ([GitHub](https://github.com/fmihpc/vlasiator)) is 
+the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global 
+magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating 
+the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, 
+while electrons are magnetohydrodynamic fluid, enabling a self-consistent global plasma simulation 
+that can describe multi-temperature plasmas to resolve non-MHD processes that currently 
+cannot be self-consistently described by the existing global space weather simulations. 
+The novelty is that by modelling ions as velocity distribution functions the outcome will be 
+numerically noiseless. Due to the multi-dimensional approach at ion scales, Vlasiator's 
+computational challenges are immense. Advanced HPC techniques will be adopted using tens of 
+thousands of cores to perform massively parallel computations.
 
 
 .. prereq::
 
-   prerequisites
-
+  - PhD students, postdocs, industry engineers
+  - Basic familiarity with general physics and plasma physics
+  - Some previous practical experience running some CFD code
+  - Basic familiarity with Unix shell and HPC environment
+  - Some materials towards advanced users
 
 
 .. csv-table::
@@ -37,16 +66,30 @@ Intro
 Who is the course for?
 ----------------------
 
-
+This hybrid workshop will bring together code developers, researchers, and research software 
+engineers working on plasma science, and create an amazing opportunity for sharing innovative 
+ideas and best practice for potential users to use the Vlasiator package and using its 
+capabilities and assorted tools for data analysis.
 
 
 
 About the course
 ----------------
 
+This workshop includes:
 
+- running simulations at scale
+- benchmarking for deploying Vlasiator on supercomputing environments
+- designing a simulation setup, with notes on applicability and resources required
+- Accessing the .vlsv data via Analysator
+- Accessing the .vlsv data via the VisIt plugin
 
+After attending this workshop, you will:
 
+- Understand core features of the Vlasiator package 
+- Be efficient using the Vlasiator package to perform plasma simulations
+- Be productive in data analysis and visualization of simulation results
+- Be able to create your own project
 
 
 See also
