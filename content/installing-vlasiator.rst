@@ -17,20 +17,21 @@ Timing
 Pre-material.
 
 How to install Vlasiator
--------------------
+------------------------
 Installing Vlasiator is easy and straightforward!
 
 These steps should be taken:
-* Install libraries 
-* Clone Vlasiator _with submodule support_
-* Make new makefile for your machine in MAKE folder
-* Compile!
+ * Install libraries 
+ * Clone Vlasiator _with submodule support_
+ * Make new makefile for your machine in MAKE folder
+ * Compile!
 
 Here are some general steps. More machine-specific details may be detailed on one of the following pages:
 
 * [Cray XC40/30 (Voima, Sisu, Hornet)](https://github.com/fmihpc/vlasiator-internal/wiki/Installing-Vlasiator----Cray-XC40-30) (internal wiki link, only gives some extra modules that can be used)
 * [Vorna](https://github.com/fmihpc/vlasiator/wiki/Vlasiator-Vorna)
-### 1. Install libraries
+Install libraries
+^^^^^^^^^^^^^^^^^
 
 Vlasiator needs a number of libraries:
  * [Zoltan](http://www.cs.sandia.gov/zoltan/) ([install instructions](https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan))
@@ -56,7 +57,8 @@ use of the boost-latest ppa (https://launchpad.net/~boost-latest/+archive/ppa) p
 
 See detailed library installation instructions at the end of this page.
 
-### 2. Clone Vlasiator
+Clone Vlasiator
+^^^^^^^^^^^^^^^
 
 We are transferring to use `git submodules` for the dependent libraries. So far, some of the header libraries have been moved to this framework, and some need to be installed manually (see above).
 
@@ -68,11 +70,13 @@ git submodule update --init --recursive
 ```
 
 
-### 3. Make new makefile
+Make new makefile
+^^^^^^^^^^^^^^^^^
 
 The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is Makefile.machine_name, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in `${HOME}/lib` and `${HOME}/include`.
 
-### 4. Compile!
+Compile!
+^^^^^^^^
 
 After one has created the makefile, one should set an environment variable with the name of your machine, matching the name used for the MAKE/Makefile.machine_name file. For example, to use the home makefile one can set it like this:
 ```
@@ -92,9 +96,11 @@ make -j 12 tools
 ```
 to make the [[tools|Vlasiator-(CXX)-tools]].
 
-## Detailed installation instructions for Libraries
+Detailed installation instructions for Libraries
+------------------------------------------------
 
-### DCCRG
+DCCRG
+^^^^^
 
 DCCRG is a pure header library so one needs to fetch it and make sure it is included (see Makefile.your-arch).
 ```
@@ -108,12 +114,14 @@ DCCRG needs a few libraries, the instructions for installing them are on this pa
 
 Currently Vlasiator uses not the master branch of DCCRG, instead the `vlasiator-version` branch. This is handled by submodules.
 
-### Boost
+Boost
+^^^^^
 
 Boost (http://www.boost.org/) provides Vlasiator (and DCCRG) with some datastructures that are not in the pre C++11 standard. We also use the [program options](http://www.boost.org/doc/libs/1_55_0/doc/html/program_options.html) module for reading cfg parameters (with some wrapper functions).
 
 
-#### Debian-based systems
+Debian-based systems
+++++++++++++++++++++
 
 On debian-based system (such as ubuntu and cubbli) boost is installable via 
 `apt-get install libboost-dev libboost-program-options-dev`
@@ -131,7 +139,8 @@ INC_BOOST = -I$(CRAY_TRILINOS_PREFIX_DIR)/include/boost
 INC_BOOST = -L$(CRAY_TRILINOS_PREFIX_DIR)/lib -lboost_program_options
 ```
 
-#### Other platforms
+Other platforms
++++++++++++++++
 
 On other platforms you can follow the instructions on DCCRG's wiki.(https://github.com/fmihpc/dccrg/wiki/Install). Boost is mostly a header library, so we only need to compile the program options module.
 
@@ -151,7 +160,9 @@ Note that it detects `gcc` (too) efficiently at least on Mahti, so you might nee
 
 
 
-### Zoltan
+Zoltan
+^^^^^^
+
 This library is used for load balancing.
 
 Generic installation (add prefix path and replace cc and CC with the correct MPI wrappers):
@@ -164,7 +175,8 @@ make -j 8
 make install
 ```
 
-#### Cray
+Cray
+++++
 As for boost, we can use the cray-trilinos module.
 ```
 module load cray-trilinos
@@ -175,7 +187,9 @@ Define in Makefile.your-arch:
 INC_ZOLTAN = -I$(CRAY_TRILINOS_PREFIX_DIR)/include
 LIB_ZOLTAN = -I$(CRAY_TRILINOS_PREFIX_DIR)/lib -lzoltan
 ```
-#### Taito
+
+Taito
++++++
 On taito (CSC), use the curie instructions but do change the installation folder to $USERAPPL. Sample installation with gcc (change the version numbers to relevant ones):
 ```
 cd
@@ -194,10 +208,12 @@ make install
 ```
 Note (Puhti and later): the `sed` and `export`s might not be needed. Make sure to `unset` the flags or it might mess up the compilation of other libraries down the list.
 
-#### Others
+Others
+++++++
 You can follow the installation instructions on DCCRG's wiki.(https://github.com/fmihpc/dccrg/wiki/Install).
 
-### Vectorclass
+Vectorclass
+^^^^^^^^^^^
 Download Vectorclass library from: http://www.agner.org/optimize/
 Watch out: version 2 of this library uses advanced metaprogramming tricks that do not seem to sit well with compilers in common HPC environments. For the time being, it is recommended to use version 1 from here: https://github.com/vectorclass/version1
 
@@ -210,14 +226,16 @@ cp add-on/vector3d/vector3d.h <PATH TO VECTORCLASS>
 ```
 into the directory where the remaining vector class headers are lying.
 
-### phiprof
+phiprof
+^^^^^^^
 Clone the latest version from: https://github.com/fmihpc/phiprof/ 
 
 Used for runtime performance tracking.
 
 In the src folder there is a simple Makefile. Edit that to support you machine and make.- The library will then be in the phiprof include and lib folders.
 
-### vlsv
+vlsv
+^^^^
 Download from https://github.com/fmihpc/vlsv.
 
 This is the file format/io library.
@@ -227,7 +245,8 @@ Installation instructions:
  * Change ARCH at the top of the Makefile to you new Makefile.ARCH
  * make
 
-### VLSV plugin for VisIt
+VLSV plugin for VisIt
+^^^^^^^^^^^^^^^^^^^^^
 - Install VisIt or use a pre-installed version for the machine you target.
 - Ask around if someone has the plugin compiled already on that machine. If yes, copy their `$HOME/.visit/<version>/<arch>/plugins/databases/*Vlsv*` into the same path in your home directory.
 
@@ -242,13 +261,15 @@ If you want/have to build yourself:
 Note: As of Nov. 2020 it will complain about a VTK API function. You can checkout the version from https://github.com/fmihpc/vlsv/pull/41  until this is merged, or you can comment out the offending lines when building.
 - NB for the pending update version, CXXFLAGS in vlsv.xml are also updated with -DNEW_VTK_API replaced with -DVTK_API=81 (corresponds to VTK API for Mahti VisIt, 3.1). For fresh VisIt versions, the included flag should be good.
 
-### fsgrid
+fsgrid
+^^^^^^
 Download from https://github.com/fmihpc/fsgrid.
 
 This is the mesh library for cartesian domain decomposition of the fieldsolver.
 It is a header-only library, and the only thing required for vlasiator is that the fsgrid.hpp file is available in its include path.
 
-### papi
+papi
+^^^^
 Download from http://icl.cs.utk.edu/papi/
 
 Papi is optional, and only needed if CXXFLAGS += -DPAPI_MEM is defined in the makefile. It can provide information on the actual memory usage of Vlasiator. Most of the time papi is pre-installed on supercomputers and clusters and can often be loaded with `module load papi`.
@@ -261,7 +282,9 @@ cd papi/src
 make
 make install
 ```
-### jemalloc
+
+jemalloc
+^^^^^^^^
 Download from http://www.canonware.com/jemalloc/download.html
 
 jemalloc is an optional replacement for the normal malloc/free routines. It is optimized for minimizing memory fragmentation, and it can be of tremendous importance and is strongly recommended, see #25 
@@ -278,7 +301,8 @@ make
 make install
 ```
 
-### Eigen
+Eigen
+^^^^^
 Download from http://eigen.tuxfamily.org/index.php?title=Main_Page. One does not need to compile anything, it is enough to copy the Eigen sub-folder. Replace in the following instructions the version and paths:
 ```
 wget https://gitlab.com/libeigen/eigen/-/archive/3.2.8/eigen-3.2.8.tar.bz2
