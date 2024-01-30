@@ -1,5 +1,5 @@
 Installing Vlasiator
-==================
+====================
 
 Why we teach this lesson
 ------------------------
@@ -42,9 +42,8 @@ Vlasiator needs a number of libraries:
  * C++11 compiler with OpenMP >=3 support
 These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
  * `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
-  
-  * See the linked install instructions for required libraries!
  
+   * See the linked install instructions for required libraries!
  * `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
 
 And also a number of optional but useful libraries
@@ -67,10 +66,17 @@ Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches
 .. code-block:: bash
 
     git clone --recurse-submodules https://github.com/fmihpc/vlasiator
-    git checkout <branch> --recurse-submodules
+    git checkout stable --recurse-submodules
     git submodule update --init --recursive
 
+Vlasiator main branches
++++++++++++++++++++++++
 
+* ``master``: Main branch, usually lagging behind. Main releases.
+* ``dev``: Unstable development branch.
+* ``stable`` (to be defined!): The (hopefully) stable development branch. Recommended for latest updates.
+
+... plus a plethora of topic branches.
 
 Make new makefile
 ^^^^^^^^^^^^^^^^^
@@ -159,7 +165,7 @@ And add to Makefile.your-arch:
 Other platforms
 +++++++++++++++
 
-On other platforms you can follow the instructions on DCCRG's wiki.(https://github.com/fmihpc/dccrg/wiki/Install). Boost is mostly a header library, so we only need to compile the program options module.
+On other platforms you can follow the instructions on `DCCRG's wiki <https://github.com/fmihpc/dccrg/wiki/Install>`_. Boost is mostly a header library, so we only need to compile the program options module.
 
 Summary:
 
