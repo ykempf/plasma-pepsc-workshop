@@ -20,7 +20,7 @@ Preparing exercises
 -------------------
 
 e.g. what to do the day before to set up common repositories.
-
+asd
 
 
 Other practical aspects
