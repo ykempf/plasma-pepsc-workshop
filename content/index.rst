@@ -71,6 +71,9 @@ thousands of cores to perform massively parallel computations.
    quick-reference
    guide
    installing-vlasiator
+   benchmarks_and_running
+   analysator
+   visit
 
 
 
