@@ -31,15 +31,25 @@ Here are some general steps. More machine-specific details may be detailed on on
 Install libraries
 ^^^^^^^^^^^^^^^^^
 
-Vlasiator needs a number of libraries:
- * `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
- * `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#boost>`__)
- * `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#eigen>`__)
- * `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
- * `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
- * `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
- * MPI
- * C++11 compiler with OpenMP >=3 support
+Vlasiator needs a number of libraries, a part of which need to be built. Some header libraries have been transferred to submodules, and those are automatically fetched with git (... when ``--recurse-submodules`` is used correctly!).
+
+Libraries to be built
++++++++++++++++++++++
+
+*Add the automation script here!*
+
+* `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
+* `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#boost>`__)
+* `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#eigen>`__)
+* `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
+* `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
+* `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
+* MPI
+* C++11 compiler with OpenMP >=3 support
+
+Libraries fetched via submodules
+++++++++++++++++++++++++++++++++
+
 These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
  * `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
  
