@@ -196,45 +196,6 @@ Generic installation (add prefix path and replace cc and CC with the correct MPI
     make install
 
 
-Cray
-++++
-As for boost, we can use the cray-trilinos module.
-
-.. code-block:: bash
-
-    module load cray-trilinos
-
-
-Define in Makefile.your-arch:
-
-.. code-block:: bash
-
-    INC_ZOLTAN = -I$(CRAY_TRILINOS_PREFIX_DIR)/include
-    LIB_ZOLTAN = -I$(CRAY_TRILINOS_PREFIX_DIR)/lib -lzoltan
-
-
-Taito
-+++++
-On taito (CSC), use the curie instructions but do change the installation folder to $USERAPPL. Sample installation with gcc (change the version numbers to relevant ones):
-
-.. code-block:: bash
-
-    cd
-    module swap intel gcc
-    mkdir zoltan-build  
-    cd zoltan-build
-    sed -i -e 's@typedef long ssize_t;@//typedef long ssize_t;@' ../Zoltan_v3.8/src/driver/dr_compress_const.h
-    export CC=mpicc  
-    export CXX=mpicxx  
-    export FC=mpif90  
-    export CFLAGS="-std=c99"  
-    export CXXFLAGS="-std=c++0x"
-    ../Zoltan_v3.8/configure --prefix=$USERAPPL/libraries/RELEVANT_PATH --enable-mpi --with-mpi-compilers --with-gnumake --with-id-type=ullong
-    make -j 8
-    make install
-
-Note (Puhti and later): the ``sed`` and ``export`` s might not be needed. Make sure to ``unset`` the flags or it might mess up the compilation of other libraries down the list.
-
 Others
 ++++++
 You can follow the installation instructions on DCCRG's wiki.(https://github.com/fmihpc/dccrg/wiki/Install).
@@ -280,6 +241,7 @@ VLSV plugin for VisIt
 - Ask around if someone has the plugin compiled already on that machine. If yes, copy their ``$HOME/.visit/<version>/<arch>/plugins/databases/*Vlsv*`` into the same path in your home directory.
 
 If you want/have to build yourself:
+
 - Build VLSV as above first.
 - Then ``cd visit-plugin``.
 - Edit ``vlsv.xml`` so that it points to your vlsv directory where you just built vlsv. You can use ``xmledit`` for that, which you can find in the visit installation directory in the ``bin`` for the version and architecture you are using, e.g. ``$HOME/visit/3.0.2/linux-x86_64/bin/``.
