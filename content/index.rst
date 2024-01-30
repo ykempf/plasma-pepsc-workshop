@@ -70,6 +70,7 @@ thousands of cores to perform massively parallel computations.
 
    quick-reference
    guide
+   installing-vlasiator
 
 
 
