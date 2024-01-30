@@ -58,18 +58,16 @@ thousands of cores to perform massively parallel computations.
 
    20 min ; :doc:`filename`
 
-
 .. toctree::
    :maxdepth: 1
-   :caption: The lesson
+   :caption: Prerequisites
 
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Reference
-
-   quick-reference
    introduction
+
+.. toctree::
+   :maxdepth: 1
+   :caption: The lessons
+
    installing-vlasiator
    benchmarks_and_running
    vlasiator_outputs
@@ -77,6 +75,16 @@ thousands of cores to perform massively parallel computations.
    visit
    vlasiator_projects
    example_run
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference
+
+   quick-reference
+
+.. toctree::
+   :caption: Misc
+   
    guide
 
 
