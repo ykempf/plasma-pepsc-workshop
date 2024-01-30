@@ -4,8 +4,7 @@ Instructor's guide
 Why we teach this lesson
 ------------------------
 
-Configuring VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D.
-
+Here we go through an example of setting up a run from science requirements to run configuration.
 
 Intended learning outcomes
 --------------------------

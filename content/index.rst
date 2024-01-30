@@ -69,11 +69,15 @@ thousands of cores to perform massively parallel computations.
    :caption: Reference
 
    quick-reference
-   guide
+   introduction
    installing-vlasiator
    benchmarks_and_running
+   vlasiator_outputs
    analysator
    visit
+   vlasiator_projects
+   example_run
+   guide
 
 
 

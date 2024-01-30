@@ -4,8 +4,7 @@ Instructor's guide
 Why we teach this lesson
 ------------------------
 
-Configuring VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D.
-
+Here we introduce what is Vlasiator.
 
 Intended learning outcomes
 --------------------------
@@ -20,8 +19,7 @@ Timing
 Preparing exercises
 -------------------
 
-e.g. what to do the day before to set up common repositories.
-
+Here you can find `Vlasiator introductory lectures <https://datacloud.helsinki.fi/index.php/s/wEZdF3szjBfapSs>`_.
 
 
 Other practical aspects

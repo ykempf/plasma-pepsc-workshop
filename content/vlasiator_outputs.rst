@@ -4,8 +4,7 @@ Instructor's guide
 Why we teach this lesson
 ------------------------
 
-Configuring VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D.
-
+Vlasiator has several grids and types of variables. Here we introduce them and go through which ones you might want to use for diagnostics and which one for sciencing.
 
 Intended learning outcomes
 --------------------------

@@ -4,7 +4,7 @@ Instructor's guide
 Why we teach this lesson
 ------------------------
 
-
+Here we introduce the use of Analysator python tools for plotting and accessing .vlsv data.
 
 Intended learning outcomes
 --------------------------
