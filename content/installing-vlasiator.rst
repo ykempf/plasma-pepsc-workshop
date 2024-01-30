@@ -51,9 +51,10 @@ Libraries fetched via submodules
 ++++++++++++++++++++++++++++++++
 
 These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
+
  * `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
  
-   * See the linked install instructions for required libraries!
+   * DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!
  * `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
 
 And also a number of optional but useful libraries
@@ -66,12 +67,12 @@ use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`
 
 See detailed library installation instructions at the end of this page.
 
-Clone Vlasiator
-^^^^^^^^^^^^^^^
+Cloning Vlasiator
+^^^^^^^^^^^^^^^^^
 
 We are transferring to use ``git submodules`` for the dependent libraries. So far, some of the header libraries have been moved to this framework, and some need to be installed manually (see above).
 
-Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches.
+Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches:
 
 .. code-block:: bash
 
