@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+Introduction to Analysator
+==========================
 
 Why we teach this lesson
 ------------------------

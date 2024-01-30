@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+VisIt and VLSV bootcamp
+=======================
 
 Why we teach this lesson
 ------------------------

@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+Defining a run
+==============
 
 Why we teach this lesson
 ------------------------

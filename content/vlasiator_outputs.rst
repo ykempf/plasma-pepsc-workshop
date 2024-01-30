@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+Vlasiator output data
+=====================
 
 Why we teach this lesson
 ------------------------

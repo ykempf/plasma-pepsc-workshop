@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+Introduction to Vlasiator
+=========================
 
 Why we teach this lesson
 ------------------------
