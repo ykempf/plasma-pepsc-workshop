@@ -8,7 +8,7 @@ Vlasiator is hosted on GitHub and is open source, but it is, still, a specialist
 
 Intended learning outcomes
 --------------------------
-
+You can install a correct version of Vlasiator.
 
 
 Timing
