@@ -6,10 +6,16 @@ Why we teach this lesson
 
 Here we introduce what is Vlasiator.
 
+
+
+
 Intended learning outcomes
 --------------------------
 
-
+* Know what Vlasiator is and does
+* Understand what you can do with Vlasiator
+* What resources do I need to run Vlasiator for some given task?
+* Rules of the Road for using Vlasiator
 
 Timing
 ------

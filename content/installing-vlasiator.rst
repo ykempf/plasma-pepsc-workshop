@@ -3,7 +3,7 @@ Installing Vlasiator
 
 Why we teach this lesson
 ------------------------
-Vlasiator is hosted on GitHub and is open source, but it is, still, a specialist code under development. Here we show how to obtain the up-to-date stable Vlasiator version with the requisite libraries.
+Vlasiator is hosted on GitHub and is open source, but it is, still, a specialist code under development. Here we show how to obtain the up-to-date stable Vlasiator version with the requisite libraries, and go through what the libraries are and what are they used for.
 
 
 Intended learning outcomes
