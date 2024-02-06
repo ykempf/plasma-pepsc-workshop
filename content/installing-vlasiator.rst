@@ -8,7 +8,7 @@ Vlasiator is hosted on GitHub and is open source, but it is, still, a specialist
 
 Intended learning outcomes
 --------------------------
-You can install a correct version of Vlasiator.
+You can install a correct version of Vlasiator, required libraries and build everything.
 
 
 Timing
@@ -21,22 +21,44 @@ How to install Vlasiator
 Installing Vlasiator is easy and straightforward!
 
 These steps should be taken:
- * Install libraries 
  * Clone Vlasiator *with submodule support*
+ * Build libraries 
  * Make new makefile for your machine in MAKE folder
  * Compile!
 
 Here are some general steps. More machine-specific details may be detailed on one of the following pages:
 
-Install libraries
+Cloning Vlasiator
 ^^^^^^^^^^^^^^^^^
+
+We are transferring to use ``git submodules`` for the dependent libraries. So far, some of the header libraries have been moved to this framework, and some need to be installed manually (see above).
+
+Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches:
+
+.. code-block:: bash
+
+    git clone --recurse-submodules https://github.com/fmihpc/vlasiator
+    git checkout master --recurse-submodules
+    git submodule update --init --recursive
+
+Vlasiator main branches
++++++++++++++++++++++++
+
+* ``master``: Main branch, usually lagging behind. Main releases.
+* ``dev``: Unstable development branch.
+* ``stable`` (to be defined!): The (hopefully) stable development branch. Recommended for latest updates.
+
+... plus a plethora of topic branches.
+
+Building libraries
+^^^^^^^^^^^^^^^^^^
 
 Vlasiator needs a number of libraries, a part of which need to be built. Some header libraries have been transferred to submodules, and those are automatically fetched with git (... when ``--recurse-submodules`` is used correctly!).
 
 Libraries to be built
 +++++++++++++++++++++
 
-*Add the automation script here!*
+Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_.
 
 * `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
 * `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#boost>`__)
@@ -66,28 +88,6 @@ On debian-based system (such as ubuntu and cubbli), some of the dependencies are
 use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
 
 See detailed library installation instructions at the end of this page.
-
-Cloning Vlasiator
-^^^^^^^^^^^^^^^^^
-
-We are transferring to use ``git submodules`` for the dependent libraries. So far, some of the header libraries have been moved to this framework, and some need to be installed manually (see above).
-
-Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches:
-
-.. code-block:: bash
-
-    git clone --recurse-submodules https://github.com/fmihpc/vlasiator
-    git checkout stable --recurse-submodules
-    git submodule update --init --recursive
-
-Vlasiator main branches
-+++++++++++++++++++++++
-
-* ``master``: Main branch, usually lagging behind. Main releases.
-* ``dev``: Unstable development branch.
-* ``stable`` (to be defined!): The (hopefully) stable development branch. Recommended for latest updates.
-
-... plus a plethora of topic branches.
 
 Make new makefile
 ^^^^^^^^^^^^^^^^^

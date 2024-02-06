@@ -7,7 +7,7 @@
 
 
 name: sphinx
-on: [push, pull_request, workflow_dispatch]
+on: [push, pull_request]
 
 env:
   DEFAULT_BRANCH: "main"
