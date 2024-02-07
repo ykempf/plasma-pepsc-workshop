@@ -46,7 +46,6 @@ Vlasiator main branches
 
 * ``master``: Main branch, usually lagging behind. Main releases.
 * ``dev``: Unstable development branch.
-* ``stable`` (to be defined!): The (hopefully) stable development branch. Recommended for latest updates.
 
 ... plus a plethora of topic branches.
 
@@ -61,38 +60,61 @@ Libraries to be built
 Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_.
 
 * `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
+  
+  * Load balancing library.
 * `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#boost>`__)
+
+  * Configuration parser.
 * `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#eigen>`__)
+
+  * Linear algebra
 * `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
+
+  * SIMD support
+  * See instructions for the required addon library.
+
 * `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
+
+  * Lightweight profiling. 
 * `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
+
+  * Custom file format library, with parallel MPI I/O support.
 * MPI
-* C++11 compiler with OpenMP >=3 support
+* C++17 compiler with OpenMP >=3 support
 
 Libraries fetched via submodules
 ++++++++++++++++++++++++++++++++
 
 These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
 
- * `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
+* `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
  
-   * DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!
- * `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
+  * Generic MPI grid library used for the Vlasov solver grid with AMR.
+  * DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!
+
+* `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
+
+  * Lightweight parallel grid library used for the uniform field solver grid.
+
+Optional libraries
+++++++++++++++++++
 
 And also a number of optional but useful libraries
- * `Jemalloc <www.canonware.com/jemalloc/download.html>`_ Memory allocator with reduced memory fragmentation (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#jemalloc>`__)
- * `Papi <http://icl.cs.utk.edu/papi/>`_ Memory measurement, module often available (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#papi>`__)
- 
-On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via ``apt-get install libeigen3-dev libboost-dev libboost-program-options-dev libopenmpi-dev``
+* `Jemalloc <www.canonware.com/jemalloc/download.html>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#jemalloc>`__)
 
-use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
+  * Memory allocator with reduced memory fragmentation (recommended for performance)
+* `Papi <http://icl.cs.utk.edu/papi/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#papi>`__)
+
+  * Memory measurement, module often available on-site
+ 
+On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via ``apt-get install libeigen3-dev libboost-dev libboost-program-options-dev libopenmpi-dev``. Use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
 
 See detailed library installation instructions at the end of this page.
 
-Make new makefile
-^^^^^^^^^^^^^^^^^
+Make a new makefile
+^^^^^^^^^^^^^^^^^^^
 
-The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is Makefile.machine_name, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
+The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is ``Makefile.machine_name``, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
 
 Compile!
 ^^^^^^^^
