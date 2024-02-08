@@ -20,11 +20,12 @@ How to install Vlasiator
 ------------------------
 Installing Vlasiator is easy and straightforward!
 
-These steps should be taken:
- * Clone Vlasiator *with submodule support*
- * Build libraries 
- * Make new makefile for your machine in MAKE folder
- * Compile!
+Tasks:
+
+#. Clone Vlasiator *with submodule support*
+#. Build libraries 
+#. Make new makefile for your machine in MAKE folder
+#. Compile!
 
 Here are some general steps. More machine-specific details may be detailed on one of the following pages:
 
@@ -70,18 +71,44 @@ When building libraries and the code, we want to stick to a particular toolchain
 Libraries to be built
 +++++++++++++++++++++
 
-Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one each.
+Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one for each user as an exercise.
 
 Tasks:
-* copy ``build_libraries.sh`` from Vlasiator root to ``projappl/project_465000693/<user>``.
-* load the above toolchain with the module load commands.
-* Build the libraries with a descriptive name for the toolchain: ``./build_libraries.sh LUMI-22.08-GNU-PEPSC``
-* Find the built libraries then under ``libraries-LUMI-22.08-GNU-PEPSC/``. We'll use this path for our Makefile.
+#. copy ``build_libraries.sh`` from Vlasiator root to ``projappl/project_465000693/<user>``.
+#. load the above toolchain with the module load commands.
+#. Build the libraries with a descriptive name for the toolchain: ``./build_libraries.sh LUMI-22.08-GNU-PEPSC``
+#. Find the built libraries then under ``libraries-LUMI-22.08-GNU-PEPSC/``. We'll use this path for our Makefile.
 
 Make a new makefile
 ^^^^^^^^^^^^^^^^^^^
 
 The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is ``Makefile.machine_name``, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
+
+We'll do a new Makefile based on *given template*.
+
+Firstly, note that mark, as comments, the module toolchain that we use with this Makefile:
+
+.. code-block:: makefile
+
+  # Modules loaded
+  # module load LUMI/22.08 ; module load cpeGNU ; module load papi; module load Eigen; module load Boost/1.79.0-cpeGNU-22.08
+
+These will need to be loaded while compiling and running, and need to match your library toolchain.
+
+Find the LIBRARY_PREFIX variables and modify them to match your library paths:
+.. code-block:: makefile
+  
+  LIBRARY_PREFIX = <library-dir/lib>
+  LIBRARY_PREFIX_HEADERS = <library-dir/include>
+
+This is enough! But note how these are used later, for example:
+
+.. code-block:: make
+
+  INC_ZOLTAN = -isystem$(LIBRARY_PREFIX_HEADERS)
+  LIB_ZOLTAN = -L$(LIBRARY_PREFIX) -lzoltan -Wl,-rpath=$(LIBRARY_PREFIX)
+
+If you wish, you can choose to point to different libraries via modifying these paths.
 
 Compile!
 ^^^^^^^^
@@ -173,6 +200,8 @@ On debian-based system (such as ubuntu and cubbli), some of the dependencies are
 
 Detailed installation instructions
 ----------------------------------
+
+Instructions included for reference, end-user hopefully shouldn't need to consider these.
 
 DCCRG
 ^^^^^
@@ -298,9 +327,10 @@ Download from https://github.com/fmihpc/vlsv.
 This is the file format/io library.
 
 Installation instructions:
- * Create a Makefile.machine_name file based on the existing ones
- * Change ARCH at the top of the Makefile to you new Makefile.ARCH
- * make
+
+#. Create a Makefile.machine_name file based on the existing ones
+#. Change ARCH at the top of the Makefile to you new Makefile.ARCH
+#. make
 
 VLSV plugin for VisIt
 ^^^^^^^^^^^^^^^^^^^^^
