@@ -37,9 +37,9 @@ Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches
 
 .. code-block:: bash
 
-  git clone --recurse-submodules https://github.com/fmihpc/vlasiator
-  git checkout master --recurse-submodules
-  git submodule update --init --recursive
+    git clone --recurse-submodules https://github.com/fmihpc/Vlasiator
+    git checkout master --recurse-submodules
+    git submodule update --init --recursive
 
 Task: create a folder with your username under ``/projappl/project_465000693``, ``cd`` into it and clone Vlasiator master branch into it.
 
@@ -59,32 +59,80 @@ Vlasiator needs a number of libraries, a part of which need to be built. Some he
 When building libraries and the code, we want to stick to a particular toolchain of compilers and MPI libraries, etc. On LUMI, we use the following modules:
 
 .. code-block:: bash
-
   module load LUMI/22.08
   module load cpeGNU
   module load papi
   module load Eigen
   module load Boost/1.79.0-cpeGNU-22.08
 
+Each cluster and supercomputer will have different modules available. If the prerequisite libraries are not available as modules, they need to be downloaded and built by the user. On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via ``apt-get install libeigen3-dev libboost-dev libboost-program-options-dev libopenmpi-dev``. Use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
 
 Libraries to be built
 +++++++++++++++++++++
 
-Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one each.
+Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/Vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one each.
 
-Tasks:
+Task:
 * copy ``build_libraries.sh`` from Vlasiator root to ``projappl/project_465000693/<user>``.
 * load the above toolchain with the module load commands.
+* Edit the ``build_libraries.sh`` script, commenting out those libraries which are included via modules.
 * Build the libraries with a descriptive name for the toolchain: ``./build_libraries.sh LUMI-22.08-GNU-PEPSC``
 * Find the built libraries then under ``libraries-LUMI-22.08-GNU-PEPSC/``. We'll use this path for our Makefile.
 
+* `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
+  
+  * Load balancing library.
+* `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#boost>`__)
+
+  * Configuration parser.
+* `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#eigen>`__)
+
+  * Linear algebra
+
+* `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
+
+  * Lightweight profiling. 
+* `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
+
+  * Custom file format library, with parallel MPI I/O support.
+* MPI
+* C++17 compiler with OpenMP >=3 support
+
+Libraries fetched via submodules
+++++++++++++++++++++++++++++++++
+
+These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
+
+* `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
+ 
+  * Generic MPI grid library used for the Vlasov solver grid with AMR.
+  * DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!
+
+* `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
+
+  * Lightweight parallel grid library used for the uniform field solver grid.
+
+* `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
+
+  * SIMD support
+  * See instructions for the required addon library if installing manually.
+
+
+Optional libraries
+++++++++++++++++++
+
+And also a number of optional but useful libraries
+
+* `Jemalloc <www.canonware.com/jemalloc/download.html>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#jemalloc>`__)
+  * Memory allocator with reduced memory fragmentation (recommended for performance)
+
+* `Papi <http://icl.cs.utk.edu/papi/>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#papi>`__)
+  * Memory measurement, module often available on-site
+ 
 Make a new makefile
 ^^^^^^^^^^^^^^^^^^^
 
-The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is ``Makefile.machine_name``, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
-
-Compile!
-^^^^^^^^
+The main makefile is in the Vlasiator main folder. There should be no need to modify that. All settings which need to be edited are in a separate machine-specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is ``Makefile.machine_name``, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
 
 After one has created the makefile, one should set an environment variable with the name of your machine, matching the name used for the MAKE/Makefile.machine_name file. For example, to use the home makefile one can set it like this:
 
@@ -92,16 +140,19 @@ After one has created the makefile, one should set an environment variable with 
 
     export VLASIATOR_ARCH=home
 
-To make the environment variable one can put it into the initialization files for your shell, e.g. .profile.
+To make the environment variable one can put it into the initialization files for your shell, e.g. .profile. or .bashrc.
 
-Then one can simply
+Compile!
+^^^^^^^^
+
+After ensuring all libraries and compile options are made available for Vlasiator, and the correct machine-specific makefile has been set, one can simply
 
 .. code-block:: bash
 
     make clean
     make -j 12
 
-to make vlasiator, or
+to make Vlasiator, or
 
 .. code-block:: bash
 
@@ -110,273 +161,12 @@ to make vlasiator, or
 
 to make the Vlasiator tools.
 
-Library Reference
-=================
+Note: The -j flag tells GNU Make to build the program in parallel on several threads. If you are building on a smaller computer, it is not recommended to have a -j count greater than the number of available cores on the frontend where you are compiling. This will not impact how many threads the actual simulation will run on.
 
-Vlasiator uses the following libraries.
+Detailed installation instructions for Libraries
+------------------------------------------------
 
-Libraries requiring building
-----------------------------
-
-* `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
- 
-  * Load balancing library.
-* `Boost <http://www.boost.org/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#boost>`__)
-
-  * Configuration parser.
-* `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#eigen>`__)
-
-  * Linear algebra
-* `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
-
-  * Lightweight profiling. 
-* `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
-
-  * Custom file format library, with parallel MPI I/O support.
-* MPI
-* C++17 compiler with OpenMP >=3 support
-
-
-Libraries fetched via submodules
---------------------------------
-
-These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
-
-* `DCCRG <https://github.com/fmihpc/dccrg>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#dccrg>`__)
- 
-  * Generic MPI grid library used for the Vlasov solver grid with AMR.
-  * DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!
-
-* `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
-
-  * Lightweight parallel grid library used for the uniform field solver grid.
-
-* `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
-
-  * SIMD support
-  * See instructions for the required addon library if installing manually.
-
-
-Optional libraries
-------------------
-
-And also a number of optional but useful libraries:
-
-* `Jemalloc <www.canonware.com/jemalloc/download.html>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#jemalloc>`__)
-
-  * Memory allocator with reduced memory fragmentation (recommended for performance)
-* `Papi <http://icl.cs.utk.edu/papi/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#papi>`__)
-
-  * Memory measurement, module often available on-site
- 
-On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via ``apt-get install libeigen3-dev libboost-dev libboost-program-options-dev libopenmpi-dev``. Use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
-
-Detailed installation instructions
-----------------------------------
-
-DCCRG
-^^^^^
-
-DCCRG is a pure header library so one needs to fetch it and make sure it is included (see Makefile.your-arch).
-
-.. code-block:: bash
-
-    git clone git@github.com:fmihpc/dccrg.git
-
-If the ssh clone fails, use the https protocol.
-
-.. code-block:: bash
-
-    https://github.com/fmihpc/dccrg.git
-
-DCCRG needs a few libraries, the instructions for installing them are on this page. Further instructions can also be found in dccrg wiki: https://github.com/fmihpc/dccrg/wiki
-
-Currently Vlasiator uses not the master branch of DCCRG, instead the ``vlasiator-version`` branch. This is handled by submodules.
-
-Boost
-^^^^^
-
-Boost (http://www.boost.org/) provides Vlasiator (and DCCRG) with some datastructures that are not in the pre C++11 standard. We also use the `program options <http://www.boost.org/doc/libs/1_55_0/doc/html/program_options.html>`_ module for reading cfg parameters (with some wrapper functions).
-
-
-Debian-based systems
-++++++++++++++++++++
-
-On debian-based system (such as ubuntu and cubbli) boost is installable via 
-``apt-get install libboost-dev libboost-program-options-dev``
-Use of the boost-latest ppa (https://launchpad.net/~boost-latest/+archive/ppa) ppa is reccomended on ubuntu.
-
-Cray XC platform
-++++++++++++++++
-One can use the Trilinos module:
-
-.. code-block:: bash
-
-    module load cray-trilinos
-
-
-And add to Makefile.your-arch:
-
-.. code-block:: bash
-
-    INC_BOOST = -I$(CRAY_TRILINOS_PREFIX_DIR)/include/boost
-    INC_BOOST = -L$(CRAY_TRILINOS_PREFIX_DIR)/lib -lboost_program_options
-
-
-Other platforms
-+++++++++++++++
-
-On other platforms you can follow the instructions on `DCCRG's wiki <https://github.com/fmihpc/dccrg/wiki/Install>`_. Boost is mostly a header library, so we only need to compile the program options module.
-
-Summary:
-
-.. code-block:: bash
-
-    wget http://freefr.dl.sourceforge.net/project/boost/boost/1.72.0/boost_1_72_0.tar.bz2
-    tar xf boost_1_72_0.tar.bz2
-    cd boost_1_72_0
-    ./bootstrap.sh --with-libraries=program_options
-    echo "using mpi ;" >> ./tools/build/src/user-config.jam
-    ./b2
-    ./b2 --prefix=<path> install
-    cd ..
-    rm -r boost_1_72_0
-
-Note that it detects ``gcc`` (too) efficiently at least on Mahti, so you might need to add ``--with-toolset=intel-linux`` to the ``bootstrap`` command.
-
-
-
-Zoltan
-^^^^^^
-
-This library is used for load balancing.
-
-Generic installation (add prefix path and replace cc and CC with the correct MPI wrappers):
-
-.. code-block:: bash
-
-    git clone git@github.com:sandialabs/Zoltan.git
-    mkdir zoltan-build
-    cd zoltan-build
-    ../Zoltan/configure --prefix=<path> --enable-mpi --with-gnumake --with-id-type=ullong CC=cc CXX=CC
-    make -j 8
-    make install
-
-
-Others
-++++++
-You can follow the installation instructions on DCCRG's wiki.(https://github.com/fmihpc/dccrg/wiki/Install).
-
-Vectorclass
-^^^^^^^^^^^
-Download Vectorclass library from: http://www.agner.org/optimize/
-Watch out: version 2 of this library uses advanced metaprogramming tricks that do not seem to sit well with compilers in common HPC environments. For the time being, it is recommended to use version 1 from here: https://github.com/vectorclass/version1
-
-We use this to vectorize Vlasov propagation with SSE2/AVX. It is a header library so the header files only need to be placed in a include folder.
-
-Additionally, ``vector3d.h`` needs to be copied from a now separate repo:
-
-.. code-block:: bash
-
-    git clone git@github.com:vectorclass/add-on.git
-    cp add-on/vector3d/vector3d.h <PATH TO VECTORCLASS>
-
-into the directory where the remaining vector class headers are lying.
-
-phiprof
-^^^^^^^
-Clone the latest version from: https://github.com/fmihpc/phiprof/ 
-
-Used for runtime performance tracking.
-
-In the src folder there is a simple Makefile. Edit that to support you machine and make.- The library will then be in the phiprof include and lib folders.
-
-vlsv
-^^^^
-Download from https://github.com/fmihpc/vlsv.
-
-This is the file format/io library.
-
-Installation instructions:
- * Create a Makefile.machine_name file based on the existing ones
- * Change ARCH at the top of the Makefile to you new Makefile.ARCH
- * make
-
-VLSV plugin for VisIt
-^^^^^^^^^^^^^^^^^^^^^
-- Install VisIt or use a pre-installed version for the machine you target.
-- Ask around if someone has the plugin compiled already on that machine. If yes, copy their ``$HOME/.visit/<version>/<arch>/plugins/databases/*Vlsv*`` into the same path in your home directory.
-
-If you want/have to build yourself:
-
-- Build VLSV as above first.
-- Then ``cd visit-plugin``.
-- Edit ``vlsv.xml`` so that it points to your vlsv directory where you just built vlsv. You can use ``xmledit`` for that, which you can find in the visit installation directory in the ``bin`` for the version and architecture you are using, e.g. ``$HOME/visit/3.0.2/linux-x86_64/bin/``.
-- Locate ``xml2cmake`` in the same location, and run that ``xml2cmake -clobber vlsv.xml``.
-- Run ``cmake CMakeLists.txt``.
-- Run ``make`` to build and install, ``make -j 4`` makes it faster but it won't work well with a lot more than 4.
-
-Note: As of Nov. 2020 it will complain about a VTK API function. You can checkout the version from https://github.com/fmihpc/vlsv/pull/41  until this is merged, or you can comment out the offending lines when building.
-- NB for the pending update version, CXXFLAGS in vlsv.xml are also updated with ``-DNEW_VTK_API`` replaced with ``-DVTK_API=81`` (corresponds to VTK API for Mahti VisIt, 3.1). For fresh VisIt versions, the included flag should be good.
-
-fsgrid
-^^^^^^
-Download from https://github.com/fmihpc/fsgrid.
-
-This is the mesh library for cartesian domain decomposition of the fieldsolver.
-It is a header-only library, and the only thing required for vlasiator is that the fsgrid.hpp file is available in its include path.
-
-papi
-^^^^
-Download from http://icl.cs.utk.edu/papi/
-
-Papi is optional, and only needed if ``CXXFLAGS += -DPAPI_MEM`` is defined in the makefile. It can provide information on the actual memory usage of Vlasiator. Most of the time papi is pre-installed on supercomputers and clusters and can often be loaded with `module load papi`.
-
-If not, it can most of the time be compiled with the typical method:
-
-.. code-block:: bash
-
-    git clone https://github.com/icl-utk-edu/papi.git
-    cd papi/src
-    ./configure --prefix=${HOME}/libraries/papi
-    make
-    make install
-
-
-jemalloc
-^^^^^^^^
-Download from http://www.canonware.com/jemalloc/download.html
-
-jemalloc is an optional replacement for the normal malloc/free routines. It is optimized for minimizing memory fragmentation, and it can be of tremendous importance and is strongly recommended, see #25 
-
-Current testing indicates that jemalloc should be compiled with support for transparent huge pages disabled. To perform this, add the flag --disable-thp during configuration.
-
-To compile one would typically do something like this (replace prefix path with the correct one, and update version if there is a newer one)
-
-.. code-block:: bash
-
-    wget -O jemalloc-4.0.4.tar.bz2 https://github.com/jemalloc/jemalloc/releases/download/4.0.4/jemalloc-4.0.4.tar.bz2
-    tar xf jemalloc-4.0.4.tar.bz2
-    cd jemalloc-4.0.4
-    ./configure --prefix=${HOME}/libraries/jemalloc --with-jemalloc-prefix=je_
-    make
-    make install
-
-
-Eigen
-^^^^^
-Download from http://eigen.tuxfamily.org/index.php?title=Main_Page. One does not need to compile anything, it is enough to copy the Eigen sub-folder. Replace in the following instructions the version and paths:
-
-.. code-block:: bash
-
-    wget https://gitlab.com/libeigen/eigen/-/archive/3.2.8/eigen-3.2.8.tar.bz2
-    tar -xvf eigen-3.2.8.tar.bz2
-    cp -r eigen-3.2.8/Eigen $HOME/libraries/eigen
-
-
-NOTE: Eigen 3.3.8 has an "'eigen_assert_exception' is not a member of 'Eigen'" bug during compilation. Do not use this specific version.
-
-
+If the install script or fetching submodules fails, you can review the more in-depth guidelines available at https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator though it should not be necessary for the purposes of this tutorial.
 
 Other practical aspects
 -----------------------
@@ -390,3 +180,41 @@ Interesting questions you might get
 
 Typical pitfalls
 ----------------
+
+Some wise words of the pitfalls of submodules and git commands:
+So trying with a fresh clone with **no** --recurse-submodules, this gets the correct vlasiator-version target for dccrg:
+
+``git checkout dev``
+``git pull origin dev --recurse-submodules``
+
+This works as well
+
+``git checkout dev --recurse-submodules``
+``git submodule update --init --recursive``
+
+This however does not fetch the correct submodule commits:
+
+``git checkout dev``
+
+This does not fetch submodules by itself:
+
+``git checkout dev --recurse-submodules``
+
+but it needs then
+
+``git submodule update --init --recursive``
+
+But,
+
+``git checkout dev``
+``git submodule update --init --recursive``
+
+is bad, since that will get the default master branch tip as the submodule commits and then updates the submodules to those ones. But then, if you start with
+
+``git clone --recurse-submodules https://github.com/fmihpc/vlasiator``
+
+you can do
+
+``git checkout dev``
+``git submodule update --init --recursive``
+
