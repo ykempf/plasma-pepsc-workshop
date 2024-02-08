@@ -1,4 +1,4 @@
-ysator supported data reducers and vlasiator variables
+Analysator supported data reducers and vlasiator variables
 ===========================================================
 
 This documents is intended as a helpful but incomplete reference for vlasiator
