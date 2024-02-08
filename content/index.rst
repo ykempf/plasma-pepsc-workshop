@@ -83,6 +83,7 @@ thousands of cores to perform massively parallel computations.
    :caption: Reference
 
    quick-reference
+   vlasiator-cfg-reference
 
 .. toctree::
    :caption: Misc
