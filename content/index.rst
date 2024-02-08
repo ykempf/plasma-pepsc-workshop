@@ -84,6 +84,7 @@ thousands of cores to perform massively parallel computations.
 
    quick-reference
    vlasiator-cfg-reference
+   analysator_supported
 
 .. toctree::
    :caption: Misc
