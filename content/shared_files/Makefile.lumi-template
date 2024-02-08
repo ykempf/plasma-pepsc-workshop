@@ -58,8 +58,8 @@ testpackage: CXXFLAGS += -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE
 #
 #======== Libraries ===========
 
-LIBRARY_PREFIX = /pfs/lustrep2/projappl/project_465000693/instructor_codes/libraries-LUMI-22.08-GNU/lib
-LIBRARY_PREFIX_HEADERS = /pfs/lustrep2/projappl/project_465000693/instructor_codes/libraries-LUMI-22.08-GNU/include
+LIBRARY_PREFIX = 
+LIBRARY_PREFIX_HEADERS = 
 
 #compiled libraries
 LIB_BOOST = -lboost_program_options

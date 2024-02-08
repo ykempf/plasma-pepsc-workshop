@@ -30,7 +30,7 @@ interfaces, optimising magnetically confined fusion plasmas, designing next-gene
 space plasma dynamics within the Earth’s magnetosphere.
 
 
-`**Vlasiator** <https://www.helsinki.fi/en/researchgroups/vlasiator>`_ (`GitHub <https://github.com/fmihpc/vlasiator`_) is 
+`**Vlasiator** <https://www.helsinki.fi/en/researchgroups/vlasiator>`_ (`GitHub <https://github.com/fmihpc/vlasiator>`_) is 
 the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global 
 magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating 
 the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, 
