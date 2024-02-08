@@ -1,0 +1,29 @@
+Variable name,config option,unit,meaning,literature ref
+CellID,always written,cells,Spatial ordering of vlasov grid cells
+fg\_b,``fg_b``,T,Overall magnetic field (vector),[Palmroth et al. 2018](https://link.springer.com/article/10.1007%2Fs41115-018-0003-2)
+fg\_b\_background,``fg_backgroundb``,T,Static background magnetic field (i.e. dipole field in a magnetosphere simulation. Vector.),[Palmroth et al. 2018](https://link.springer.com/article/10.1007%2Fs41115-018-0003-2)
+fg\_b\_perturbed,``fg_perturbedb``,T,Fluctuating component of the magnetic field (vector),[Palmroth et al. 2018](https://link.springer.com/article/10.1007%2Fs41115-018-0003-2)
+fg\_e,``fg_e``,V/m,Electric field calculated as ∇ × B (Vector)
+vg\_rhom,``vg_rhom``,kg/m³,combined mass density of all simulation species
+fg\_rhom,``fg_rhom``,kg/m³,-''-
+vg\_rhoq,``vg_rhoq``,C/m³,combined charge density of all simulation species
+fg\_rhoq,``fg_rhoq``,C/m³,-''-
+proton\_vg\_rho,``populations_rho``,1/m³,Number density for each simulated particle population
+vg\_v,``vg_v``,m/s,Bulk plasma velocity (velocity of the centre-of-mass frame vector)
+fg\_v,``fg_v``,m/s,-''-
+proton\_vg\_v,``populations_v``,m/s,Per-population bulk velocity
+proton\_vg\_rho\_thermal,``populations_moments_thermal``,1/m³,Number density for the **thermal** component of every population
+proton\_vg\_v\_thermal,-''-,m/s,Velocity (vector) for the **thermal** component of every population
+proton\_vg\_ptensor\_diagonal\_thermal,-''-,Pa,Diagonal components of the pressure tensor for the **thermal** component of every population
+proton\_vg\_ptensor\_offdiagonal\_thermal,-''-,Pa,Off-Diagonal components of the pressure tensor for the **thermal** component of every population
+proton\_vg\_rho\_nonthermal,``populations_moments_nonthermal``,1/m³,Number density for the **nonthermal** component of every population
+proton\_vg\_v\_nonthermal,-''-,m/s,Velocity (vector) for the **nonthermal** component of every population
+proton\_vg\_ptensor\_diagonal\_nonthermal,-''-,Pa,Diagonal components of the pressure tensor for the **nonthermal** component of every population
+proton\_vg\_ptensor\_offdiagonal\_nonthermal,-''-,Pa,Off-Diagonal components of the pressure tensor for the **nonthermal** component of every population
+proton\_minvalue,``populations_vg_effectivesparsitythreshold``,m^6/s³,Effective sparsity threshold for every cell.,[Yann's PhD Thesis](http://urn.fi/URN:ISBN:978-952-336-001-3) page 91
+proton\_rholossadjust,``populations_vg_rho_loss_adjust``,1/m³,Tracks how much mass was lost in the sparse velocity space block removal,[Yann's PhD Thesis](http://urn.fi/URN:ISBN:978-952-336-001-3) page 90
+vg\_lbweight,``vg_lbweight``,arb. unit,Load balance metric, used for dynamic rebalancing of computational load between mpi tasks
+vg\_maxdt\_acceleration,``vg_maxdt_acceleration``,s,Maximum timestep limit of the acceleration solver
+proton\_vg\_maxdt\_acceleration,``populations_vg_maxdt_acceleration``,s,-''-, per-population
+vg\_maxdt\_translation,``vg_maxdt_translation``,s,Maximum timestep limit of the translation solver
+proton\_vg\_maxdt\_translation,``populations_vg_maxdt_translation``,s,-''-, per-population
