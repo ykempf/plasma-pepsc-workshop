@@ -1,11 +1,11 @@
-Analuysator supported data reducers and vlasiator variables
+ysator supported data reducers and vlasiator variables
 ===========================================================
 
 This documents is intended as a helpful but incomplete reference for vlasiator
 outputs and post-processing data reducers supported by Analysator
    
 Reading variables from .vlsv files
-==================================
+----------------------------------
 
 Analysator supports reading multiple different types of variables:
 
@@ -15,7 +15,7 @@ Analysator supports reading multiple different types of variables:
 - variables generated via receipes from the data file variables (named, somewhat incorrectly, datareducers)
                 
 Vlasiator variable naming scheme
-================================
+--------------------------------
 
 In Vlasiator versions before V5, variables were always saved on the DCCRG/MPI/Vlasov grid,
 and as such, only a single naming scheme was required. With the introduction of Vlasiator V5,
@@ -29,7 +29,7 @@ naming scheme was introduced where a prefix defines the grid type:
 - prefix ``ig_``: ionosphere grid
 
 Multipop naming (version 4 onwards)
-===================================
+-----------------------------------
 
 Some variables are directly connected to a given particle species, with the variable name having a
 particle species prefix. For example: ``proton/rho`` or ``proton/vg_rho`` for V4 and V5 outputs
@@ -39,7 +39,7 @@ directly connected to particle species are availabe without the population ident
 from version 3 and earlier, assuming the species to be protons.
 
 Vlasiator variable correspondences
-==================================
+----------------------------------
 
 The below tables list variable names used in different versions of Vlasiator proper (updated: 3.6.2021).
 A blank entry in a corresponding column indicates this variable is not available.
@@ -73,7 +73,7 @@ and other such plotting routines (see also plot_helpers.py).
 The up-to-date list of datareducers can always be found in pyVlsv/reduction.py
 
 List of datareducers for Vlasiator versions 1...4
-*************************************************
+-------------------------------------------------
 
 Note: If several populations exist for a v4 multipop run, temperature reducers are incorrect.
 If the value is available directly instead of as a datareducer, that name is listed instead in
@@ -85,7 +85,7 @@ parathentheses. If it is available through multipop datareducers, it is shown wi
    :header-rows: 1
 
 List of per-population datareducers for Vlasiator versions 4 and 5.
-*******************************************************************
+-------------------------------------------------------------------
 
 For these multipop datareducers, replace ``pop`` with required population name. If ``pop/`` is
 omitted, a sum over per-population values is provided.

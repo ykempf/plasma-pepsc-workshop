@@ -25,7 +25,7 @@ e.g. what to do the day before to set up common repositories.
 
 
 Three kinds of data
-===================
+-------------------
 
 Vlasiator produces three kinds of output files during a simulation run,
 the contents of which vary based on simulation parameters:
@@ -61,7 +61,7 @@ as listed below. It is also possible (and common) to configure a subset
 written for further analysis.
 
 The VLSV file format
-====================
+--------------------
 
 The `VLSV library <https://github.com/fmihpc/vlsv>`__ is used to write
 this versatile container format.
@@ -156,9 +156,9 @@ running
    to the sparse velocity grid structure on which they are stored.
    
 Simulation data reducers
-========================
+------------------------
 
-This is a (hopefully) up-to date list of simulation output options
+This is a (mostly) up-to date list of simulation output options
 that can be enabled in the config file. Note that older simulation
 possibly use slightly different names, as the code is in constant
 development.
