@@ -41,11 +41,13 @@ Use the ``--recurse-submodules`` when cloning, pulling, or checking out branches
     git checkout master --recurse-submodules
     git submodule update --init --recursive
 
+Task: create a folder with your username under ``/projappl/project_465000693``, ``cd`` into it and clone Vlasiator master branch into it.
+
 Vlasiator main branches
 +++++++++++++++++++++++
 
-* ``master``: Main branch, usually lagging behind. Main releases.
-* ``dev``: Unstable development branch.
+* ``master``: Main branch, stable, lagging behind from development branch. Main releases.
+* ``dev``: Latest features, but potentially not stable.
 
 ... plus a plethora of topic branches.
 
@@ -54,10 +56,26 @@ Building libraries
 
 Vlasiator needs a number of libraries, a part of which need to be built. Some header libraries have been transferred to submodules, and those are automatically fetched with git (... when ``--recurse-submodules`` is used correctly!).
 
+When building libraries and the code, we want to stick to a particular toolchain of compilers and MPI libraries, etc. On LUMI, we use the following modules:
+
+.. code-block:: bash
+  module load LUMI/22.08
+  module load cpeGNU
+  module load papi
+  module load Eigen
+  module load Boost/1.79.0-cpeGNU-22.08
+
+
 Libraries to be built
 +++++++++++++++++++++
 
-Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_.
+Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one each.
+
+Task:
+* copy ``build_libraries.sh`` from Vlasiator root to ``projappl/project_465000693/<user>``.
+* load the above toolchain with the module load commands.
+* Build the libraries with a descriptive name for the toolchain: ``./build_libraries.sh LUMI-22.08-GNU-PEPSC``
+* Find the built libraries then under ``libraries-LUMI-22.08-GNU-PEPSC/``. We'll use this path for our Makefile.
 
 * `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
   
@@ -68,10 +86,6 @@ Building the prerequisite libraries of Vlasiator can be done with the following 
 * `Eigen <http://eigen.tuxfamily.org/index.php?title=Main_Page>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#eigen>`__)
 
   * Linear algebra
-* `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
-
-  * SIMD support
-  * See instructions for the required addon library.
 
 * `Phiprof <https://github.com/fmihpc/phiprof>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#phiprof>`__)
 
@@ -95,6 +109,12 @@ These libraries are handled via ``git submodules`` (nb. clone/pull instructions 
 * `FsGrid <https://github.com/fmihpc/fsgrid>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#fsgrid>`__)
 
   * Lightweight parallel grid library used for the uniform field solver grid.
+
+* `Vectorclass <http://www.agner.org/optimize/#vectorclass>`_ (`install instructions <https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator#vectorclass>`__)
+
+  * SIMD support
+  * See instructions for the required addon library if installing manually.
+
 
 Optional libraries
 ++++++++++++++++++

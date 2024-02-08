@@ -15,7 +15,7 @@ Intended learning outcomes
 * Basic exploration of .vlsv files
   * SpatialGrid
   * FsGrid
-  * Finding 
+  * Finding stored VDFs
 * Plotting fieldlines and streamlines
 * Plotting contours
 * vlsvextract and plotting a VDF

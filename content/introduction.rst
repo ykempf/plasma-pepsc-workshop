@@ -20,13 +20,19 @@ Intended learning outcomes
 Timing
 ------
 
-
+Tuesday morning, 1h
 
 Preparing exercises
 -------------------
 
 Here you can find `Vlasiator introductory lectures <https://datacloud.helsinki.fi/index.php/s/wEZdF3szjBfapSs>`_.
 
+Reference papers for Vlasiator simulation:
+* `Alfthan et al 2014 <https://doi.org/10.1016/j.jastp.2014.08.012>`_
+* `Palmroth et al 2018 <https://doi.org/10.1007/s41115-018-0003-2>`_
+* `Ganse et al 2023 <https://doi.org/10.1063/5.0134387>`_
+
+Highlight results:
 
 Other practical aspects
 -----------------------
