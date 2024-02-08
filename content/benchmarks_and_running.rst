@@ -55,7 +55,7 @@ These set up restart file storign intervals
   number_of_restarts = 6 # = 8h / 28800s, change if modifying time limit or restart interval
 
 
-These are for parallel MPI I/O, in key-value pairs. 
+These are hints for collective MPI I/O, in key-value pairs. 
 .. code-block:: cfg
 
   restart_write_mpiio_hint_key = cb_buffer_size
@@ -80,7 +80,9 @@ Lustre striping
 ---------------
 Please refer to `LUMI docs <https://docs.lumi-supercomputer.eu/storage/parallel-filesystems/lustre/#file-striping>`_ for details.
 
+Striping refers to spreading a file across several storage targets, and it is used to have better performance for parallel writes for large files. 
 
+Rules of thumb: 
 
 
 Other practical aspects
