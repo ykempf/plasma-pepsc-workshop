@@ -4,22 +4,55 @@ How to configure Vlasiator for performance
 Why we teach this lesson
 ------------------------
 
-Vlasiator requires a lot of resources to run, but thankfully it scales pretty well (super-linearly!). Good scaling requires, however, understanding of the system in use, and knowing how to profile and optimize the HPC environment from balancing threads vs tasks to parallel I/O. Here we introduce built-in Vlasiator profiling tools, rules-of-thumb for setting up the Slurm batch jobs, LUSTRE striping and ROMIO flags relevant to LUMI.
+Vlasiator requires a lot of resources to run, but thankfully it scales pretty well (super-linearly, even!). Good scaling requires, however, understanding of the system in use, and knowing how to profile and optimize the HPC environment from balancing threads vs tasks to parallel I/O. Here we introduce built-in Vlasiator profiling tools, rules-of-thumb for setting up the Slurm batch jobs, LUSTRE striping and ROMIO flags relevant to LUMI.
 
 
 Intended learning outcomes
 --------------------------
 
-
+The user understands the options to affect scaling properties and can benchmark scaling.
 
 Timing
 ------
 
-
+Tue afternoon.
 
 Preparing exercises
 -------------------
 
+Scaling exercise: few configurations to set up. Template file is decent, template jobscript needed.
+
+The Lesson
+==========
+
+
+
+
+
+Lustre striping
+---------------
+Please refer to `LUMI docs <https://docs.lumi-supercomputer.eu/storage/parallel-filesystems/lustre/#file-striping>`_ for details.
+
+Striping refers to spreading a file across several storage targets, and it is used to have better performance for parallel writes for large files. 
+
+Rules of thumb: 
+
+* Number tasks should be divisible by the number of stripes.
+* Do not use more stripes than there are OSTs (for example, we use 20/32).
+* Do not stripe small files: have one folder for restart files, and another for (each class of) bulk files.
+* One stripe per ~5 GB of file size is what we have used for bulk files
+
+``lfs getstripe <path>`` and ``lfs setstripe --count <n> <path>`` are the relevant commands.
+
+Exercise:
+
+#. Create a folder ``restart/``
+#. Given an estimate of 1TB per restart file, set the striping of the ``restart/`` folder to a suitable value.
+#. Create a folder ``bulks/``
+#. Given an estimate of 20GB per bulk file, set the striping of ``bulks/`` to a suitable value.
+#. Check the stripe counts for both folders with ``lfs getstripe``.
+
+Next: how to communicate these to Vlasiator!
 
 I/O config flags
 ----------------
@@ -47,7 +80,10 @@ Example from current production:
   restart_read_mpiio_hint_value = disable
   write_restart_stripe_factor = 20
 
-These set up restart file storign intervals
+Let's check these in a bit more detail.
+
+These set up restart file storing intervals and the path where to write:
+
 .. code-block:: cfg
 
   restart_walltime_interval = 28400
@@ -56,6 +92,7 @@ These set up restart file storign intervals
 
 
 These are hints for collective MPI I/O, in key-value pairs. 
+
 .. code-block:: cfg
 
   restart_write_mpiio_hint_key = cb_buffer_size
@@ -71,19 +108,20 @@ These are hints for collective MPI I/O, in key-value pairs.
 
 
 The following informs Vlasiator of the restart file striping on Lustre (see below):
+
 .. code-block:: cfg
 
   write_restart_stripe_factor = 20
 
 
-Lustre striping
----------------
-Please refer to `LUMI docs <https://docs.lumi-supercomputer.eu/storage/parallel-filesystems/lustre/#file-striping>`_ for details.
+Exercise
+========
 
-Striping refers to spreading a file across several storage targets, and it is used to have better performance for parallel writes for large files. 
+We are going to be running a Flowthrough test to look a bit at weak scaling.
 
-Rules of thumb: 
+The test is a tube, with initial solar wind plasma flowing along the X direction. The inflow boundary injects faster, more dense solar wind into the domain, and the Y and Z directions are periodic. Dynamic AMR is applied to the simulation, tracking the interface between fast and slow flows.
 
+To calculate weak scaling, we will expand the Y and Z dimensions of the domain with some factors, with a matching increase in cores. The shared sheet has some predetermined values, but feel free to experiment further (and add lines with notes).
 
 Other practical aspects
 -----------------------

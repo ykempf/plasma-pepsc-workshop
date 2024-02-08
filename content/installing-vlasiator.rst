@@ -152,6 +152,7 @@ Firstly, note that mark, as comments, the module toolchain that we use with this
 These will need to be loaded while compiling and running, and need to match your library toolchain.
 
 Find the LIBRARY_PREFIX variables and modify them to match your library paths:
+
 .. code-block:: makefile
   
   LIBRARY_PREFIX = <library-dir/lib>
