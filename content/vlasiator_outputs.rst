@@ -139,8 +139,7 @@ running
    order, as by the cellID definition above. For simulations on multiple
    ranks, every rank writes its data in this structure, end-to-end. The
    ``num_writing_ranks`` and the ``MESH_DECOMPOSITION`` arguments in the
-   XML tag allow the spatial
-   partition to be reconstructed on load time.
+   XML tag allow the spatial partition to be reconstructed on load time.
 
 -  **Ionospheric grid variables** are stored on the simulations `ionosphere
    grid`, which is a statically refined triangular mesh designed for solving
@@ -164,15 +163,24 @@ development.
    :header-rows: 1
 
 
-Other practical aspects
+Other output files
 -----------------------
 
-
+If the PHIPROF profiler suite is in use, you will also see e.g. ```phiprof_0.txt`` in the run directory,
+providing rough ASCII tables of run-time timers, useful for rudimentary profiling of the Vlasiator
+code, solvers, and I/O.
 
 Interesting questions you might get
 -----------------------------------
 
+Q: Why are the output formats so convoluted?
 
+A: They are optimized for run-time performance, so that each MPI task can simply pour its data into
+one contiguous region on-disk via MPI writes. 
 
 Typical pitfalls
 ----------------
+
+- Read Vlasov grid data and forget the order the cells based on CELLIDS
+
+- Read FSGrid data and accidentally order that also according to CELLIDS
