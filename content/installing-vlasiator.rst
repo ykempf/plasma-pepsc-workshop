@@ -53,7 +53,7 @@ Vlasiator main branches
 ... plus a plethora of topic branches.
 
 Building libraries
-^^^^^^^^^^^^^^^^^^
+------------------
 
 Vlasiator needs a number of libraries, a part of which need to be built. Some header libraries have been transferred to submodules, and those are automatically fetched with git (... when ``--recurse-submodules`` is used correctly!).
 
@@ -68,16 +68,22 @@ When building libraries and the code, we want to stick to a particular toolchain
 
 Each cluster and supercomputer will have different modules available. If the prerequisite libraries are not available as modules, they need to be downloaded and built by the user. On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via ``apt-get install libeigen3-dev libboost-dev libboost-program-options-dev libopenmpi-dev``. Use of the `boost-latest ppa <https://launchpad.net/~boost-latest/+archive/ppa>`_ is recommended on Ubuntu.
 
-Libraries to be built
-+++++++++++++++++++++
-
 Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: `build_libraries.sh <https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh>`_. Our usual practice is to use a centralized library folder, but we'll set up one for each user as an exercise.
 
 Tasks:
+
 #. copy ``build_libraries.sh`` from Vlasiator root to ``projappl/project_465000693/<user>``.
 #. load the above toolchain with the module load commands.
 #. Build the libraries with a descriptive name for the toolchain: ``./build_libraries.sh LUMI-22.08-GNU-PEPSC``
 #. Find the built libraries then under ``libraries-LUMI-22.08-GNU-PEPSC/``. We'll use this path for our Makefile.
+
+That's done! Below, the libraries used for reference.
+
+Library reference
+^^^^^^^^^^^^^^^^^
+
+Require building
+++++++++++++++++
 
 * `Zoltan <http://www.cs.sandia.gov/zoltan/>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#zoltan>`__)
   
@@ -98,8 +104,8 @@ Tasks:
 * MPI
 * C++17 compiler with OpenMP >=3 support
 
-Libraries fetched via submodules
-++++++++++++++++++++++++++++++++
+Header libraries fetched via submodules
++++++++++++++++++++++++++++++++++++++++
 
 These libraries are handled via ``git submodules`` (nb. clone/pull instructions for submodules below), you do not need to install these separately.
 
