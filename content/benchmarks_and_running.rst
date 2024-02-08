@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+How to configure Vlasiator for performance
+==========================================
 
 Why we teach this lesson
 ------------------------
@@ -20,7 +20,66 @@ Timing
 Preparing exercises
 -------------------
 
-e.g. what to do the day before to set up common repositories.
+
+I/O config flags
+----------------
+
+Example from current production:
+
+.. code-block:: cfg
+
+  [io]
+  diagnostic_write_interval = 10
+  write_initial_state = 0
+  restart_walltime_interval = 28400
+  restart_write_path = restart
+  number_of_restarts = 6 # = 8h / 28800s, change if modifying time limit or restart interval
+  vlsv_buffer_size = 0
+  restart_write_mpiio_hint_key = cb_buffer_size
+  restart_write_mpiio_hint_value = 16777216
+  restart_write_mpiio_hint_key = striping_unit
+  restart_write_mpiio_hint_value = 16777216
+  restart_write_mpiio_hint_key = romio_cb_write
+  restart_write_mpiio_hint_value = disable
+  restart_read_mpiio_hint_key = romio_ds_read
+  restart_read_mpiio_hint_value = disable
+  restart_read_mpiio_hint_key = romio_cb_read
+  restart_read_mpiio_hint_value = disable
+  write_restart_stripe_factor = 20
+
+These set up restart file storign intervals
+.. code-block:: cfg
+
+  restart_walltime_interval = 28400
+  restart_write_path = restart
+  number_of_restarts = 6 # = 8h / 28800s, change if modifying time limit or restart interval
+
+
+These are for parallel MPI I/O, in key-value pairs. 
+.. code-block:: cfg
+
+  restart_write_mpiio_hint_key = cb_buffer_size
+  restart_write_mpiio_hint_value = 16777216
+  restart_write_mpiio_hint_key = striping_unit
+  restart_write_mpiio_hint_value = 16777216
+  restart_write_mpiio_hint_key = romio_cb_write
+  restart_write_mpiio_hint_value = disable
+  restart_read_mpiio_hint_key = romio_ds_read
+  restart_read_mpiio_hint_value = disable
+  restart_read_mpiio_hint_key = romio_cb_read
+  restart_read_mpiio_hint_value = disable
+
+
+The following informs Vlasiator of the restart file striping on Lustre (see below):
+.. code-block:: cfg
+
+  write_restart_stripe_factor = 20
+
+
+Lustre striping
+---------------
+Please refer to `LUMI docs <https://docs.lumi-supercomputer.eu/storage/parallel-filesystems/lustre/#file-striping>`_ for details.
+
 
 
 
