@@ -98,6 +98,12 @@ describing the file as a whole, such as resolutions, timesteps etc., and
 Additional metadata is often added to the datasets, such as their
 physical units, LaTeX formatted plotting hints, etc.
 
+It can sometimes be useful to use the command line to look directly at
+the XML footer information which contains information on all variables
+included in the file, e.g. ``tail -n 60 bulk.0001234.vlsv |less``. You
+can adjust the line count until you have the information you need.
+Adding too many lines will result in human-unreadable binary output.
+
 Spatial ordering: Vlasov- vs. FSGrid vs. Velocity space variables
 -----------------------------------------------------------------
 
