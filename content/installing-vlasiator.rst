@@ -1,3 +1,4 @@
+.. _installing-vlasiator:
 Installing Vlasiator
 ====================
 
