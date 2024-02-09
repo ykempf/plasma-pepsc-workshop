@@ -45,7 +45,7 @@ Analysator on LUMI with jupyterhub
 ----------------------------------
 
 For this introductory course, we will be using analysator in an interactive manner through the web interface at
-`https://www.lumi.csc.fi`_
+`<https://www.lumi.csc.fi>`_
 
 Log in and select a Jupyter session (*not* Jupyter for courses). Verify that you have the correct project selected (project_465000693) and the interactive partition. You may want to select more than just 1 CPU in order to have enough memory to open large files. In settings, select "advanced" and type the following into the window "Script to start":
 
