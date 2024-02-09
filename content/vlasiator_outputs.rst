@@ -19,7 +19,7 @@ the contents of which vary based on simulation parameters:
 
 1. ``logfile.txt``, the simulation run log. This is a timestamped ascii
 file providing basic diagnostic output of the run, including memory
-usage, time steps etc.
+usage, time steps, counts of spatial cells at refinement levels etc.
 
 2. ``diagnostic.txt``. The contents of this file
 can be configured by the ``diagnostic =`` options in the run config
@@ -27,12 +27,12 @@ file. In general, this ascii file will contain one line per (1, 10, or
 so) simulation timesteps, with the columns determined by the selected
 data reducers. These include, for example, simple scalar values like
 overall plasma mass, number of velocity space blocks in the simulation,
-charge balance, divergence of magnetic field etc.
+maximum time step allowed by each solver, mass loss due to sparsity etc.
 
 3. **VLSV files** are
 the main output data products. These files come in multiple varieties:
 
-\* Restart files. These contain the whole simulation state, including
+\* Restart files. These checkpoint contain the whole simulation state, including
 the full phase space density, all relevant electromagnetic fields and
 metadata. Simulations can be restarted from them (hence the name), but
 they tend to be very heavy, easily multiple terabytes in size for
@@ -46,6 +46,14 @@ fields, but can also contain much more complex data reducer operators,
 as listed below. It is also possible (and common) to configure a subset
 (e.g. every 25th cell) of the velocity distribution functions to be
 written for further analysis.
+
+N.b. saving FSgrid variables for large 3D runs can lead to significant
+disk space usage, due to the FSgrid being uniform at the highest resolution
+setting. For this reason, storing FSgrid variables in bulk files should
+be carefully considered. It is also possible to declare several different
+bulk file settings, one of which can be defined to exclude FSgrid variables
+and be output more often, with the FSgrid-variable including version output
+only e.g. every 10 seconds.
 
 The VLSV file format
 --------------------

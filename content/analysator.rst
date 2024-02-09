@@ -34,11 +34,41 @@ For cloning, you can use the SSH or the HTTP method.
 
 .. code-block:: bash
 
+   cd $HOME
    git clone https://github.com/fmihpc/analysator.git
    git clone git@github.com:fmihpc/analysator.git
 
-Next, you should set your ``PYTHONPATH`` variable to include your Analysator install directory, for example:
-``export PYTHONPATH=$PYTHONPATH:$HOME/analysator``. 
+Next, you should set your ``PYTHONPATH`` variable to include your Analysator install directory. One way is to add this line to your startup script:
+``export PYTHONPATH=$PYTHONPATH:$HOME/analysator``
+
+Analysator on LUMI with jupyterhub
+----------------------------------
+
+For this introductory course, we will be using analysator in an interactive manner through the web interface at
+`https://www.lumi.csc.fi`_
+
+Log in and select a Jupyter session (*not* Jupyter for courses). Verify that you have the correct project selected (project_465000693) and the interactive partition. You may want to select more than just 1 CPU in order to have enough memory to open large files. In settings, select "advanced" and type the following into the window "Script to start":
+
+.. code-block:: bash
+
+   module use /appl/local/csc/modulefiles/
+   module load pytorch/2.1
+   export PTNOLATEX=1
+   export PYTHONPATH=$PYTHONPATH:$HOME/analysator:
+
+N.B. Remember to include the semicolon at the end of the last line! Next, launch the Jupyter session. Once your job has queued and launched, you can launch the Jupyter session and verify operation by importing Analysator. Type the command in the window and execute with shift+Enter.
+
+.. code-block:: python
+
+   [1]: import pytools as pt
+   Using LaTeX formatting
+   Using backend module://matplotlib_inline.backend_inline
+   Using matplotlib version 3.8.1
+
+   [2]:
+
+Analysator required packages on other systems
+---------------------------------------------
 
 Analysator should work mostly equally well on both Python 2.7 and Python 3.x. However, versions prior to
 Python 3.8 no longer receive security support and are thus not recommended. Use of iPython, jupyter, or
@@ -54,7 +84,8 @@ To verify the availability of required libraries, it is suggested to try importi
 
    In [1]: import pytools as pt
    Using LaTeX formatting
-   Using matplotlib version 2.1.1
+   Using backend module://matplotlib_inline.backend_inline
+   Using matplotlib version 3.8.1
 
    In [2]:
 
@@ -79,7 +110,7 @@ This setting can be altered with the system variable ``export PTOUTPUTDIR=/targe
 Analysator function options
 ---------------------------
 
-The formalism of providing Analysator plotting functions with arguments is similar to matlab or IDL, utilizing keywords.
+The formalism of providing Analysator plotting functions with arguments is similar to matlab or IDL, utilizing keywords. Many keywords have a default value of e.g. None, which the code checks against. 
 
 Interactive help
 ----------------
@@ -89,6 +120,16 @@ Most Analysator functions and classes contain up-to-date help, which is accessab
 .. code-block:: python
 
    pt.plot.plot_colormap?
+
+Interactive plots
+-----------------
+
+On some systems you can activate interactive backends in Jupyter notebooks by issuing the command ``%matplotlib ipympl`` or ``%matplotlib notebook`` before importing pytools. This is not supported on the LUMI web interface.
+
+Non-interactive batch mode
+--------------------------
+
+If launching analysator from within a non-interactive batch job script, it is suggested to activate non-interactive mode with ``export PTNONINTERACTIVE=1``.
 
 Reading data
 ------------
