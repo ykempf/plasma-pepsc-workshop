@@ -5,5 +5,8 @@ Preparations for the workshop
 #. Install locally `VisIt 3.3.3 <https://visit-dav.github.io/visit-website/releases-as-tables/>`_
 #. Get LUMI access (information provided via ENCCS)
 #. Verify GitHub ssh access from LUMI
-#. Clone Vlasiator and its prerequisite libraries on LUMI (see :doc:`installing-vlasiator.rst`)
-#. Clone Analysator onto your LUMI workspace
+
+Optional:
+
+#. Clone `Vlasiator <https://github.com/fmihpc/vlasiator>`_ and its prerequisite libraries on LUMI (see *Installing Vlasiator*)
+#. Clone `Analysator <https://github.com/fmihpc/analysator>`_ onto your LUMI workspace

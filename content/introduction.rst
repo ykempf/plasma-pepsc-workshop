@@ -46,6 +46,14 @@ Vlasiator
 
 `**Vlasiator** <https://www.helsinki.fi/en/researchgroups/vlasiator>`_ (`GitHub <https://github.com/fmihpc/vlasiator>`_) is the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, while electrons are massless charge-neutralizing fluid, enabling a self-consistent global plasma simulation that can describe multi-temperature plasmas to resolve non-MHD processes that currently cannot be self-consistently described by the existing global space weather simulations. The novelty is that by modelling ions as velocity distribution functions the outcome will be numerically noiseless. Due to the multi-dimensional approach at ion scales, Vlasiator's computational challenges are immense.
 
+.. figure:: img/BCH_LRCA.webp
+    :width: 500
+    :alt: Example of a Vlasiator 5D run (LRCA)
+    
+    A Vlasiator view of the Earth's magnetosphere (5D, Palmroth+2018)
+
+
+
 Vlasiator simulates the dynamics of plasma using a hybrid-Vlasov model, where protons are described by their distribution function f(r,v,t) in ordinary (r) and velocity (v) space, and electrons are a charge-neutralising fluid. This approach neglects electron kinetic effects but retains ion kinetics. The time-evolution of f(r,v,t) is given by Vlasov's equation,
 
 .. image:: img/vlasov-eq.webp
@@ -81,9 +89,15 @@ State-of-the-art
 
 Vlasiator is parallelized at multiple scales via MPI, threading support and vectorization, and we are continuously improving the performance and the feature set. GPU porting is in progress: solvers have been ported, but they need to be optimized for GPUs to be useful in production.
 
+The data structures in Vlasiator have been optimized to propagate the 6D solution efficiently with explicit solvers. The velocity distribution functions are associated with a spatial, hierarchically-adapted Cartesian grid (the Vlasov grid, SpatialGrid or the AMR grid), with each such spatial cell containing a VDF for each ion species in the simulation. The VDF themselves are stored on a Cartesian velocity-space grid as a sparse data structure - otherwise the production simulations could not fit any available computers. This implies slight loss of mass at the fringes (under a set sparsity threshold, the VDF is not stored), but the VDF can optionally be re-scaled to conserve mass. Suitably chosen sparsity thresholds enable global runs with negligible adverse effects.
 
+.. figure:: img/sparse-YPK2016.webp
+    :width: 500
+    :alt: Example of sparse velocity grid.
 
+    Example of sparse velocity grid, YPK 2016.
 
+The numerical algorithm for the propagation of the Vlasov equation is based on operator splitting: spatial translation and velocity-space acceleration are leapfrogged. The actual re-mapping of the VDF is handled by the semi-Lagrangian SLICE-3D method by Zerroukat and Allen (2012). The mapping itself is conservative.
 
 Other practical aspects
 -----------------------
