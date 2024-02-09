@@ -214,11 +214,11 @@ Interesting questions you might get
 
 
 
-Typical pitfalls
+Typical pitfallsv
 ----------------
 
 Some wise words of the pitfalls of submodules and git commands:
-So trying with a fresh clone with **no** --recurse-submodules, this gets the correct vlasiator-version target for dccrg:
+So trying with a fresh clone with **no** ``--recurse-submodules``, this gets the correct vlasiator-version target for dccrg:
 
 ``git checkout dev``
 ``git pull origin dev --recurse-submodules``

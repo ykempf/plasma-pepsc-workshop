@@ -1,5 +1,5 @@
-Instructor's guide
-==================
+Vlasiator *Projects*
+====================
 
 Why we teach this lesson
 ------------------------
@@ -10,10 +10,14 @@ Here we go through some available Vlasiator projects and how those are employed 
 Intended learning outcomes
 --------------------------
 
-
+The user has an overview of main types of projects included in Vlasiator and can configure them.
 
 Timing
 ------
+Thursday morning
+
+Lessons
+=======
 
 
 
@@ -26,6 +30,7 @@ e.g. what to do the day before to set up common repositories.
 
 Other practical aspects
 -----------------------
+
 
 
 
