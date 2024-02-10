@@ -136,6 +136,15 @@ Vector plots
 
 Let's look at the vector plot type. Add one of ``vg_b_vol``, and click Draw. This probably looks very empty.. let's go to Vector plot attributes, Geometry tab, and unselect Scale by magnitude, Apply. 
 
+Going 3D 
+--------
+
+Let's open 
+
+Streamline plots
+^^^^^^^^^^^^^^^^
+
+
 
 
 Other practical aspects
