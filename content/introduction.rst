@@ -105,6 +105,8 @@ Spatial AMR, however, is *not* extended to the field solver (*heterologous* grid
 
 Recently, we have also included a proper ionospheric inner boundary condition, with an ionosphere solver along the lines of MHD solvers. Further developments are ongoing, incl. better ionization and conductivity profiles. Outer boundary conditions now include the possibility of time-varying solar wind parameters.
 
+Lately, we have included an electron module, eVlasiator (`Battarbee+2021 <https://doi.org/10.5194/angeo-39-85-2021>`_, `Alho+2022 <https://doi.org/10.1029/2022GL098329>`_), that takes an existing Vlasiator solution and runs electron VDFs against that background.
+
 Deploying Vlasiator to various environments has lately (with Plasma-PEPSC!) been made much easier, including compilation on ARM. We'll look at the build process later!
 
 Practical aspects of running Vlasiator
@@ -140,6 +142,93 @@ Six-dimensional simulations are expensive! Further, there are some constraints f
 
    Outflow boundaries are simple copy-condition boundaries. For example, the bow shock hitting the outer walls should be avoided, leading to approx. +- 60 RE simulation extents for the Earth.
 
+What can I do?
+--------------
+
+Let's see what *has* been done.
+
+* ULF wave field studies, see `Turc et al., 2022 <https://doi.org/10.1038/s41567-022-01837-z>`_, Transmission of foreshock waves through Earth’s bow shock. *Nat. Phys*.
+
+  5D/2D runs - can resolve ion kinetic scales! Generation of counterstreaming foreshock populations, resulting ULF wave fields, and their effects!
+
+  Similar runs are now being run at O(10M) CPUh on Mahti (CSC/Finland). Smaller 2D runs have been nowaways performed also on our local cluster of 10 nodes of 2x AMD Epyc 7302/32 cores per node.
+
+* Reconnection in a global context `Palmroth et al. 2023 <https://doi.org/10.1038/s41561-023-01206-2>`_, Magnetotail plasma eruptions driven by magnetic reconnection and kinetic instabilities. *Nat. Geosci*.
+
+  These are huge runs at several tens of MCPU-hours.
+
+* Directly utilize the VDF data of the gloval simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019<https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
+
+See the `Vlasiator website/publications <https://www.helsinki.fi/en/researchgroups/vlasiator/publications-and-presentations>`_ for more examples!
+
+We note that since these runs are expensive, we often mine multiple papers out of a single run.
+    
+
+
+
+Rules of the Road
+=================
+
+As noted at the `Vlasiator website <https://www.helsinki.fi/en/researchgroups/vlasiator/rules-of-the-road>`_.
+
+Vlasiator is a significant investment, and its development has taken many years (since 2008).
+
+Vlasiator is funded by the European Research Council and the Research Council of Finland.
+
+Vlasiator requires considerable amount of human resources. The code is being developed by external funding. Runs are carried out with supercomputer resources that the PI team applies for from competitive sources (such as PRACE and CSC Grand Challenge). Each run needs to be babysat.
+
+While Vlasiator is licensed under GPL-2, these rules of the road have a similar philosophy as are generally in use for instruments. Vlasiator is the only one of its kind in the world, having no similar benchmark. Hence we need to make sure that all Vlasiator results have been verified by by the PI-team.
+
+The user is strongly advised to utilise Vlasiator as described below.
+
+PI and the PI-team
+^^^^^^^^^^^^^^^^^^
+
+The PI-team makes all decisions pertaining to the Vlasiator master version. All data requests and other support questions should be addressed to the PI. The PI-team decides about the time and place in which the peer-reviewed data becomes public.
+
+Vlasiator enthusiasts
+^^^^^^^^^^^^^^^^^^^^^
+
+The PI-team welcomes collaborations! Do reach out to us and make a data request, which we handle on the best effort basis. Any publications or presentations need to follow the publication rules below, and the further distribution of the accessed data is not allowed without the consent of the PI-team. The movies made public through the Vlasiator web pages can be freely used in scientific work, presentations and publications, bearing in mind the publications rules of the road below.
+
+Publications and presentations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All publications or presentations showing Vlasiator data need to be inspected by someone from the Vlasiator PI-team. The PI and the relevant PI-team members shall be added as co-authors in the publication. The Vlasiator PI-team may publish the Vlasiator data shown in the publication through the Vlasiator web page.
+
+Acknowledgement for publications and presentations
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Vlasiator is developed by the European Research Council Starting grant 200141-QuESpace, and Consolidator grant GA682068-PRESTISSIMO received by the Vlasiator PI. Vlasiator has also received funding from the Academy of Finland. See www.helsinki.fi/vlasiator
+
+Presentations
++++++++++++++
+
+All presentations showing Vlasiator data shall include a Vlasiator slide given by the PI-team. The presentation shall also include the Vlasiator logo. The slide and acknowledgement are available from the PI time upon request.
+
+
+All publications showing Vlasiator data shall cite these two Vlasiator architectural papers:
+
+Enabling technology for global 3D+3V hybrid-Vlasov simulations of near Earth space, U. Ganse, T. Koskela, M. Battarbee, Y. Pfau-Kempf, K. Papadakis, M. Alho, M. Bussov, G. Cozzani, M. Dubart, H. George, E. Gordeev, M. Grandin, K. Horaites, J. Suni,
+V. Tarvus, F. Tesema Kebede, L. Turc, H Zhou, and M. Palmroth. Physics of Plasmas 30, 042902 (2023)
+`<https://doi.org/10.1063/5.0134387>`_
+
+Palmroth, M., Ganse, U., Pfau-Kempf, Y., Battarbee, M., Turc, L., Brito, T., Grandin, M., Hoilijoki, S., Sandroos, A., and von Alfthan, S., "Vlasov methods in space physics and astrophysics", Living Rev Comput Astrophys., 4:1, `<doi:10.1007/s41115-018-0003-2>`_, 2018.
+
+
+Additional informative technological publications:
+--------------------------------------------------
+
+Parametrization of coefficients for sub-grid modeling of pitch-angle diffusion in global magnetospheric hybrid-Vlasov simulations, M. Dubart, M. Battarbee, U. Ganse, A. Osmane, F. Spanier, J. Suni, G. Cozzani, K. Horaites, K. Papadakis, Y. Pfau-Kempf, V. Tarvus, and M. Palmroth, Physics of Plasmas 30, 123903 (2023)
+https://doi.org/10.1063/5.0176376
+
+Spatial filtering in a 6D hybrid-Vlasov scheme for alleviating AMR artifacts: a case study with Vlasiator, versions 5.0, 5.1, 5.2.1, K. Papadakis, Y. Pfau-Kempf, U. Ganse, M. Battarbee, M. Alho, M. Grandin, M. Dubart, L. Turc, H. Zhou, K. Horaites, I. Zaitsev, G. Cozzani, M. Bussov, E. Gordeev, F. Tesema, H. George, J. Suni, V. Tarvus, and M. Palmroth. Geosci. Model Dev., 15, 7903–7912 (2022)
+https://doi.org/10.5194/gmd-15-7903-2022
+
+Vlasov simulation of electrons in the context of hybrid global models: an eVlasiator approach, M. Battarbee, T. Brito, M. Alho, Y. Pfau-Kempf, M. Grandin, U. ganse, K. Papadakis, A. Johlander, L. Turc, M. Dubart, and M. Palmroth. Ann. Geophys. 39, 85–103 (2021)
+https://doi.org/10.5194/angeo-39-85-2021
+
+S. von Alfthan, D. Pokhotelov, Y. Kempf, S. Hoilijoki, I. Honkonen, A. Sandroos, M. Palmroth, Vlasiator: First global hybrid-Vlasov simulations of Earth's foreshock and magnetosheath, Journal of Atmospheric and Solar-Terrestrial Physics, Volume 120, December 2014, Pages 24-35, doi:10.1016/j.jastp.2014.08.012
 
 
 
