@@ -20,7 +20,7 @@ Tue afternoon.
 Preparing exercises
 -------------------
 
-Scaling exercise: few configurations to set up. Template file is decent, template jobscript needed.
+Scaling exercise: few configurations to set up. Template file is decent, template jobscripts exist.
 
 Running Vlasiator
 -----------------
@@ -66,9 +66,13 @@ Rules of thumb:
 ``lfs getstripe <path>`` and ``lfs setstripe --count <n> <path>`` are the relevant commands.
 
 Exercise:
+^^^^^^^^^
 
+#. Create a prototype run folder
 #. Create a folder ``restart/``
-#. Given an estimate of 1TB per restart file, set the striping of the ``restart/`` folder to a suitable value.
+#. Given an estimate of 1TB per restart file, set the striping of the ``restart/`` folder to a suitable values.
+   #. ``lfs setstripe --count <n> <path>``
+   #. ``lfs setstripe --stripe-size 16777216 <path>``
 #. Create a folder ``bulks/``
 #. Given an estimate of 20GB per bulk file, set the striping of ``bulks/`` to a suitable value.
 #. Check the stripe counts for both folders with ``lfs getstripe``.
@@ -78,7 +82,7 @@ Next: how to communicate these to Vlasiator!
 I/O config flags
 ----------------
 
-Example from current production:
+Example from current large production run (5.5 TB restart files currently):
 
 .. code-block:: cfg
 
@@ -103,7 +107,7 @@ Example from current production:
 
 Let's check these in a bit more detail.
 
-These set up restart file storing intervals and the path where to write:
+These set up restart file storing intervals and the path where to write, see next section:
 
 .. code-block:: cfg
 
@@ -127,12 +131,42 @@ These are hints for collective MPI I/O, in key-value pairs.
   restart_read_mpiio_hint_key = romio_cb_read
   restart_read_mpiio_hint_value = disable
 
+Notably, we are using here 16 MB buffers, matching the stripe unit.
 
 The following informs Vlasiator of the restart file striping on Lustre (see below):
 
 .. code-block:: cfg
 
   write_restart_stripe_factor = 20
+
+Babysitting
+===========
+
+Writing restarts
+^^^^^^^^^^^^^^^^
+
+Vlasiator runs usually take a while to complete, and everything might not go as planned - node or interconnect failures come to mind. It is also easy to encounter edge cases where the plasma VDFs "hit the walls" of their velocity space, so prototyping and iteration of run configurations will come up.
+
+We write restart files at given wall-clock time intervals, given in the config file, as already seen above:
+
+.. code-block:: cfg
+
+  restart_walltime_interval = 28400
+  restart_write_path = restart
+  number_of_restarts = 6 # = 8h / 28800s, change if modifying time limit or restart interval
+
+Here we write a restart file each (a bit less than) 8 hours, to have a good coverage over a 48h slot. The last restart will be written at 47 hours 20 minutes, after which the run will finalize. This allows for a bit of a margin wrt. file system hiccups when writing - in case the file system is clogged at the time of the last write and it takes 30min to go through, we prefer to sacrifice a bit of the slot time for safety.
+
+Restarting
+^^^^^^^^^^
+
+This is rather simple! To continue running from the last restart, one issues the ``--restart.filename`` program option at launch, either via the command line or by editing the config. Here, a snippet that finds and uses the last written restart file in the directory ``./restart/``:
+
+.. code-block:: bash
+
+  srun ./vlasiator --run_config Flowthrough_amr.cfg \
+          --restart.filename $( ls restart/restart*vlsv | tail -n 1 )
+
 
 
 Exercises

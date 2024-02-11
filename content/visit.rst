@@ -47,6 +47,9 @@ Launching to client-server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Launch your local VisIt
+
+   VisIt produces a plentiful amount of windows. The main one (``gui``) is the tall one with plotting tools, from database list on the top, a time slider, and a plotting pipeline window, currently empty.
+
 #. Click "Open"
 #. Choose *Host* ``lumi-pepsc``, as given by the host configuration
 
@@ -109,7 +112,7 @@ Let's compare that to the `sysboundarytype enum <https://github.com/fmihpc/vlasi
     };
   }
 
-We find here the ``COPYSPHERE`` boundary and ``DO_NOT_COMPUTE`` cells covering the planet, approximately, as the inner boundary. Then, we can focus on the actual simulation domain:
+We find here the ``COPYSPHERE`` (5) boundary and ``DO_NOT_COMPUTE`` (1) cells covering the planet, approximately, as the inner boundary. Then, we can focus on the actual simulation domain:
 
 #. Add an operator to the plot: Selection -> threshold
 #. Open the threshold window, remove the "default" variable
@@ -130,11 +133,29 @@ Let's do some quick statistics on the ULF foreshock. Select the background plot 
 
 Now, with this plot active, open Controls->Query. Navigate to Variable statistics and press query. Printout will now show statistics of the variable in the box.
 
-
 Vector plots
 ^^^^^^^^^^^^
 
 Let's look at the vector plot type. Add one of ``vg_b_vol``, and click Draw. This probably looks very empty.. let's go to Vector plot attributes, Geometry tab, and unselect Scale by magnitude, Apply. 
+
+Picking
+^^^^^^^
+
+Let's see how to find an interesting cell and its CellID with VisIt.
+
+.. figure:: img/visit_pick.png
+    :width: 200
+
+    Pick operators in the VisIt viewer. Z for zonal, N for nodal. S for spreadsheet.
+
+Let's first have a plot of ``proton/vg_rho`` or ``vg_b_vol`` as a reference value slice in the background. Add another pseudocolor plot of ``vg_f_saved``, and add a Threshold operator to diplay only cells with vg_f_saved = 1. Draw, and we should have cells with VDFs stored visible on top of the background slice. Select the Zonal pick operator, and click on a cell that looks like it could have interesting dynamics.
+
+.. figure:: img/visit-pick-window-default.png
+    :width: 400
+
+    This Pick window should open, showintg the picked coordinates and the plotted variable.
+
+That is not yet very useful. Add ``CellID`` to 
 
 Going 3D 
 --------

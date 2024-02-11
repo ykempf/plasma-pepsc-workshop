@@ -66,7 +66,7 @@ which is coupled self-consistently to Maxwell's equations giving the evolution o
     :width: 200
     :alt: Faraday's law
 
-,
+and
 
 .. image:: img/ampere.png
     :width: 250

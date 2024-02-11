@@ -260,6 +260,35 @@ the cut in the dominant cartesian direction and returns one cellID per row/colum
                 
    cut = pt.calculations.cut_through_step(f, pos1, pos2)
 
+Writing Data with VlsvWriter
+----------------------------
+
+From time to time, one may wish to perform more involved operations on the grid, and re-use them later. ``VlsvWriter`` can be used to save derived data on SpatialGrid. It operates by copying the grid metadata and data layout from an existing file at initialization, and can thereafter be used to store the results of more involved processing.
+
+.. code-block:: python
+
+   f = pt.vlsvfile.VlsvReader(input_file)
+   # Initialize, copy only the SpatialGrid mesh
+   writer = pt.vlsvfile.VlsvWriter(f, output_file, copy_meshes=['SpatialGrid']) 
+   # Copy some list of variables as a baseline. varlist accepts datareducer variables as well.
+   writer.copy_variables(f,varlist=["CellID","proton/vg_rho","proton/vg_v","vg_b_vol","vg_e_vol","vg_beta","vg_beta_star"])
+
+   # Do some heavy lifting that you don't want to repeat each time:
+   orthogonality = lengthy_calculation_for_orthogonality(f)
+   # Take care that this variable is compatible with the SpatialGrid variables,
+   # and that is has the same memory layout as CellIDs!
+
+   # Wrap the result with metadata
+   varinfo = pt.calculations.VariableInfo(orthogonality, 
+                                          name="vg_LMN_orthogonality",
+                                          units="",
+                                          latex=r"$|\hat{L}_\mathrm{MGA}\times\hat{L}_\mathrm{MDD}|$",latexunits=r"")
+
+   # Write the result to SpatialGrid with the output_file writer
+   writer.write_variable_info(varinfo, 'SpatialGrid', 1,)
+
+
+
 Interesting questions you might get
 -----------------------------------
 
