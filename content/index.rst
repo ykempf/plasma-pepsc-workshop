@@ -74,9 +74,9 @@ thousands of cores to perform massively parallel computations.
    vlasiator_outputs
    analysator
    visit
+..
    vlasiator_projects
    example_run
-   test
 
 .. toctree::
    :maxdepth: 1
