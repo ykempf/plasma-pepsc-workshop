@@ -132,9 +132,11 @@ Optional libraries
 And also a number of optional but useful libraries
 
 * `Jemalloc <www.canonware.com/jemalloc/download.html>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#jemalloc>`__)
+
   * Memory allocator with reduced memory fragmentation (recommended for performance)
 
 * `Papi <http://icl.cs.utk.edu/papi/>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#papi>`__)
+
   * Memory measurement, module often available on-site
  
 Make a new makefile
@@ -142,7 +144,7 @@ Make a new makefile
 
 The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is ``Makefile.machine_name``, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in ``${HOME}/lib`` and ``${HOME}/include``.
 
-We'll do a new Makefile based on *given template*.
+We'll do a new Makefile based on `a template <shared_files/Makefile.lumi-template>`_.
 
 Firstly, note that mark, as comments, the module toolchain that we use with this Makefile:
 
