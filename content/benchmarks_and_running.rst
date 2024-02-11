@@ -40,14 +40,225 @@ The recipe for a Vlasiator run. We use a benchmarking run for this exercise.
 
 #. A Slurm job script, for defining and requesting the HPC environment. Grab ``job-debug.sh`` from the above folder.
 
+.. code-block:: bash
+
+  #!/bin/bash -l
+  #SBATCH --job-name=PEPSC-demo-debug
+  #SBATCH --partition=debug
+  #SBATCH --nodes=2
+  #SBATCH --mem=0
+  #SBATCH --ntasks-per-node=16
+  #SBATCH --cpus-per-task=8
+  #SBATCH --time=0:30:00
+  #SBATCH --account=project_465000693
+  ##SBATCH --hint=multithread
+  #SBATCH --exclusive # enforced on >=standard partitions, not on small
+  ##SBATCH --dependency=singleton # useful for restarting
+
+  date
+
+  export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+  #export OMP_PLACES=cores
+  #export OMP_PROC_BIND=spread
+  export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+
+  export TASKS_PER_NODE=$(( 128 / $SLURM_CPUS_PER_TASK ))
+  echo "We use "${TASKS_PER_NODE}" tasks per node"
+
+  # https://docs.olcf.ornl.gov/systems/crusher_quick_start_guide.html
+  export MPICH_SMP_SINGLE_COPY_MODE=NONE
+
+  ulimit -c unlimited
+  export PHIPROF_PRINTS=detailed
+  umask 007
+
+  module --force purge
+  module load LUMI/22.08
+  module load cpeGNU
+  module load craype-x86-milan
+  module load papi
+  module load Boost
+  module load Eigen
+
+  module list
+
+  cd $SLURM_SUBMIT_DIR
+
+  squeue --job $SLURM_JOB_ID -l
+
+  sleep 5
+
+  srun ./vlasiator --version
+
+  sleep 5
+
+  srun ./vlasiator --run_config Flowthrough_amr.cfg \
+          #--restart.filename $( ls restart/restart*vlsv | tail -n 1 )
+
+
+
 The Vlasiator Configuration file 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The configuration file uses the Boost program_options library. You can extract all available options by running ``./vlasiator --help``. There's plenty, so you may want to pipe that into a text file... but we have done that for you, see Vlasiator cfg reference!
+The configuration file uses the Boost program_options library. You can extract all available options by running ``./vlasiator --help``. There's plenty, so you may want to pipe that into a text file... but we have done that for you, see the Vlasiator cfg reference!
 
 Let's inspect the benchmark case config, here:
 
-.. include:: shared_files/Flowthrough_amr.cfg
+.. code-block:: cfg
+  
+  # The root options describe toplevel solver properties and populations
+  ParticlePopulations = proton
+  
+  project = Flowthrough
+  propagate_field = 1
+  propagate_vlasov_acceleration = 1
+  propagate_vlasov_translation = 1
+  dynamic_timestep = 1
+  
+  # <population>_properties, multiple populations are supported!
+  [proton_properties]
+  mass = 1
+  mass_units = PROTON
+  charge = 1
+  
+  # Adaptive Mesh Refinement - new development!
+  [AMR]
+  max_spatial_level = 2             # Maximum number of refinements
+  max_allowed_spatial_level = 2     # *Currently* allowed number of refinements
+                                    # - can be increased after restarts, gradually!
+  adapt_refinement = 1
+
+  # tuning parameters
+  use_alpha1 = 1
+  alpha1_coarsen_threshold = 0.1
+  alpha1_refine_threshold = 0.4
+  use_alpha2 = 1
+  alpha2_refine_threshold = 1
+
+  # Cadence and safeties
+  refine_on_restart = 0
+  refine_cadence = 4            # refinement cadence is in units of load balances
+  refine_after = 50.0           # First adapt after 50s from start of run
+  refine_radius = 7320e6        # We do not want to refine outer boundary cells
+  
+  # Spatial grid parameters - coarsest level grid.
+  [gridbuilder]
+  x_length = 48
+  y_length = 12
+  z_length = 12
+  x_min = -16e7
+  x_max = 16e7
+  y_min = -4e7
+  y_max = 4e7
+  z_min = -4e7
+  z_max = 4e7
+  t_max = 400.0
+  dt = 2.0
+  
+  # <population>_vspace - velocity grid definitions per population
+  [proton_vspace]
+  vx_min = -1.92e6
+  vx_max = +1.92e6
+  vy_min = -1.92e6
+  vy_max = +1.92e6
+  vz_min = -1.92e6
+  vz_max = +1.92e6
+  # vi_length are in units of block width (4, so far)
+  # - these define 64x64x64 velocity-space cells over +-1.92e6 m/s.
+  # -> dv = 61.250 km/s for this case
+  vx_length = 16
+  vy_length = 16
+  vz_length = 16
+  
+  [io]
+  diagnostic_write_interval = 1
+  write_initial_state = 0
+  
+  # Reduced data writeouts
+  system_write_t_interval = 10.0
+  system_write_file_name = bulk
+
+  # These set up strides for saving VDF data in the reduced data readouts
+  system_write_distribution_stride = 0
+  system_write_distribution_xline_stride = 0
+  system_write_distribution_yline_stride = 0
+  system_write_distribution_zline_stride = 0
+  
+  # Reduced data outputs
+  [variables]
+  output = populations_vg_rho
+  output = populations_vg_v
+  output = populations_vg_ptensor
+  output = fg_e
+  output = fg_b
+  output = vg_boundarytype
+  output = vg_boundarylayer
+  output = vg_rank
+  output = vg_b_vol_derivatives
+  output = vg_amr_alpha
+  output = vg_amr_jperb
+  output = vg_loadbalance_weight
+  output = populations_vg_blocks
+  diagnostic = populations_vg_blocks
+
+  # Declare boundary conditions
+  [boundaries]
+  periodic_x = no
+  periodic_y = yes
+  periodic_z = yes
+  boundary = Outflow
+  boundary = Maxwellian
+  
+  [outflow]
+  precedence = 3
+  
+  # NB population-specific boundary conditions!
+  [proton_outflow]
+  face = x+
+  #face = y-
+  #face = y+
+  #face = z-
+  #face = z+
+  
+  [maxwellian]
+  precedence = 4
+  face = x-
+  
+  [proton_maxwellian]
+  dynamic = 0
+  # select the sw1.dat file for inflow Maxwellian parameters
+  file_x- = sw1.dat
+  
+  [proton_sparse]
+  minValue = 1.0e-15
+  
+
+  # Project settings
+  [Flowthrough]
+  Bx = 1.0e-9
+  By = 1.0e-9
+  Bz = 1.0e-9
+  
+  # Population-specific project settings - initial condition
+  [proton_Flowthrough]
+  T = 1.0e5
+  rho  = 1.0e6
+  VX0 = 1e5
+  VY0 = 0
+  VZ0 = 0
+  
+  [loadBalance]
+  # algorithm = RIB
+  algorithm = RCB
+  optionKey = RCB_RECTILINEAR_BLOCKS # Recommended to use with RCB
+  optionValue = 1
+  rebalanceInterval = 5 # in timesteps
+  
+  # Safety bailouts (stores restart for potential recovery)
+  [bailout]
+  velocity_space_wall_block_margin = 0
+  
+  
 
 
 Lustre striping
@@ -142,10 +353,10 @@ The following informs Vlasiator of the restart file striping on Lustre (see belo
 Babysitting
 ===========
 
+Vlasiator runs usually take a while to complete, and everything might not go as planned - node or interconnect failures come to mind. It is also easy to encounter edge cases where the plasma VDFs "hit the walls" of their velocity space, so prototyping and iteration of run configurations will come up. It is also good to keep track of the performance, memory consumption and accrued costs over the simulation run.
+
 Writing restarts
 ^^^^^^^^^^^^^^^^
-
-Vlasiator runs usually take a while to complete, and everything might not go as planned - node or interconnect failures come to mind. It is also easy to encounter edge cases where the plasma VDFs "hit the walls" of their velocity space, so prototyping and iteration of run configurations will come up.
 
 We write restart files at given wall-clock time intervals, given in the config file, as already seen above:
 
@@ -167,7 +378,34 @@ This is rather simple! To continue running from the last restart, one issues the
   srun ./vlasiator --run_config Flowthrough_amr.cfg \
           --restart.filename $( ls restart/restart*vlsv | tail -n 1 )
 
+When restarting, you can change config file and job script parameters, to e.g. introduce new/forgotten output variables, updated binary, or additional nodes - as the run progresses, the kinetic VDFs will usually take up much more resources than the initial ones.
 
+Restarts will append to existing logfile.
+
+External commands
+^^^^^^^^^^^^^^^^^
+
+One can signal Vlasiator during run-time via files in the run directory. For example, creating a STOP file by ``touch STOP`` will signal the run to dump a restart and quit gracefully. The filename is appended with a timestamp. Other commands are available:
+
+* ``SAVE``
+
+   Dump a new restart file.
+
+* ``STOP``
+
+   Stop the run with a restart write.
+
+* ``KILL``
+
+   Stop the run *without* a restart write.
+
+* ``DOLB``
+
+   Force a load balance refresh - if walltime per timestep has grown unexpectedly, this might help.
+
+* ``DOMR``
+
+   Force a mesh refinement step.
 
 Exercises
 =========
