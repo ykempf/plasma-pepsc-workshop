@@ -42,7 +42,7 @@ Find more at `the group website <https://www.helsinki.fi/en/researchgroups/vlasi
 
 
 Vlasiator
-=========
+---------
 
 `**Vlasiator** <https://www.helsinki.fi/en/researchgroups/vlasiator>`_ (`GitHub <https://github.com/fmihpc/vlasiator>`_) is the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, while electrons are massless charge-neutralizing fluid, enabling a self-consistent global plasma simulation that can describe multi-temperature plasmas to resolve non-MHD processes that currently cannot be self-consistently described by the existing global space weather simulations. The novelty is that by modelling ions as velocity distribution functions the outcome will be numerically noiseless. Due to the multi-dimensional approach at ion scales, Vlasiator's computational challenges are immense.
 
@@ -149,7 +149,7 @@ Let's see what *has* been done.
 
 * ULF wave field studies, see `Turc et al., 2022 <https://doi.org/10.1038/s41567-022-01837-z>`_, Transmission of foreshock waves through Earth’s bow shock. *Nat. Phys*.
 
-  5D/2D runs - can resolve ion kinetic scales! Generation of counterstreaming foreshock populations, resulting ULF wave fields, and their effects!
+  5D/2D runs - can resolve ion kinetic scales. Topics include generation of counterstreaming foreshock populations, resulting ULF wave fields, and their effects!
 
   Similar runs are now being run at O(10M) CPUh on Mahti (CSC/Finland). Smaller 2D runs have been nowaways performed also on our local cluster of 10 nodes of 2x AMD Epyc 7302/32 cores per node.
 
@@ -159,7 +159,7 @@ Let's see what *has* been done.
 
   Ion kinetic make the reconnection phenomena very dynamic. See `Alho et al., 2023 (revised) <https://doi.org/10.5194/egusphere-2023-2300>`_
 
-* Directly utilize the VDF data of the gloval simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019<https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
+* Directly utilize the VDF data of the gloval simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019 <https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
 
 * Local ion-kinetic simulations, e.g. Kelvin-Helmholz instabilities (Tarvus et al, in prep.), EMIC wave studies (`Dubart et al. 2023 <https://doi.org/10.1063/5.0176376>`_, with *many* small simulations), shock tube simulations (YPK)... More discussion on Vlasiator projects later.
 
@@ -168,14 +168,12 @@ See the `Vlasiator website/publications <https://www.helsinki.fi/en/researchgrou
 We note that since these runs are expensive, we often mine multiple papers out of a single run.
 
 
-
-
 Rules of the Road
 =================
 
 As noted at the `Vlasiator website <https://www.helsinki.fi/en/researchgroups/vlasiator/rules-of-the-road>`_.
 
-Vlasiator is a significant investment, and its development has taken many years (since 2008).
+*Vlasiator is a significant investment, and its development has taken many years (since 2008).*
 
 Vlasiator is funded by the European Research Council and the Research Council of Finland.
 
@@ -186,30 +184,32 @@ While Vlasiator is licensed under GPL-2, these rules of the road have a similar 
 The user is strongly advised to utilise Vlasiator as described below.
 
 PI and the PI-team
-^^^^^^^^^^^^^^^^^^
+------------------
 
 The PI-team makes all decisions pertaining to the Vlasiator master version. All data requests and other support questions should be addressed to the PI. The PI-team decides about the time and place in which the peer-reviewed data becomes public.
 
 Vlasiator enthusiasts
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 The PI-team welcomes collaborations! Do reach out to us and make a data request, which we handle on the best effort basis. Any publications or presentations need to follow the publication rules below, and the further distribution of the accessed data is not allowed without the consent of the PI-team. The movies made public through the Vlasiator web pages can be freely used in scientific work, presentations and publications, bearing in mind the publications rules of the road below.
 
 Publications and presentations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 All publications or presentations showing Vlasiator data need to be inspected by someone from the Vlasiator PI-team. The PI and the relevant PI-team members shall be added as co-authors in the publication. The Vlasiator PI-team may publish the Vlasiator data shown in the publication through the Vlasiator web page.
 
 Acknowledgement for publications and presentations
-++++++++++++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Vlasiator is developed by the European Research Council Starting grant 200141-QuESpace, and Consolidator grant GA682068-PRESTISSIMO received by the Vlasiator PI. Vlasiator has also received funding from the Academy of Finland. See www.helsinki.fi/vlasiator
 
 Presentations
-+++++++++++++
+^^^^^^^^^^^^^
 
 All presentations showing Vlasiator data shall include a Vlasiator slide given by the PI-team. The presentation shall also include the Vlasiator logo. The slide and acknowledgement are available from the PI time upon request.
 
+Publications
+^^^^^^^^^^^^
 
 All publications showing Vlasiator data shall cite these two Vlasiator architectural papers:
 
@@ -221,7 +221,7 @@ Palmroth, M., Ganse, U., Pfau-Kempf, Y., Battarbee, M., Turc, L., Brito, T., Gra
 
 
 Additional informative technological publications:
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Parametrization of coefficients for sub-grid modeling of pitch-angle diffusion in global magnetospheric hybrid-Vlasov simulations, M. Dubart, M. Battarbee, U. Ganse, A. Osmane, F. Spanier, J. Suni, G. Cozzani, K. Horaites, K. Papadakis, Y. Pfau-Kempf, V. Tarvus, and M. Palmroth, Physics of Plasmas 30, 123903 (2023)
 https://doi.org/10.1063/5.0176376
