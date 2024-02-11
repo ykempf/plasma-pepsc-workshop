@@ -232,7 +232,7 @@ https://doi.org/10.5194/gmd-15-7903-2022
 Vlasov simulation of electrons in the context of hybrid global models: an eVlasiator approach, M. Battarbee, T. Brito, M. Alho, Y. Pfau-Kempf, M. Grandin, U. ganse, K. Papadakis, A. Johlander, L. Turc, M. Dubart, and M. Palmroth. Ann. Geophys. 39, 85–103 (2021)
 https://doi.org/10.5194/angeo-39-85-2021
 
-S. von Alfthan, D. Pokhotelov, Y. Kempf, S. Hoilijoki, I. Honkonen, A. Sandroos, M. Palmroth, Vlasiator: First global hybrid-Vlasov simulations of Earth's foreshock and magnetosheath, Journal of Atmospheric and Solar-Terrestrial Physics, Volume 120, December 2014, Pages 24-35, doi:10.1016/j.jastp.2014.08.012
+Vlasiator: First global hybrid-Vlasov simulations of Earth's foreshock and magnetosheath, S. von Alfthan, D. Pokhotelov, Y. Kempf, S. Hoilijoki, I. Honkonen, A. Sandroos, M. Palmroth. Journal of Atmospheric and Solar-Terrestrial Physics, Volume 120, December 2014, Pages 24-35, https://doi.org/10.1016/j.jastp.2014.08.012
 
 
 
