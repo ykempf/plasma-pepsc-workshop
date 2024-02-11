@@ -87,12 +87,6 @@ thousands of cores to perform massively parallel computations.
    analysator_supported
    new_project
 
-.. toctree::
-   :caption: Misc
-
-   guide
-
-
 
 .. _learner-personas:
 
