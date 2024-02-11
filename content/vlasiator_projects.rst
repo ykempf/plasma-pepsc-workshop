@@ -1,5 +1,5 @@
-Vlasiator *Projects*
-====================
+Vlasiator Project Structure
+===========================
 
 Why we teach this lesson
 ------------------------
