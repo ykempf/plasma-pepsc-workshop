@@ -102,6 +102,7 @@ Require building
 * `VLSV <https://github.com/fmihpc/vlsv>`_ (`install instructions <https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#vlsv>`__)
 
   * Custom file format library, with parallel MPI I/O support.
+  * NB: Contains the buildable VLSV plugin for VisIt.
 * MPI
 * C++17 compiler with OpenMP >=3 support
 
@@ -179,9 +180,6 @@ After one has created the makefile, one should set an environment variable with 
 
 To make the environment variable one can put it into the initialization files for your shell, e.g. .profile. or .bashrc.
 
-Compile!
-^^^^^^^^
-
 After ensuring all libraries and compile options are made available for Vlasiator, and the correct machine-specific makefile has been set, one can simply
 
 .. code-block:: bash
@@ -215,7 +213,7 @@ Interesting questions you might get
 
 
 
-Typical pitfallsv
+Typical pitfalls
 ----------------
 
 Some wise words of the pitfalls of submodules and git commands:

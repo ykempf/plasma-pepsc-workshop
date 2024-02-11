@@ -163,11 +163,66 @@ development.
    :widths: 20, 20, 5, 40, 20
    :header-rows: 1
 
+VLSV data tools
+-------------------
+
+A short note on the included tools, compiled by 
+
+..code-block::bash
+
+   make vlsvextract vlsvdiff
+   
+Some older tools included in ``make tools`` are not currently supported.
+
+vlsvextract
+^^^^^^^^^^^
+
+``vlsvextract`` can be used to extract VDF data from vlsv files and store it as a separate VLSV file for visualization.
+
+.. code-block::
+
+   USAGE: ./vlsvextract_DP <file name mask> <options>
+
+   To get a list of options use --help
+
+   Options:
+  --help                display help
+  --debug               write debugging info to stderr
+  --cellid arg          Set cell id
+  --cellidlist arg      Set list of cell ids
+  --rotate              Rotate velocities so that they face z-axis
+  --plasmaFrame         Shift the distribution so that the bulk velocity is 0
+  --coordinates arg     Set spatial coordinates x y z
+  --unit arg            Sets the units. Options: re, km, m (OPTIONAL)
+  --point1 arg          Set the starting point x y z of a line
+  --point2 arg          Set the ending point x y z of a line
+  --pointamount arg     Number of points along a line (OPTIONAL)
+  --outputdirectory arg The directory where the file is saved (default current 
+                        folder) (OPTIONAL)
+
+
+For example, let's pick a VDF from the foreshock of the Mercury 5D example run; see VisIt lecture one method on how we can find the cellID, here we have a cellID pre-picked.
+
+.. code-block::bash
+
+  ./vlsvextract_DP /scratch/project_465000693/example_runs/Mercury5D/bulk/bulk.0000122.vlsv --cellid 332776
+
+This can be used to extract VDFs over lines and multiple files as well.
+
+
+vlsvdiff
+^^^^^^^^
+
+``vlsvdiff`` we use for e.g. continuous integration testing. There is an included testpackage, from which one can generate reference data and compare the effects of one's code edits locally.
+
+Other use is to extract differences between different files - for example, time differences. However, 
+
+
 
 Other output files
 -----------------------
 
-If the PHIPROF profiler suite is in use, you will also see e.g. ```phiprof_0.txt`` in the run directory,
+If the PHIPROF profiler suite is in use, you will also see e.g. ``phiprof_0.txt`` in the run directory,
 providing rough ASCII tables of run-time timers, useful for rudimentary profiling of the Vlasiator
 code, solvers, and I/O.
 

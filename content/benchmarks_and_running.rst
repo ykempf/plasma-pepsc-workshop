@@ -10,7 +10,7 @@ Vlasiator requires a lot of resources to run, but thankfully it scales pretty we
 Intended learning outcomes
 --------------------------
 
-The user understands the options to affect scaling properties and can benchmark scaling.
+The user understands how to run Vlasiator, how to scale it and the options to affect scaling properties and can benchmark scaling.
 
 Timing
 ------
@@ -22,11 +22,32 @@ Preparing exercises
 
 Scaling exercise: few configurations to set up. Template file is decent, template jobscript needed.
 
-The Lesson
-==========
+Running Vlasiator
+-----------------
 
+The recipe for a Vlasiator run. We use a benchmarking run for this exercise.
 
+#. Folder to run the simulation. Use scratch for Lustre, our training project scratch is in ``/scratch/project_465000693/`` - make yourself a folder there with your username for your use.
+#. ``vlasiator`` executable. 
 
+  * These store versioning information, including git hashes and possible diffs. Probably a good idea to copy the executable to your run folder!
+
+#. A Vlasiator configuration file. We will inspect our scaling test config soon, copy it from ``/scratch/project_465000693/example_runs/scaling/baseline/Flowthrough_amr.cfg``
+#. Auxiliary input files for Vlasiator.
+
+  * In this case, grab also the ``sw1.dat`` file from the above folder. This one defines inflow plasma parameters.
+  * ``NRLMSIS.dat`` is another possibility, for an ionospheric profile for magnetospheric runs with an ionosphere.
+
+#. A Slurm job script, for defining and requesting the HPC environment. Grab ``job-debug.sh`` from the above folder.
+
+The Vlasiator Configuration file 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The configuration file uses the Boost program_options library. You can extract all available options by running ``./vlasiator --help``. There's plenty, so you may want to pipe that into a text file... but we have done that for you, see Vlasiator cfg reference!
+
+Let's inspect the benchmark case config, here:
+
+.. include:: shared_files/Flowthrough_amr.cfg
 
 
 Lustre striping
@@ -114,14 +135,29 @@ The following informs Vlasiator of the restart file striping on Lustre (see belo
   write_restart_stripe_factor = 20
 
 
-Exercise
-========
+Exercises
+=========
+
+Scaling test
+------------
+
+*Getting to know the basic run setup.*
 
 We are going to be running a Flowthrough test to look a bit at weak scaling.
 
 The test is a tube, with initial solar wind plasma flowing along the X direction. The inflow boundary injects faster, more dense solar wind into the domain, and the Y and Z directions are periodic. Dynamic AMR is applied to the simulation, tracking the interface between fast and slow flows.
 
 To calculate weak scaling, we will expand the Y and Z dimensions of the domain with some factors, with a matching increase in cores. The shared sheet has some predetermined values, but feel free to experiment further (and add lines with notes).
+
+Prototype: Magnetosphere3D
+--------------------------
+
+Prototype: Mercury5D
+--------------------
+
+
+
+``/pfs/lustrep2/scratch/project_465000693/example_runs/Mercury5D``
 
 Other practical aspects
 -----------------------
