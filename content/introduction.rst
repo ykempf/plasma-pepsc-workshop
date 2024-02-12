@@ -103,6 +103,18 @@ Spatial AMR has lately enabled truly 6D simulations of the Earth's magnetosphere
 
 Spatial AMR, however, is *not* extended to the field solver (*heterologous* grids): Field solver has simple load balancing, while the Vlasov solver does not. The solution is to have *two* grids, with the field solver grid at the highest resolution of the Vlasov grid, throughout the entire domain. There are some details in cross-coupling e.g. plasma moments across these grids. With four levels of refinement, the field solver is contributing about 10% of runtime as it is - Vlasov solver is still the bottleneck.
 
+.. figure:: img/SpatialGrid_LB_RIB.png
+    :width: 500
+    :alt: Example of load balancing of SpatialGrid, MPI ranks
+
+    Example of load balancing of SpatialGrid, showing the decomposition to MPI ranks 
+
+.. figure:: img/SpatialGrid_LB_blocks.png
+    :width: 500
+    :alt: Example of load balancing of SpatialGrid
+
+    Example of load balancing of SpatialGrid, showing the velocity-space block-counts.
+
 Recently, we have also included a proper ionospheric inner boundary condition, with an ionosphere solver along the lines of MHD solvers. Further developments are ongoing, incl. better ionization and conductivity profiles. Outer boundary conditions now include the possibility of time-varying solar wind parameters.
 
 Lately, we have included an electron module, eVlasiator (`Battarbee+2021 <https://doi.org/10.5194/angeo-39-85-2021>`_, `Alho+2022 <https://doi.org/10.1029/2022GL098329>`_), that takes an existing Vlasiator solution and runs electron VDFs against that background.
