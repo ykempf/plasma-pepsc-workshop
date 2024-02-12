@@ -30,11 +30,11 @@ interfaces, optimising magnetically confined fusion plasmas, designing next-gene
 space plasma dynamics within the Earth’s magnetosphere.
 
 
-[**Vlasiator**](https://www.helsinki.fi/en/researchgroups/vlasiator) ([GitHub](https://github.com/fmihpc/vlasiator)) is 
+`**Vlasiator** <https://www.helsinki.fi/en/researchgroups/vlasiator>`_ (`GitHub <https://github.com/fmihpc/vlasiator>`_) is 
 the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global 
 magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating 
 the Earth's magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, 
-while electrons are magnetohydrodynamic fluid, enabling a self-consistent global plasma simulation 
+while electrons are a massless charge-neutralizing fluid, enabling a self-consistent global plasma simulation 
 that can describe multi-temperature plasmas to resolve non-MHD processes that currently 
 cannot be self-consistently described by the existing global space weather simulations. 
 The novelty is that by modelling ions as velocity distribution functions the outcome will be 
@@ -58,19 +58,34 @@ thousands of cores to perform massively parallel computations.
 
    20 min ; :doc:`filename`
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Prerequisites
+
+   introduction
+   prepare_workspace
 
 .. toctree::
    :maxdepth: 1
-   :caption: The lesson
+   :caption: The lessons
 
+   installing-vlasiator
+   benchmarks_and_running
+   vlasiator_outputs
+   analysator
+   visit
+   vlasiator_projects
+   example_run
+   test
 
 .. toctree::
    :maxdepth: 1
    :caption: Reference
 
    quick-reference
-   guide
-
+   vlasiator-cfg-reference
+   analysator_supported
+   new_project
 
 
 .. _learner-personas:
