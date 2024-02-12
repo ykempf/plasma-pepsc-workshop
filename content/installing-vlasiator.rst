@@ -62,6 +62,7 @@ Vlasiator needs a number of libraries, a part of which need to be built. Some he
 When building libraries and the code, we want to stick to a particular toolchain of compilers and MPI libraries, etc. On LUMI, we use the following modules:
 
 .. code-block:: bash
+  
   module load LUMI/22.08
   module load cpeGNU
   module load papi

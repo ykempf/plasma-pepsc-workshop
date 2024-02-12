@@ -56,7 +56,7 @@ Vlasiator
 Vlasiator simulates the dynamics of plasma using a hybrid-Vlasov model, where protons are described by their distribution function f(r,v,t) in ordinary (r) and velocity (v) space, and electrons are a charge-neutralising fluid. This approach neglects electron kinetic effects but retains ion kinetics. The time-evolution of f(r,v,t) is given by Vlasov's equation,
 
 .. image:: img/vlasov-eq.webp
-    :width: 400
+    :width: 600
     :alt: Vlasov's equation
 
 which is coupled self-consistently to Maxwell's equations giving the evolution of the electric and magnetic fields E and B. Maxwell's equations neglect the displacement current.
@@ -162,7 +162,7 @@ Six-dimensional simulations are expensive! Further, there are some constraints f
 
 #. Velocity-space sparsity threshold
 
-   Around 10^-15 m^6 s^-3 has been found a decent compromise for the sparsity threshold, retaining the parts of VDFs that are relevant for the dynamics of the system. If you wish to model high-energy tails, the threshold
+   Around 10^-15 m^6 s^-3 has been found a decent compromise for the sparsity threshold, retaining the parts of VDFs that are relevant for the dynamics of the system. If you wish to model high-energy tails, the threshold should be pushed down... at the cost of significantly increased memory footprint.
 
 #. Velocity-space extents
 
@@ -189,11 +189,13 @@ Let's see what *has* been done.
 
   Similar runs are now being run at O(10M) CPUh on Mahti (CSC/Finland). Smaller 2D runs have been nowaways performed also on our local cluster of 10 nodes of 2x AMD Epyc 7302/32 cores per node.
 
+* Relatedly: Jets and SLAMS, see the works by Joonas Suni, e.g., `Suni et al., <https://doi.org/10.1029/2021GL095655>`_
+
 * Reconnection in a global context `Palmroth et al. 2023 <https://doi.org/10.1038/s41561-023-01206-2>`_, Magnetotail plasma eruptions driven by magnetic reconnection and kinetic instabilities. *Nat. Geosci*.
 
   These are huge runs at several tens of MCPU-hours.
 
-  Ion kinetic make the reconnection phenomena very dynamic. See `Alho et al., 2023 (revised) <https://doi.org/10.5194/egusphere-2023-2300>`_
+  Ion kinetics make the reconnection phenomena very dynamic, presenting need for more tools for finding them. See `Alho et al., 2023 (revised) <https://doi.org/10.5194/egusphere-2023-2300>`_
 
 * Directly utilize the VDF data of the gloval simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019 <https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
 
