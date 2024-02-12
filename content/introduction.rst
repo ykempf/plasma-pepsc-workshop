@@ -53,7 +53,6 @@ Vlasiator
     A Vlasiator view of the Earth's magnetosphere (5D, Palmroth+2018)
 
 
-
 Vlasiator simulates the dynamics of plasma using a hybrid-Vlasov model, where protons are described by their distribution function f(r,v,t) in ordinary (r) and velocity (v) space, and electrons are a charge-neutralising fluid. This approach neglects electron kinetic effects but retains ion kinetics. The time-evolution of f(r,v,t) is given by Vlasov's equation,
 
 .. image:: img/vlasov-eq.webp
@@ -95,22 +94,45 @@ The data structures in Vlasiator have been optimized to propagate the 6D solutio
     :width: 500
     :alt: Example of sparse velocity grid.
 
-    Example of sparse velocity grid, YPK 2016.
+    Example of sparse velocity grid, Yann Pfau-Kempf, 2016.
+
+.. figure:: img/aBlockyVDF.png
+    :width: 500
+    :alt: Example of sparse velocity grid.
+
+    Example of sparse velocity grid. The 4x4x4 structure stems from the block data structure.
 
 The numerical algorithm for the propagation of the Vlasov equation is based on operator splitting: spatial translation and velocity-space acceleration are leapfrogged. Spatial translation remaps the VDF as 1D shears. The acceleration re-mapping of the VDF is handled by the semi-Lagrangian SLICE-3D method by Zerroukat and Allen (2012), by decomposing v-space rotation and translation to a series of shear operations. These mappings are conservative by themselves.
+
+.. figure:: img/Strang-Splitting.png
+    :width: 400
+
+    Schematic of Strang-splitting the Vlasov propagation, left (yellow) the translation part, right (green) the acceleration part.
 
 Spatial AMR has lately enabled truly 6D simulations of the Earth's magnetosphere (see Ganse+2023). The initial 6D production runs have used statically-refined grid, with a dynamic AMR currently being tested in production.
 
 Spatial AMR, however, is *not* extended to the field solver (*heterologous* grids): Field solver has simple load balancing, while the Vlasov solver does not. The solution is to have *two* grids, with the field solver grid at the highest resolution of the Vlasov grid, throughout the entire domain. There are some details in cross-coupling e.g. plasma moments across these grids. With four levels of refinement, the field solver is contributing about 10% of runtime as it is - Vlasov solver is still the bottleneck.
 
+.. figure:: img/FsGrid_LB.png
+    :width: 400
+
+    Example of fieldsolver load balancing
+
+.. figure:: img/SpatialGrid_LB_RCB.png
+    :width: 400
+
+    Example of SpatialGrid load balancing, legacy RCB
+
+Improved load balancing algorithms matter. In the above Recursive Coordinate Bisection (RCB) example, one can see small-scale structure in the domain boundaries, which is not optimal for MPI communication buffers. Forcing rectilinear domains for RCB helps, but so do using other methods, like Recursive Inertial Bisection (RIB, below), that can balance MPI communications over the three principal directions.
+
 .. figure:: img/SpatialGrid_LB_RIB.png
-    :width: 500
+    :width: 400
     :alt: Example of load balancing of SpatialGrid, MPI ranks
 
-    Example of load balancing of SpatialGrid, showing the decomposition to MPI ranks 
+    Example of load balancing of SpatialGrid, showing the decomposition to MPI ranks, currently used in production.
 
 .. figure:: img/SpatialGrid_LB_blocks.png
-    :width: 500
+    :width: 400
     :alt: Example of load balancing of SpatialGrid
 
     Example of load balancing of SpatialGrid, showing the velocity-space block-counts.
@@ -132,7 +154,7 @@ Six-dimensional simulations are expensive! Further, there are some constraints f
    
    Especially restrictive with global magnetospheric simulations with high magnetic field values close to the poles, with an r^-3 dependence.
 
-   We constrain the timestep to provide a maximum of 22 degrees of cyclotron rotation per step.
+   We constrain the timestep to provide a maximum of 22 degrees of cyclotron rotation per step. Further, the Vlasov solver timestep is *so far* a global timestep. This is a bottleneck for the inner boundary.
 
 #. Velocity-space resolution: numerical heating
 
@@ -148,7 +170,9 @@ Six-dimensional simulations are expensive! Further, there are some constraints f
 
 #. Spatial resolution
 
-   Preferably, ion kinetic scale should be resolved (~200 km in Earth's magnetosphere). In 6D global production runs, we have not yet reached this (max resolution 1000 km). See e.g. `Dubart+2023 <https://doi.org/10.1063/5.0176376>`_ for ongoing work on the topic.
+   Preferably, ion kinetic scale should be resolved (~200 km in Earth's magnetosphere). In 6D global production runs, we have not yet reached this (max resolution 1000 km). 5D runs can go to sufficient resolution - plenty of foreshock studies!
+   
+   Anomalous effects can be seen in the magnetosheath, for example. 1000 km resolution does not resolve all relevant EMIC waves, leading to anomalous loss-cone distributions. See e.g. `Dubart+2023 <https://doi.org/10.1063/5.0176376>`_ for ongoing work towards a subgrid diffusion model to mimic the effects of these waves.
 
 #. Spatial extents
 
@@ -255,3 +279,4 @@ Interesting questions you might get
 
 Typical pitfalls
 ----------------
+

@@ -1,4 +1,5 @@
 .. _installing-vlasiator:
+
 Installing Vlasiator
 ====================
 
@@ -15,7 +16,7 @@ You can install a correct version of Vlasiator, required libraries and build eve
 Timing
 ------
 
-Pre-material.
+Tuesday pre-lunch.
 
 How to install Vlasiator
 ------------------------

@@ -259,10 +259,22 @@ Let's inspect the benchmark case config, here:
   velocity_space_wall_block_margin = 0
   
   
+Performance monitoring
+----------------------
 
+``phiprof`` is the default, lightweight performance tool used in Vlasiator. These timers track time spent in pre-defined code sections, with nested levels.
+
+.. code-block:: cfg
+
+  Small phiprof output here
+
+The ``tau`` profiler can also be used to hook into ``phiprof`` timers.
+
+PAPI can be used for memory use monitoring, and it is recommended to be used - monitoring the high water marks of memory use is well worth the trouble.
 
 Lustre striping
 ---------------
+
 Please refer to `LUMI docs <https://docs.lumi-supercomputer.eu/storage/parallel-filesystems/lustre/#file-striping>`_ for details.
 
 Striping refers to spreading a file across several storage targets, and it is used to have better performance for parallel writes for large files. 
@@ -291,7 +303,7 @@ Exercise:
 Next: how to communicate these to Vlasiator!
 
 I/O config flags
-----------------
+^^^^^^^^^^^^^^^^
 
 Example from current large production run (5.5 TB restart files currently):
 
@@ -342,7 +354,7 @@ These are hints for collective MPI I/O, in key-value pairs.
   restart_read_mpiio_hint_key = romio_cb_read
   restart_read_mpiio_hint_value = disable
 
-Notably, we are using here 16 MB buffers, matching the stripe unit.
+Notably, we are using here 16 MB buffers and a matching stripe unit. These give decent 90s writes for 5.5 TB restart files from 500 nodes on LUMI.
 
 The following informs Vlasiator of the restart file striping on Lustre (see below):
 
@@ -351,7 +363,7 @@ The following informs Vlasiator of the restart file striping on Lustre (see belo
   write_restart_stripe_factor = 20
 
 Babysitting
-===========
+-----------
 
 Vlasiator runs usually take a while to complete, and everything might not go as planned - node or interconnect failures come to mind. It is also easy to encounter edge cases where the plasma VDFs "hit the walls" of their velocity space, so prototyping and iteration of run configurations will come up. It is also good to keep track of the performance, memory consumption and accrued costs over the simulation run.
 
@@ -380,7 +392,7 @@ This is rather simple! To continue running from the last restart, one issues the
 
 When restarting, you can change config file and job script parameters, to e.g. introduce new/forgotten output variables, updated binary, or additional nodes - as the run progresses, the kinetic VDFs will usually take up much more resources than the initial ones.
 
-Restarts will append to existing logfile.
+Restarted runs will append to an existing logfile. Even if you do multiple restarts from the same savestate.
 
 External commands
 ^^^^^^^^^^^^^^^^^
@@ -389,51 +401,67 @@ One can signal Vlasiator during run-time via files in the run directory. For exa
 
 * ``SAVE``
 
-   Dump a new restart file.
+  Dump a new restart file.
 
 * ``STOP``
 
-   Stop the run with a restart write.
+  Stop the run with a restart write.
 
 * ``KILL``
 
-   Stop the run *without* a restart write.
+  Stop the run *without* a restart write.
 
 * ``DOLB``
 
-   Force a load balance refresh - if walltime per timestep has grown unexpectedly, this might help.
+  Force a load balance refresh - if walltime per timestep has grown unexpectedly, this might help.
 
 * ``DOMR``
 
-   Force a mesh refinement step.
+  Force a mesh re-refinement.
 
 Exercises
 =========
+
+Today we will look at running small-ish simulations and scaling tests. We'll start by performing few runs to fill in a scaling test spreadsheet and draw some conclusions from those runs. There are few heavier prototypes for overnight runs or heavier testing, and we will get to know tools for inspecting the Vlasiator outputs tomorrow.
 
 Scaling test
 ------------
 
 *Getting to know the basic run setup.*
 
-We are going to be running a Flowthrough test to look a bit at weak scaling.
+We are going to be running a Flowthrough test to look a bit at weak scaling. Find the configuration file and the job script from ``/scratch/project_465000693/example_runs/scaling/baseline/Flowthrough_amr.cfg``.
 
 The test is a tube, with initial solar wind plasma flowing along the X direction. The inflow boundary injects faster, more dense solar wind into the domain, and the Y and Z directions are periodic. Dynamic AMR is applied to the simulation, tracking the interface between fast and slow flows.
 
-To calculate weak scaling, we will expand the Y and Z dimensions of the domain with some factors, with a matching increase in cores. The shared sheet has some predetermined values, but feel free to experiment further (and add lines with notes).
+To calculate weak scaling, we will expand the Y and Z dimensions of the domain with some factors, with a matching increase in cores. To inspect task-thread balance, we move from having many tasks with few cores per task to few tasks with many cores per task - but keep the number of cores constant!
 
-Prototype: Magnetosphere3D
---------------------------
+Pick a line or two for yourselves and modify your config and job script accordingly. The shared sheet has some predetermined values, but feel free to experiment further (and add lines with notes).
+
+Prototype: Magnetosphere3D/Ionosphere3D
+---------------------------------------
+
+*Advanced playthings*
+
+These prototypes can be played with - Magnetosphere3D configuration is included in the Vlasiator master under ``samples/``. The sample magnetosphere is a good example of inner boundary instabilities at low resolutions - inner boundary VDFs hit the walls after ~60s of simulation time.
+
+Ionosphere3D is freshly adapted version of the above to use an ionospheric inner boundary, and is somewhat more stable (with a highest-resolution region used for the inner boundary).
+
+Note that these are "cheap" to run, expected O(100k) CPUh cost for a ~fully-developed system at around 1000s. If you wish to run these or use altered parameters, please feel free, but it may be a good idea to team up! Expect to use 16 nodes, so it would be hard to guarantee slots for everyone. You may also pick up the Ionosphere3D example run restart and keep running from there.
 
 Prototype: Mercury5D
 --------------------
 
+*Audience request*
 
+This is a prototype 2D/5D equatorial Mercury run, with a foreshock. Example run can be picked up for restarting. These runs have proved to be somewhat tricky, and proper treatment of Mercury will require some code extensions (and the coders to do that coding!). What would be required can be discussed in breakout session.
 
+Find this run from:
 ``/pfs/lustrep2/scratch/project_465000693/example_runs/Mercury5D``
 
 Other practical aspects
 -----------------------
 
+The rest of the day we get to play with running Vlasiator! Feel free to scatter, discuss, and join the online workshopping rooms, see HackMD for specifics.
 
 
 Interesting questions you might get
@@ -443,3 +471,5 @@ Interesting questions you might get
 
 Typical pitfalls
 ----------------
+
+
