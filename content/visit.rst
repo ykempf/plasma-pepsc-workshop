@@ -12,6 +12,7 @@ Intended learning outcomes
 
 * Using a client-server with VisIt.
 * Basic exploration of .vlsv files
+  
   * SpatialGrid
   * FsGrid
   * Finding stored VDFs
@@ -35,7 +36,7 @@ Preparing exercises
 If you haven't yet done so, please:
 
 #. Install VisIt 3.3 locally
-#. Download host_lumi_pepsc.xml and place it into your local ``$HOME/.visit/hosts``
+#. Download `host_lumi_pepsc.xml <visit/host_lumi_pepsc.xml>`_ and place it into your local ``$HOME/.visit/hosts``
 #. Open VisIt, go to Options - Host profiles.. and change the Account to your username under the lumi-pepsc host.
 #. From options, click ``Save settings`` so the username is saved to your config.
 
