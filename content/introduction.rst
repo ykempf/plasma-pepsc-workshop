@@ -197,7 +197,7 @@ Let's see what *has* been done.
 
   Ion kinetics make the reconnection phenomena very dynamic, presenting need for more tools for finding them. See `Alho et al., 2023 (revised) <https://doi.org/10.5194/egusphere-2023-2300>`_
 
-* Directly utilize the VDF data of the gloval simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019 <https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
+* Directly utilize the VDF data of the global simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (`Grandin et al. 2019 <https://doi.org/10.5194/angeo-37-791-2019>`_) and 3D simulations (`Grandin et al. 2023 <https://doi.org/10.1051/swsc/2023017>`)
 
 * Local ion-kinetic simulations, e.g. Kelvin-Helmholz instabilities (Tarvus et al, in prep.), EMIC wave studies (`Dubart et al. 2023 <https://doi.org/10.1063/5.0176376>`_, with *many* small simulations), shock tube simulations (YPK)... More discussion on Vlasiator projects later.
 

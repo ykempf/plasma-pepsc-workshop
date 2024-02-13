@@ -72,9 +72,9 @@ thousands of cores to perform massively parallel computations.
    installing-vlasiator
    benchmarks_and_running
    vlasiator_outputs
+   visit
    analysator
    analysator_exercises
-   visit
 ..
    vlasiator_projects
    example_run
