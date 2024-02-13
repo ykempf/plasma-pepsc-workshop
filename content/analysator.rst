@@ -74,7 +74,7 @@ Analysator should work mostly equally well on both Python 2.7 and Python 3.x. Ho
 Python 3.8 no longer receive security support and are thus not recommended. Use of iPython, jupyter, or
 a similar interface is recommended for ease of use. 
 
-Analysator only requires a small selection of python libraries, namely matplotlib and numpy. On modern
+Analysator only requires a small selection of python libraries, namely matplotlib, scipy>1.7 and numpy. On modern
 systems, these should be pre-installed. Some legacy sections of Analysator also use MayaVi2 but those
 are no longer updated or supported. 
 
@@ -94,12 +94,12 @@ Other practical aspects
 A TeX Live installation (or similar) is recommended for formatting of plotting text. If one is not available
 on the target system, output can be forced to use TeX-like markup supported directly by matplotlib.
 This is achieved by setting the system variable ``export PTNOLATEX=1``. This will negatively impact output
-of e.g. bolded text.
+of e.g. bolded text, but is required on e.g. the LUMI web interface.
 
 On systems without an x-windowing system such as compute nodes on a cluster (or if using it is
 prohibitively slow due to e.g. network weather), Analysator can be set to ignore X-windowing and
-use a non-interactive frontend by setting the system variable ``export PTNOINTERACTIVE=1``. In this
-case, outputs are generated into .png files and should be transferred to another system for viewing.
+use a non-interactive frontend by setting the system variable ``export PTNONINTERACTIVE=1``. In this
+case, outputs are generated into .png files and should be transferred to another system for viewing. This is the suggested approach when using a batch job to generate several images/frames in order to e.g. build a movie.
 
 If necessary, the matplotlib frontend can be declared manually with a system variable,
 for example, ```export PTBACKEND=Qt5Agg```
@@ -125,11 +125,6 @@ Interactive plots
 -----------------
 
 On some systems you can activate interactive backends in Jupyter notebooks by issuing the command ``%matplotlib ipympl`` or ``%matplotlib notebook`` before importing pytools. This is not supported on the LUMI web interface.
-
-Non-interactive batch mode
---------------------------
-
-If launching analysator from within a non-interactive batch job script, it is suggested to activate non-interactive mode with ``export PTNONINTERACTIVE=1``.
 
 Reading data
 ------------
