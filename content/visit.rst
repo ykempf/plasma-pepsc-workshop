@@ -4,7 +4,7 @@ VisIt and VLSV bootcamp
 Why we teach this lesson
 ------------------------
 
-Configuring VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D. VisIt and VLSV plugin are pre-installed on the LUMI workspace.
+`VisIt <https://visit-dav.github.io/visit-website/index.html>`_ is a scalable 3D-visualization software, suitable for supercomputing environments. It also has a home-brewed plugin to read and plot .vlsv files, which is why we prefer using it over similar alternatives such as ParaView. In this lesson, we look at configuring a VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D. VisIt and VLSV plugin are pre-installed on the LUMI workspace.
 
 
 Intended learning outcomes
@@ -30,13 +30,13 @@ Timing
 
 Wednesday morning
 
-Preparing exercises
+Preparations exercises
 -------------------
 
 If you haven't yet done so, please:
 
 #. Install VisIt 3.3 locally
-#. Download `host_lumi_pepsc.xml <visit/host_lumi_pepsc.xml>`_ and place it into your local ``$HOME/.visit/hosts``
+#. Download `host_lumi_pepsc.xml <../visit/host_lumi_pepsc.xml>`_ and place it into your local ``$HOME/.visit/hosts``
 #. Open VisIt, go to Options - Host profiles.. and change the Account to your username under the lumi-pepsc host.
 #. From options, click ``Save settings`` so the username is saved to your config.
 
