@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vlasiator config reference &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=187304be"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Analysator supported data reducers and vlasiator variables" href="../analysator_supported/" />
+    <link rel="prev" title="Quick Reference" href="../quick-reference/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vlasiator config reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-file-options">Configuration file options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new_project/">New project from template</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Vlasiator config reference</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/vlasiator-cfg-reference.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vlasiator-config-reference">
+<h1>Vlasiator config reference<a class="headerlink" href="#vlasiator-config-reference" title="Link to this heading"></a></h1>
+<p>These can be viewed by running <code class="docutils literal notranslate"><span class="pre">./vlasiator</span> <span class="pre">--help</span></code>.</p>
+<section id="command-line-arguments">
+<h2>Command line arguments<a class="headerlink" href="#command-line-arguments" title="Link to this heading"></a></h2>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">Usage</span><span class="o">:</span><span class="w"> </span><span class="s">main [options (options given on the command line override options given everywhere else)], where options are::</span>
+<span class="w"> </span><span class="na">--help                                                                       print this help message</span>
+<span class="w"> </span><span class="na">--version                                                                    print version information</span>
+<span class="w"> </span><span class="na">--global_config arg                                                          read options from the global configuration file arg (relative to the current</span>
+<span class="w">                                                                              </span><span class="na">working directory). Options given in this file are overridden by options given</span>
+<span class="w">                                                                              </span><span class="na">in the user&#39;s and run&#39;s configuration files and by options given in environment</span>
+<span class="w">                                                                              </span><span class="na">variables (prefixed with MAIN_) and the command line</span>
+<span class="w"> </span><span class="na">--user_config arg                                                            read options from the user&#39;s configuration file arg (relative to the current</span>
+<span class="w">                                                                              </span><span class="na">working directory). Options given in this file override options given in the</span>
+<span class="w">                                                                              </span><span class="na">global configuration file. Options given in this file are overridden by options</span>
+<span class="w">                                                                              </span><span class="na">given in the run&#39;s configuration file and by options given in environment</span>
+<span class="w">                                                                              </span><span class="na">variables (prefixed with MAIN_) and the command line</span>
+<span class="w"> </span><span class="na">--run_config arg                                                             read options from the run&#39;s configuration file arg (relative to the current</span>
+<span class="w">                                                                              </span><span class="na">working directory). Options given in this file override options given in the</span>
+<span class="w">                                                                              </span><span class="na">user&#39;s and global configuration files. Options given in this override options</span>
+<span class="w">                                                                              </span><span class="na">given in the user&#39;s and global configuration files. Options given in this file</span>
+<span class="w">                                                                              </span><span class="na">are overridden by options given in environment variables (prefixed with MAIN_)</span>
+<span class="w">                                                                              </span><span class="na">and the command line</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-file-options">
+<h2>Configuration file options<a class="headerlink" href="#configuration-file-options" title="Link to this heading"></a></h2>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">propagate_field                                                            Propagate magnetic field during the simulation</span>
+<span class="na">propagate_vlasov_acceleration                                              Propagate distribution functions during the simulation in velocity space. Iffalse, it is propagated with zero length timesteps.</span>
+<span class="na">propagate_vlasov_translation                                               Propagate distribution functions during the simulation in ordinary space. Iffalse, it is propagated with zero length timesteps.</span>
+<span class="na">dynamic_timestep                                                           If true,  timestep is set based on  CFL limits (default on)</span>
+<span class="na">hallMinimumRho                                                             Minimum rho value used for the Hall and electron pressure gradient terms in theLorentz force and in the field solver. Default is very low and has no effect inpractice.</span>
+<span class="na">project                                                                    Specify the name of the project to use. Supported to date (20150610)</span><span class="o">:</span><span class="w"> </span><span class="s">AlfvenDiffusion Dispersion Distributions Firehose Flowthrough Fluctuations Harris KHBLarmor Magnetosphere Multipeak Riemann1 Shock Shocktest Template test_fptestHall test_trans VelocityBox verificationLarmor</span>
+<span class="na">ParticlePopulations                                                        Name of the simulated particle populations (string)</span>
+
+<span class="k">[io]</span>
+<span class="na">diagnostic_write_interval                                                  Write diagnostic output every arg time steps</span>
+<span class="na">system_write_t_interval                                                    Save the simulation every arg simulated seconds. Negative values disable writes.[Define for all groups.]</span>
+<span class="na">system_write_file_name                                                     Save the simulation to this file name series. [Define for all groups.]</span>
+<span class="na">system_write_path                                                          Save this series in this location. Default is ./ [Define for all groups ornone.]</span>
+<span class="na">system_write_distribution_stride                                           Every this many cells write out their velocity space. 0 is none. [Define for allgroups.]</span>
+<span class="na">system_write_distribution_xline_stride                                     Every this many lines of cells along the x direction write out their velocityspace. 0 is none. [Define for all groups.]</span>
+<span class="na">system_write_distribution_yline_stride                                     Every this many lines of cells along the y direction write out their velocityspace. 0 is none. [Define for all groups.]</span>
+<span class="na">system_write_distribution_zline_stride                                     Every this many lines of cells along the z direction write out their velocityspace. 0 is none. [Define for all groups.]</span>
+<span class="na">system_write_distribution_shell_radius                                     At cells intersecting spheres with those radii centred at the origin write outtheir velocity space. 0 is none.</span>
+<span class="na">system_write_distribution_shell_stride                                     Every this many cells for those on selected shells write out their velocityspace. 0 is none.</span>
+<span class="na">system_write_fsgrid_variables                                              If 0 don&#39;t write fsgrid DROs, if 1 do write them.</span>
+<span class="na">system_write_mpiio_hint_key                                                MPI-IO hint key passed to the non-restart IO. Has to be matched byio.system_write_mpiio_hint_value.</span>
+<span class="na">system_write_mpiio_hint_value                                              MPI-IO hint value passed to the non-restart IO. Has to be matched byio.system_write_mpiio_hint_key.</span>
+<span class="na">restart_write_mpiio_hint_key                                               MPI-IO hint key passed to the restart IO. Has to be matched byio.restart_write_mpiio_hint_value.</span>
+<span class="na">restart_write_mpiio_hint_value                                             MPI-IO hint value passed to the restart IO. Has to be matched byio.restart_write_mpiio_hint_key.</span>
+<span class="na">restart_read_mpiio_hint_key                                                MPI-IO hint key passed to the restart IO. Has to be matched byio.restart_read_mpiio_hint_value.</span>
+<span class="na">restart_read_mpiio_hint_value                                              MPI-IO hint value passed to the restart IO. Has to be matched byio.restart_read_mpiio_hint_key.</span>
+<span class="na">write_initial_state                                                        Write initial state, not even the 0.5 dt propagation is done. Do not use forrestarting.</span>
+<span class="na">write_full_bgb_data                                                        Write a dedicated file containing all BGB components and first derivatives, thenexit.</span>
+<span class="na">restart_walltime_interval                                                  Save the complete simulation in given walltime intervals. Negative valuesdisable writes.</span>
+<span class="na">number_of_restarts                                                         Exit the simulation after certain number of walltime-based restarts.</span>
+<span class="na">vlsv_buffer_size                                                           Buffer size passed to VLSV writer (bytes, up to uint64_t), default 0 as this issensible on sisu</span>
+<span class="na">write_restart_stripe_factor                                                Stripe factor for restart and initial grid writing. Default 0 to inherit.</span>
+<span class="na">write_system_stripe_factor                                                 Stripe factor for bulk file writing. Default 0 to inherit.</span>
+<span class="na">write_as_float                                                             If true, write in floats instead of doubles</span>
+<span class="na">restart_write_path                                                         Path to the location where restart files should be written. Defaults to thelocal directory, also if the specified destination is not writeable.</span>
+<span class="na">system_write_all_data_reducers                                             If 0 don&#39;t write all DROs, if 1 do write them.</span>
+<span class="na">diagnostic_write_all_data_reducers                                         Write all available diagnostic reducers</span>
+
+<span class="k">[restart]</span>
+<span class="na">write_as_float                                                             If true, write restart fields in floats instead of doubles</span>
+<span class="na">filename                                                                   Restart from this vlsv file. No restart if empty file.</span>
+<span class="na">overrideReadFsGridDecompositionX                                           Manual FsGridDecomposition for field solver grid stored in a restart file.</span>
+<span class="na">overrideReadFsGridDecompositionY                                           Manual FsGridDecomposition for field solver grid stored in a restart file.</span>
+<span class="na">overrideReadFsGridDecompositionZ                                           Manual FsGridDecomposition for field solver grid stored in a restart file.</span>
+
+<span class="k">[gridbuilder]</span>
+<span class="na">geometry                                                                   Simulation geometry XY4D,XZ4D,XY5D,XZ5D,XYZ6D</span>
+<span class="na">x_min                                                                      Minimum value of the x-coordinate.</span>
+<span class="na">x_max                                                                      Minimum value of the x-coordinate.</span>
+<span class="na">y_min                                                                      Minimum value of the y-coordinate.</span>
+<span class="na">y_max                                                                      Minimum value of the y-coordinate.</span>
+<span class="na">z_min                                                                      Minimum value of the z-coordinate.</span>
+<span class="na">z_max                                                                      Minimum value of the z-coordinate.</span>
+<span class="na">x_length                                                                   Number of cells in x-direction in initial grid.</span>
+<span class="na">y_length                                                                   Number of cells in y-direction in initial grid.</span>
+<span class="na">z_length                                                                   Number of cells in z-direction in initial grid.</span>
+<span class="na">dt                                                                         Initial timestep in seconds.</span>
+<span class="na">t_max                                                                      Maximum simulation time, in seconds. If timestep_max limit is hit first thistime will never be reached</span>
+<span class="na">timestep_max                                                               Max. value for timesteps. If t_max limit is hit first, this step will never bereached</span>
+
+<span class="k">[fieldsolver]</span>
+<span class="na">maxWaveVelocity                                                            Maximum wave velocity allowed in the fastest velocity determination in m/s,default unlimited</span>
+<span class="na">maxSubcycles                                                               Maximum allowed field solver subcycles</span>
+<span class="na">resistivity                                                                Resistivity for the eta*J term in Ohm&#39;s law.</span>
+<span class="na">diffusiveEterms                                                            Enable diffusive terms in the computation of E</span>
+<span class="na">ohmHallTerm                                                                Enable/choose spatial order of the Hall term in Ohm&#39;s law. 0</span><span class="o">:</span><span class="w"> </span><span class="s">off, 1: 1stspatial order, 2: 2nd spatial order</span>
+<span class="na">ohmGradPeTerm                                                              Enable/choose spatial order of the electron pressure gradient term in Ohm&#39;s law.0</span><span class="o">:</span><span class="w"> </span><span class="s">off, 1: 1st spatial order.</span>
+<span class="na">electronTemperature                                                        Upstream electron temperature to be used for the electron pressure gradient term(K).</span>
+<span class="na">electronDensity                                                            Upstream electron density to be used for the electron pressure gradient term(m^-3).</span>
+<span class="na">electronPTindex                                                            Polytropic index for electron pressure gradient term. 0 is isobaric, 1 isisothermal, 1.667 is adiabatic electrons,</span>
+<span class="na">maxCFL                                                                     The maximum CFL limit for field propagation. Used to set timestep ifdynamic_timestep is true.</span>
+<span class="na">minCFL                                                                     The minimum CFL limit for field propagation. Used to set timestep ifdynamic_timestep is true.</span>
+<span class="na">manualFsGridDecompositionX                                                 Manual FsGridDecomposition for field solver grid.</span>
+<span class="na">manualFsGridDecompositionY                                                 Manual FsGridDecomposition for field solver grid.</span>
+<span class="na">manualFsGridDecompositionZ                                                 Manual FsGridDecomposition for field solver grid.</span>
+
+<span class="k">[vlasovsolver]</span>
+<span class="na">maxSlAccelerationRotation                                                  Maximum rotation angle (degrees) allowed by the Semi-Lagrangian solver (Use &gt;25values with care)</span>
+<span class="na">maxSlAccelerationSubcycles                                                 Maximum number of subcycles for acceleration</span>
+<span class="na">maxCFL                                                                     The maximum CFL limit for vlasov propagation in ordinary space. Used to settimestep if dynamic_timestep is true.</span>
+<span class="na">minCFL                                                                     The minimum CFL limit for vlasov propagation in ordinary space. Used to settimestep if dynamic_timestep is true.</span>
+<span class="na">accelerateMaxwellianBoundaries                                             Propagate maxwellian boundary cell contents in velocity space. Default false.</span>
+
+<span class="k">[loadBalance]</span>
+<span class="na">algorithm                                                                  Load balancing algorithm to be used</span>
+<span class="na">tolerance                                                                  Load imbalance tolerance</span>
+<span class="na">rebalanceInterval                                                          Load rebalance interval (steps)</span>
+<span class="na">optionKey                                                                  Zoltan option key. Has to be matched by loadBalance.optionValue.</span>
+<span class="na">optionValue                                                                Zoltan option value. Has to be matched by loadBalance.optionKey.</span>
+
+<span class="k">[variables]</span>
+<span class="na">output                                                                     List of data reduction operators (DROs) to add to the grid file output.  Eachvariable to be added has to be on a new line output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">XXX. Names are caseinsensitive.  Available (20230628): fg_b fg_b_background fg_b_perturbedfg_b_background_vol fg_derivs_b_background fg_e vg_rhom vg_rhoqpopulations_vg_rho fg_rhom fg_rhoq vg_v fg_v populations_vg_vpopulations_vg_moments_thermal populations_vg_moments_nonthermalpopulations_vg_effectivesparsitythreshold populations_vg_rho_loss_adjustpopulations_vg_energydensity populations_vg_precipitationdifferentialfluxpopulations_vg_heatflux populations_vg_nonmaxwellianity vg_maxdt_accelerationvg_maxdt_translation populations_vg_maxdt_accelerationpopulations_vg_maxdt_translation fg_maxdt_fieldsolver vg_rank fg_rankfg_amr_level vg_loadbalance_weight vg_boundarytype fg_boundarytypevg_boundarylayer fg_boundarylayer populations_vg_blocks vg_f_savedpopulations_vg_acceleration_subcycles vg_e_vol fg_e_vol fg_e_hall vg_e_gradpefg_b_vol vg_b_vol vg_b_background_vol vg_b_perturbed_vol vg_pressure fg_pressurepopulations_vg_ptensor vg_b_vol_derivatives fg_derivs ig_fac ig_latitude ig_chi0ig_cellarea ig_upmappedarea ig_sigmap ig_sigmah ig_sigmaparallel ig_rhonig_electrontemp ig_solverinternals ig_upmappednodecoords ig_upmappedbig_openclosed ig_potential ig_precipitation ig_deltaphi ig_inplanecurrent ig_big_e vg_drift vg_ionospherecoupling vg_connection vg_fluxrope fg_curvaturevg_amr_drho vg_amr_du vg_amr_dpsq vg_amr_dbsq vg_amr_db vg_amr_alphavg_amr_reflevel vg_amr_jperb vg_amr_translate_comm vg_gridcoordinatesfg_gridcoordinates</span>
+<span class="na">diagnostic                                                                 List of data reduction operators (DROs) to add to the diagnostic runtime output.Each variable to be added has to be on a new line diagnostic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">XXX. Names arecase insensitive. Available (20221221): populations_vg_blocks vg_rhompopulations_vg_rho_loss_adjust vg_loadbalance_weight vg_maxdt_accelerationvg_maxdt_translation fg_maxdt_fieldsolver populations_vg_maxdt_accelerationpopulations_vg_maxdt_translation populations_vg_maxdistributionfunctionpopulations_vg_mindistributionfunction</span>
+
+<span class="k">[variables_deprecated]</span>
+<span class="na">output                                                                     List of deprecated names for data reduction operators (DROs). Names are caseinsensitive. Available (20190521)</span><span class="o">:</span><span class="w"> </span><span class="s">B BackgroundB fg_BackgroundB PerturbedBfg_PerturbedB E Rhom Rhoq populations_Rho V populations_Vpopulations_moments_Backstream populations_moments_NonBackstreampopulations_moments_thermal populations_moments_nonthermal populations_minvaluepopulations_EffectiveSparsityThreshold populations_RhoLossAdjustpopulations_rho_loss_adjustpopulations_EnergyDensitypopulations_PrecipitationFlux populations_precipitationdifferentialfluxLBweightvg_lbweight vg_loadbalanceweight MaxVdt MaxRdt populations_MaxVdtpopulations_MaxRdt populations_maxdt_acceleration populations_maxdt_translationMaxFieldsdt fg_maxfieldsdtMPIrank FsGridRank FsGridBoundaryType BoundaryTypeFsGridBoundaryLayer BoundaryLayer populations_Blocks fSavedvg_fsavedpopulations_accSubcycles populations_acceleration_subcyclesVolE vg_VolEEvol E_vol fg_VolE fg_Evol HallE fg_HallE GradPeE e_gradpe VolB vg_VolB fg_VolBB_vol Bvol vg_Bvol fg_volB fg_Bvol BackgroundVolB PerturbedVolB Pressurevg_Pressure fg_Pressure populations_PTensor BVOLderivs b_vol_derivs</span>
+<span class="na">diagnostic                                                                 List of deprecated data reduction operators (DROs) to add to the diagnosticruntime output. Names are case insensitive. Available (20201111)</span><span class="o">:</span><span class="w"> </span><span class="s">rhompopulations_rholossadjust populations_rho_loss_adjust populations_blockslbweight loadbalance_weight vg_lbweight vg_loadbalanceweight maxvdtmaxdt_acceleration maxrdt maxdt_translation populations_maxvdtpopulations_maxrdt populations_maxdt_acceleration populations_maxdt_translationpopulations_maxdistributionfunction populations_mindistributionfunctionmaxfieldsdt maxdt_fieldsolver fg_maxfieldsdt</span>
+
+<span class="k">[bailout]</span>
+<span class="na">write_restart                                                              If 1, write a restart file on bailout. Gets reset when sending a STOP (1) or aKILL (0).</span>
+<span class="na">min_dt                                                                     Minimum time step below which bailout occurs (s).</span>
+<span class="na">max_memory                                                                 Maximum amount of memory used per node (in GiB) over which bailout occurs.</span>
+<span class="na">velocity_space_wall_block_margin                                           Distance from the velocity space limits in blocks, if the distribution functionreaches that distance from the wall we bail out to avoid hitting the wall.</span>
+
+<span class="k">[VAMR]</span>
+<span class="na">vel_refinement_criterion                                                   Name of the velocity refinement criterion</span>
+<span class="na">max_velocity_level                                                         Maximum velocity mesh refinement level</span>
+<span class="na">refine_limit                                                               If the refinement criterion function returns a larger value than this, block isrefined</span>
+<span class="na">coarsen_limit                                                              If the refinement criterion function returns a smaller value than this, blockcan be coarsened</span>
+
+<span class="k">[AMR]</span>
+<span class="na">max_spatial_level                                                          Maximum absolute spatial mesh refinement level</span>
+<span class="na">max_allowed_spatial_level                                                  Maximum currently allowed spatial mesh refinement level</span>
+<span class="na">should_refine                                                              If false, do not refine Vlasov grid regardless of max spatial level</span>
+<span class="na">adapt_refinement                                                           If true, re-refine vlasov grid every refine_cadence balance</span>
+<span class="na">refine_on_restart                                                          If true, re-refine vlasov grid on restart. DEPRECATED, consider using the DOMRcommand</span>
+<span class="na">force_refinement                                                           If true, refine/unrefine the vlasov grid to match the config on restart</span>
+<span class="na">should_filter                                                              If true, filter vlasov grid with boxcar filter on restart</span>
+<span class="na">use_alpha1                                                                 Use the maximum of dimensionless gradients alpha_1 as a refinement index</span>
+<span class="na">alpha1_refine_threshold                                                    Determines the minimum value of alpha_1 to refine cells</span>
+<span class="na">alpha1_coarsen_threshold                                                   Determines the maximum value of alpha_1 to unrefine cells, default half of therefine threshold</span>
+<span class="na">use_alpha2                                                                 Use J/B_perp as a refinement index</span>
+<span class="na">alpha2_refine_threshold                                                    Determines the minimum value of alpha_2 to refine cells</span>
+<span class="na">alpha2_coarsen_threshold                                                   Determines the maximum value of alpha_2 to unrefine cells, default half of therefine threshold</span>
+<span class="na">refine_cadence                                                             Refine every nth load balance</span>
+<span class="na">refine_after                                                               Start refinement after this many simulation seconds</span>
+<span class="na">refine_radius                                                              Maximum distance from Earth to refine</span>
+<span class="na">alpha1_drho_weight                                                         Multiplier for delta rho in alpha calculation</span>
+<span class="na">alpha1_du_weight                                                           Multiplier for delta U in alpha calculation</span>
+<span class="na">alpha1_dpsq_weight                                                         Multiplier for delta p squared in alpha calculation</span>
+<span class="na">alpha1_dbsq_weight                                                         Multiplier for delta B squared in alpha calculation</span>
+<span class="na">alpha1_db_weight                                                           Multiplier for delta B in alpha calculation</span>
+<span class="na">number_of_boxes                                                            How many boxes to be refined, that number of centers and sizes have to then bedefined as well.</span>
+<span class="na">box_half_width_x                                                           Half width in x of the box that is refined</span>
+<span class="na">box_half_width_y                                                           Half width in y of the box that is refined</span>
+<span class="na">box_half_width_z                                                           Half width in z of the box that is refined</span>
+<span class="na">box_center_x                                                               x coordinate of the center of the box that is refined</span>
+<span class="na">box_center_y                                                               y coordinate of the center of the box that is refined</span>
+<span class="na">box_center_z                                                               z coordinate of the center of the box that is refined</span>
+<span class="na">box_max_level                                                              max refinement level of the box that is refined</span>
+<span class="na">transShortPencils                                                          if true, use one-cell pencils</span>
+<span class="na">filterpasses                                                               AMR filter passes for each individual refinement level</span>
+
+<span class="k">[fieldtracing]</span>
+<span class="na">fieldLineTracer                                                            Field line tracing method to use for coupling ionosphere and magnetosphere(options are</span><span class="o">:</span><span class="w"> </span><span class="s">Euler, BS)</span>
+<span class="na">tracer_max_allowed_error                                                   Maximum allowed error for the adaptive field line tracers</span>
+<span class="na">tracer_max_attempts                                                        Maximum allowed attempts for the adaptive field line tracers</span>
+<span class="na">tracer_min_dx                                                              Minimum allowed field line tracer step length for the adaptive field linetracers (m)</span>
+<span class="na">fullbox_and_fluxrope_max_absolute_distance_to_trace                        Maximum absolute distance in m to trace along the field line before ending.Defaults to the sum of the simulation box edge lengths LX+LY+LZ if set &lt;</span><span class="o">=</span><span class="w"> </span><span class="s">0.</span>
+<span class="na">fullbox_max_incomplete_cells                                               Maximum fraction of cells left incomplete when stopping tracing loop for fullbox tracing. Defaults to zero to process all, will be slow at scale! Bothfluxrope_max_incomplete_cells and fullbox_max_incomplete_cells will be achieved.</span>
+<span class="na">fluxrope_max_incomplete_cells                                              Maximum fraction of cells left incomplete when stopping loop for flux ropetracing. Defaults to zero to process all, will be slow at scale! Bothfluxrope_max_incomplete_cells and fullbox_max_incomplete_cells will be achieved.</span>
+<span class="na">use_reconstruction_cache                                                   Use the cache to store reconstruction coefficients. (0</span><span class="o">:</span><span class="w"> </span><span class="s">don&#39;t, 1: use)</span>
+<span class="na">fluxrope_max_curvature_radii_to_trace                                      Maximum number of seedpoint curvature radii to trace forward and backward fromeach DCCRG cell to find flux ropes</span>
+<span class="na">fluxrope_max_curvature_radii_extent                                        Maximum extent in seedpoint curvature radii from the seed a field line isallowed to extend to be counted as a flux rope</span>
+
+<span class="k">[&lt;population&gt;_properties]</span>
+<span class="na">charge                                                                     Particle charge, in units of elementary charges (int)</span>
+<span class="na">mass_units                                                                 Units in which particle mass is given, either &#39;PROTON&#39; or &#39;ELECTRON&#39; (string)</span>
+<span class="na">mass                                                                       Particle mass in given units (float)</span>
+
+<span class="k">[&lt;population&gt;_sparse]</span>
+<span class="na">minValue                                                                   Minimum value of distribution function in any cell of a velocity block for theblock to be considered to have contents</span>
+<span class="na">blockAddWidthV                                                             Number of layers of blocks that are kept in velocity space around the blockswith content</span>
+<span class="na">conserve_mass                                                              If true, then mass is conserved by scaling the dist. func. in the remainingblocks</span>
+<span class="na">dynamicAlgorithm                                                           Type of algorithm used for calculating the dynamic minValue; 0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">none, 1 =linear algorithm based on rho, 2 = linear algorithm based on Blocks, (Examplelinear algorithm: y = kx+b, where dynamicMinValue1=k*dynamicBulkValue1 + b, anddynamicMinValue2 = k*dynamicBulkValue2 + b</span>
+<span class="na">dynamicMinValue1                                                           The minimum value for the dynamic minValue</span>
+<span class="na">dynamicMinValue2                                                           The maximum value (value 2) for the dynamic minValue</span>
+<span class="na">dynamicBulkValue1                                                          Minimum value for the dynamic algorithm range, so for example ifdynamicAlgorithm</span><span class="o">=</span><span class="s">1 then for sparse.dynamicBulkValue1 = 1e3,sparse.dynamicBulkValue2=1e5, we apply the algorithm to cells for which1e3&lt;cell.rho&lt;1e5</span>
+<span class="na">dynamicBulkValue2                                                          Maximum value for the dynamic algorithm range, so for example ifdynamicAlgorithm</span><span class="o">=</span><span class="s">1 then for sparse.dynamicBulkValue1 = 1e3,sparse.dynamicBulkValue2=1e5, we apply the algorithm to cells for which1e3&lt;cell.rho&lt;1e5</span>
+
+<span class="k">[&lt;population&gt;_vspace]</span>
+<span class="na">vx_min                                                                     Minimum value for velocity mesh vx-coordinates.</span>
+<span class="na">vx_max                                                                     Maximum value for velocity mesh vx-coordinates.</span>
+<span class="na">vy_min                                                                     Minimum value for velocity mesh vy-coordinates.</span>
+<span class="na">vy_max                                                                     Maximum value for velocity mesh vx-coordinates.</span>
+<span class="na">vz_min                                                                     Minimum value for velocity mesh vz-coordinates.</span>
+<span class="na">vz_max                                                                     Maximum value for velocity mesh vx-coordinates.</span>
+<span class="na">vx_length                                                                  Initial number of velocity blocks in vx-direction.</span>
+<span class="na">vy_length                                                                  Initial number of velocity blocks in vy-direction.</span>
+<span class="na">vz_length                                                                  Initial number of velocity blocks in vz-direction.</span>
+<span class="na">max_refinement_level                                                       Maximum allowed mesh refinement level.</span>
+
+<span class="k">[&lt;population&gt;_thermal]</span>
+<span class="na">vx                                                                         Center coordinate for the maxwellian distribution. Used for calculating thesuprathermal moments.</span>
+<span class="na">vy                                                                         Center coordinate for the maxwellian distribution. Used for calculating thesuprathermal moments.</span>
+<span class="na">vz                                                                         Center coordinate for the maxwellian distribution. Used for calculating thesuprathermal moments.</span>
+<span class="na">radius                                                                     Radius of the maxwellian distribution. Used for calculating the suprathermalmoments. If set to 0 (default), the thermal/suprathermal DROs are skipped.</span>
+
+<span class="k">[&lt;population&gt;_precipitation]</span>
+<span class="na">nChannels                                                                  Number of energy channels for precipitation differential flux evaluation</span>
+<span class="na">emin                                                                       Lowest energy channel (in eV) for precipitation differential flux evaluation</span>
+<span class="na">emax                                                                       Highest energy channel (in eV) for precipitation differential flux evaluation</span>
+<span class="na">lossConeAngle                                                              Fixed loss cone opening angle (in deg) for precipitation differential fluxevaluation</span>
+
+<span class="k">[&lt;population&gt;_energydensity]</span>
+<span class="na">limit1                                                                     Lower limit of second bin for energy density, given in units of solar wind ramenergy.</span>
+<span class="na">limit2                                                                     Lower limit of third bin for energy density, given in units of solar wind ramenergy.</span>
+<span class="na">solarwindspeed                                                             Incoming solar wind velocity magnitude in m/s. Used for calculating energydensities.</span>
+<span class="na">solarwindenergy                                                            Incoming solar wind ram energy in eV. Used for calculating energy densities.</span>
+
+<span class="k">[boundaries]</span>
+<span class="na">boundary                                                                   List of boundary condition (BC) types to be used. Each boundary condition to beused has to be on a new line boundary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">YYY. Available options are: Outflow,Ionosphere, Copysphere, Maxwellian.</span>
+<span class="na">periodic_x                                                                 Set the grid periodicity in x-direction. &#39;yes&#39;(default)/&#39;no&#39;.</span>
+<span class="na">periodic_y                                                                 Set the grid periodicity in y-direction. &#39;yes&#39;(default)/&#39;no&#39;.</span>
+<span class="na">periodic_z                                                                 Set the grid periodicity in z-direction. &#39;yes&#39;(default)/&#39;no&#39;.</span>
+
+<span class="k">[ionosphere]</span>
+<span class="na">centerX                                                                    X coordinate of ionosphere center (m)</span>
+<span class="na">centerY                                                                    Y coordinate of ionosphere center (m)</span>
+<span class="na">centerZ                                                                    Z coordinate of ionosphere center (m)</span>
+<span class="na">radius                                                                     Radius of the inner simulation boundary (unit is assumed to be R_E if value &lt;1000, otherwise m).</span>
+<span class="na">innerRadius                                                                Radius of the ionosphere model (m).</span>
+<span class="na">geometry                                                                   Select the geometry of the ionosphere, 0</span><span class="o">:</span><span class="w"> </span><span class="s">inf-norm (diamond), 1: 1-norm(square), 2: 2-norm (circle, DEFAULT), 3: 2-norm cylinder aligned with y-axis,use with polar plane/line dipole.</span>
+<span class="na">precedence                                                                 Precedence value of the ionosphere system boundary condition (integer), thehigher the stronger.</span>
+<span class="na">reapplyUponRestart                                                         If 0 (default), keep going with the state existing in the restart file. If 1,calls again applyInitialState. Can be used to change boundary conditionbehaviour during a run.</span>
+<span class="na">baseShape                                                                  Select the seed mesh geometry for the spherical ionosphere grid. Options are</span><span class="o">:</span><span class="s">sphericalFibonacci, tetrahedron, icosahedron.</span>
+<span class="na">conductivityModel                                                          Select ionosphere conductivity tensor construction model. Options are</span><span class="o">:</span><span class="w"> </span><span class="s">0=GUMICSstyle (Vertical B, only SigmaH and SigmaP), 1=Ridley et al 2004 (1000 mholongitudinal conductivity), 2=Koskinen 2011 full conductivity tensor.</span>
+<span class="na">ridleyParallelConductivity                                                 Constant parallel conductivity value. 1000 mho is given without justification byRidley et al 2004.</span>
+<span class="na">fibonacciNodeNum                                                           Number of nodes in the spherical fibonacci mesh.</span>
+<span class="na">refineMinLatitude                                                          Refine the grid polewards of the given latitude. Multiple of these lines can begiven for successive refinement, paired up with refineMaxLatitude lines.</span>
+<span class="na">refineMaxLatitude                                                          Refine the grid equatorwards of the given latitude. Multiple of these lines canbe given for successive refinement, paired up with refineMinLatitude lines.</span>
+<span class="na">atmosphericModelFile                                                       Filename to read the MSIS atmosphere data from (default</span><span class="o">:</span><span class="w"> </span><span class="s">NRLMSIS.dat)</span>
+<span class="na">recombAlpha                                                                Ionospheric recombination parameter (m^3/s)</span>
+<span class="na">ionizationModel                                                            Ionospheric electron production rate model. Options are</span><span class="o">:</span><span class="w"> </span><span class="s">Rees1963, Rees1989,SergienkoIvanov (default).</span>
+<span class="na">innerBoundaryVDFmode                                                       Inner boundary VDF construction method. Options ar</span><span class="o">:</span><span class="w"> </span><span class="s">FixedMoments,AverageMoments, AverageAllMoments, CopyAndLosscone, ForceL2EXB.</span>
+<span class="na">F10_7                                                                      Solar 10.7 cm radio flux (sfu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10^{-22} W/m^2)</span>
+<span class="na">backgroundIonisation                                                       Background ionoisation due to cosmic rays (mho)</span>
+<span class="na">solverMaxIterations                                                        Maximum number of iterations for the conjugate gradient solver</span>
+<span class="na">solverRelativeL2ConvergenceThreshold                                       Convergence threshold for the relative L2 metric</span>
+<span class="na">solverMaxFailureCount                                                      Maximum number of iterations allowed to diverge before restarting the ionospheresolver</span>
+<span class="na">solverMaxErrorGrowthFactor                                                 Maximum allowed factor of growth with respect to the minimum error beforerestarting the ionosphere solver</span>
+<span class="na">solverGaugeFixing                                                          Gauge fixing method of the ionosphere solver. Options are</span><span class="o">:</span><span class="w"> </span><span class="s">pole, integral,equator</span>
+<span class="na">shieldingLatitude                                                          Latitude below which the potential is set to zero in the equator gauge fixingscheme (degree)</span>
+<span class="na">solverPreconditioning                                                      Use preconditioning for the solver? (0/1)</span>
+<span class="na">solverUseMinimumResidualVariant                                            Use minimum residual variant</span>
+<span class="na">solverToggleMinimumResidualVariant                                         Toggle use of minimum residual variant at every solver restart</span>
+<span class="na">earthAngularVelocity                                                       Angular velocity of inner boundary convection, in rad/s</span>
+<span class="na">plasmapauseL                                                               L-shell at which the plasmapause resides (for corotation)</span>
+<span class="na">downmapRadius                                                              Radius from which FACs are coupled down into the ionosphere. Units are assumedto be RE if value &lt; 1000, otherwise m. If -1</span><span class="o">:</span><span class="w"> </span><span class="s">use inner boundary cells.</span>
+<span class="na">unmappedNodeRho                                                            Electron density of ionosphere nodes that do not connect to the magnetospheredomain.</span>
+<span class="na">unmappedNodeTe                                                             Electron temperature of ionosphere nodes that do not connect to themagnetosphere domain.</span>
+<span class="na">couplingTimescale                                                          Magnetosphere-&gt;Ionosphere coupling timescale (seconds, 0</span><span class="o">=</span><span class="s">immediate coupling</span>
+<span class="na">couplingInterval                                                           Time interval at which the ionosphere is solved (seconds)</span>
+
+<span class="k">[&lt;population&gt;_ionosphere]</span>
+<span class="na">rho                                                                        Number density of the ionosphere (m^-3)</span>
+<span class="na">T                                                                          Temperature of the ionosphere (K)</span>
+<span class="na">VX0                                                                        Bulk velocity of ionospheric distribution function in X direction (m/s)</span>
+<span class="na">VY0                                                                        Bulk velocity of ionospheric distribution function in X direction (m/s)</span>
+<span class="na">VZ0                                                                        Bulk velocity of ionospheric distribution function in X direction (m/s)</span>
+
+<span class="k">[copysphere]</span>
+<span class="na">centerX                                                                    X coordinate of copysphere center (m)</span>
+<span class="na">centerY                                                                    Y coordinate of copysphere center (m)</span>
+<span class="na">centerZ                                                                    Z coordinate of copysphere center (m)</span>
+<span class="na">radius                                                                     Radius of copysphere (m).</span>
+<span class="na">geometry                                                                   Select the geometry of the copysphere, 0</span><span class="o">:</span><span class="w"> </span><span class="s">inf-norm (diamond), 1: 1-norm(square), 2: 2-norm (circle, DEFAULT), 3: 2-norm cylinder aligned with y-axis,use with polar plane/line dipole.</span>
+<span class="na">precedence                                                                 Precedence value of the copysphere system boundary condition (integer), thehigher the stronger.</span>
+<span class="na">reapplyUponRestart                                                         If 0 (default), keep going with the state existing in the restart file. If 1,calls again applyInitialState. Can be used to change boundary conditionbehaviour during a run.</span>
+<span class="na">zeroPerB                                                                   If 0 (default), normal copysphere behaviour of magnetic field at inner boundary.If 1, keep magnetic field static at the inner boundary</span>
+
+<span class="k">[&lt;population&gt;_copysphere]</span>
+<span class="na">rho                                                                        Number density of the copysphere (m^-3)</span>
+<span class="na">T                                                                          Temperature of the copysphere (K)</span>
+<span class="na">VX0                                                                        Bulk velocity of copyspheric distribution function in X direction (m/s)</span>
+<span class="na">VY0                                                                        Bulk velocity of copyspheric distribution function in X direction (m/s)</span>
+<span class="na">VZ0                                                                        Bulk velocity of copyspheric distribution function in X direction (m/s)</span>
+<span class="na">fluffiness                                                                 Inertia of boundary smoothing when copying neighbour&#39;s moments and velocitydistributions (0</span><span class="o">=</span><span class="s">completely constant boundaries, 1=neighbours are interpolatedimmediately).</span>
+
+<span class="k">[outflow]</span>
+<span class="na">faceNoFields                                                               List of faces on which no field outflow boundary conditions are to be applied([xyz][+-]).</span>
+<span class="na">precedence                                                                 Precedence value of the outflow system boundary condition (integer), the higherthe stronger.</span>
+<span class="na">reapplyUponRestart                                                         If 0 (default), keep going with the state existing in the restart file. If 1,calls again applyInitialState. Can be used to change boundary conditionbehaviour during a run.</span>
+
+<span class="k">[&lt;population&gt;_outflow]</span>
+<span class="na">reapplyFaceUponRestart                                                     List of faces on which outflow boundary conditions are to be reapplied uponrestart ([xyz][+-]).</span>
+<span class="na">face                                                                       List of faces on which outflow boundary conditions are to be applied([xyz][+-]).</span>
+<span class="na">vlasovScheme_face_x+                                                       Scheme to use on the face x+ (Copy, Limit, None)</span>
+<span class="na">vlasovScheme_face_x-                                                       Scheme to use on the face x- (Copy, Limit, None)</span>
+<span class="na">vlasovScheme_face_y+                                                       Scheme to use on the face y+ (Copy, Limit, None)</span>
+<span class="na">vlasovScheme_face_y-                                                       Scheme to use on the face y- (Copy, Limit, None)</span>
+<span class="na">vlasovScheme_face_z+                                                       Scheme to use on the face z+ (Copy, Limit, None)</span>
+<span class="na">vlasovScheme_face_z-                                                       Scheme to use on the face z- (Copy, Limit, None)</span>
+<span class="na">quench                                                                     Factor by which to quench the inflowing parts of the velocity distributionfunction.</span>
+
+<span class="k">[maxwellian]</span>
+<span class="na">face                                                                       List of faces on which set Maxwellian boundary conditions are to be applied([xyz][+-]).</span>
+<span class="na">precedence                                                                 Precedence value of the set Maxwellian boundary condition (integer), the higherthe stronger.</span>
+<span class="na">reapplyUponRestart                                                         If 0 (default), keep going with the state existing in the restart file. If 1,calls again applyInitialState. Can be used to change boundary conditionbehaviour during a run.</span>
+<span class="na">t_interval                                                                 Time interval in seconds for applying the varying inflow condition.</span>
+
+<span class="k">[&lt;population&gt;_maxwellian]</span>
+<span class="na">file_x+                                                                    Input files for the set Maxwellian inflow parameters on face x+. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">file_x-                                                                    Input files for the set Maxwellian inflow parameters on face x-. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">file_y+                                                                    Input files for the set Maxwellian inflow parameters on face y+. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">file_y-                                                                    Input files for the set Maxwellian inflow parameters on face y-. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">file_z+                                                                    Input files for the set Maxwellian inflow parameters on face z+. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">file_z-                                                                    Input files for the set Maxwellian inflow parameters on face z-. Data format perline</span><span class="o">:</span><span class="w"> </span><span class="s">time (s) density (p/m^3) Temperature (K) Vx Vy Vz (m/s) Bx By Bz (T).</span>
+<span class="na">dynamic                                                                    Boolean value, is the set Maxwellian inflow dynamic in time or not.</span>
+
+<span class="k">[Alfven]</span>
+<span class="na">B0                                                                         Guiding field value (T)</span>
+<span class="na">Bx_guiding                                                                 Guiding field x component</span>
+<span class="na">By_guiding                                                                 Guiding field y component</span>
+<span class="na">Bz_guiding                                                                 Guiding field z component</span>
+<span class="na">Wavelength                                                                 Wavelength (m)</span>
+<span class="na">A_mag                                                                      Amplitude of the magnetic perturbation</span>
+
+<span class="k">[&lt;population&gt;_Alfven]</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">A_vel                                                                      Amplitude of the velocity perturbation</span>
+
+<span class="k">[Diffusion]</span>
+<span class="na">B0                                                                         Background field value (T)</span>
+
+<span class="k">[&lt;population&gt;_Diffusion]</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">Scale_x                                                                    Scale length in x (m)</span>
+<span class="na">Scale_y                                                                    Scale length in y (m)</span>
+
+<span class="k">[Dispersion]</span>
+<span class="na">B0                                                                         Guide magnetic field strength (T)</span>
+<span class="na">magXPertAbsAmp                                                             Absolute amplitude of the magnetic perturbation along x (T)</span>
+<span class="na">magYPertAbsAmp                                                             Absolute amplitude of the magnetic perturbation along y (T)</span>
+<span class="na">magZPertAbsAmp                                                             Absolute amplitude of the magnetic perturbation along z (T)</span>
+<span class="na">maxwCutoff                                                                 Cutoff for the maxwellian distribution</span>
+<span class="na">angleXY                                                                    Orientation of the guide magnetic field with respect to the x-axis in x-y plane(rad)</span>
+<span class="na">angleXZ                                                                    Orientation of the guide magnetic field with respect to the x-axis in x-z plane(rad)</span>
+
+<span class="k">[&lt;population&gt;_Dispersion]</span>
+<span class="na">VX0                                                                        Bulk velocity (m/s)</span>
+<span class="na">VY0                                                                        Bulk velocity (m/s)</span>
+<span class="na">VZ0                                                                        Bulk velocity (m/s)</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">densityPertRelAmp                                                          Relative amplitude of the density perturbation</span>
+<span class="na">velocityPertAbsAmp                                                         Absolute amplitude of the velocity perturbation</span>
+
+<span class="k">[Distributions]</span>
+<span class="na">rho1                                                                       Number density, first peak (m^-3)</span>
+<span class="na">rho2                                                                       Number density, second peak (m^-3)</span>
+<span class="na">Tx1                                                                        Temperature, first peak (K)</span>
+<span class="na">Tx2                                                                        Temperature, second peak (K)</span>
+<span class="na">Ty1                                                                        Temperature, first peak (K)</span>
+<span class="na">Ty2                                                                        Temperature, second peak (K)</span>
+<span class="na">Tz1                                                                        Temperature, first peak (K)</span>
+<span class="na">Tz2                                                                        Temperature, second peak (K)</span>
+<span class="na">Vx1                                                                        Bulk velocity x component, first peak (m/s)</span>
+<span class="na">Vx2                                                                        Bulk velocity x component, second peak (m/s)</span>
+<span class="na">Vy1                                                                        Bulk velocity y component, first peak (m/s)</span>
+<span class="na">Vy2                                                                        Bulk velocity y component, second peak (m/s)</span>
+<span class="na">Vz1                                                                        Bulk velocity z component, first peak (m/s)</span>
+<span class="na">Vz2                                                                        Bulk velocity z component, second peak (m/s)</span>
+<span class="na">Bx                                                                         Magnetic field x component (T)</span>
+<span class="na">By                                                                         Magnetic field y component (T)</span>
+<span class="na">Bz                                                                         Magnetic field z component (T)</span>
+<span class="na">dBx                                                                        Magnetic field x component cosine perturbation amplitude (T)</span>
+<span class="na">dBy                                                                        Magnetic field y component cosine perturbation amplitude (T)</span>
+<span class="na">dBz                                                                        Magnetic field z component cosine perturbation amplitude (T)</span>
+<span class="na">magXPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along x (T)</span>
+<span class="na">magYPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along y (T)</span>
+<span class="na">magZPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along z (T)</span>
+<span class="na">rho1PertAbsAmp                                                             Absolute amplitude of the density perturbation, first peak</span>
+<span class="na">rho2PertAbsAmp                                                             Absolute amplitude of the density perturbation, second peak</span>
+<span class="na">lambda                                                                     B cosine perturbation wavelength (m)</span>
+
+<span class="k">[Firehose]</span>
+<span class="na">Bx                                                                         Magnetic field x component (T)</span>
+<span class="na">By                                                                         Magnetic field y component (T)</span>
+<span class="na">Bz                                                                         Magnetic field z component (T)</span>
+<span class="na">lambda                                                                     Initial perturbation wavelength (m)</span>
+<span class="na">amp                                                                        Initial perturbation amplitude (m)</span>
+
+<span class="k">[&lt;population&gt;_Firehose]</span>
+<span class="na">rho1                                                                       Number density, first peak (m^-3)</span>
+<span class="na">rho2                                                                       Number density, second peak (m^-3)</span>
+<span class="na">Tx1                                                                        Temperature x, first peak (K)</span>
+<span class="na">Tx2                                                                        Temperature x, second peak (K)</span>
+<span class="na">Ty1                                                                        Temperature y, first peak (K)</span>
+<span class="na">Ty2                                                                        Temperature y, second peak (K)</span>
+<span class="na">Tz1                                                                        Temperature z, first peak (K)</span>
+<span class="na">Tz2                                                                        Temperature z, second peak (K)</span>
+<span class="na">Vx1                                                                        Bulk velocity x component, first peak (m/s)</span>
+<span class="na">Vx2                                                                        Bulk velocity x component, second peak (m/s)</span>
+<span class="na">Vy1                                                                        Bulk velocity y component, first peak (m/s)</span>
+<span class="na">Vy2                                                                        Bulk velocity y component, second peak (m/s)</span>
+<span class="na">Vz1                                                                        Bulk velocity z component, first peak (m/s)</span>
+<span class="na">Vz2                                                                        Bulk velocity z component, second peak (m/s)</span>
+
+<span class="k">[Flowthrough]</span>
+<span class="na">emptyBox                                                                   Is the simulation domain empty initially?</span>
+<span class="na">densityModel                                                               Plasma density model, &#39;Maxwellian&#39; or &#39;SheetMaxwellian&#39;</span>
+<span class="na">densityWidth                                                               Width of signal around origin</span>
+<span class="na">Bx                                                                         Magnetic field x component (T)</span>
+<span class="na">By                                                                         Magnetic field y component (T)</span>
+<span class="na">Bz                                                                         Magnetic field z component (T)</span>
+
+<span class="k">[&lt;population&gt;_Flowthrough]</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">rhoBase                                                                    Background number density (m^-3)</span>
+<span class="na">T                                                                          Temperature (K)</span>
+<span class="na">VX0                                                                        Initial bulk velocity in x-direction</span>
+<span class="na">VY0                                                                        Initial bulk velocity in y-direction</span>
+<span class="na">VZ0                                                                        Initial bulk velocity in z-direction</span>
+
+<span class="k">[Fluctuations]</span>
+<span class="na">BX0                                                                        Background field value (T)</span>
+<span class="na">BY0                                                                        Background field value (T)</span>
+<span class="na">BZ0                                                                        Background field value (T)</span>
+<span class="na">magXPertAbsAmp                                                             Amplitude of the magnetic perturbation along x</span>
+<span class="na">magYPertAbsAmp                                                             Amplitude of the magnetic perturbation along y</span>
+<span class="na">magZPertAbsAmp                                                             Amplitude of the magnetic perturbation along z</span>
+
+<span class="k">[&lt;population&gt;_Fluctuations]</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">densityPertRelAmp                                                          Amplitude factor of the density perturbation</span>
+<span class="na">velocityPertAbsAmp                                                         Amplitude of the velocity perturbation</span>
+<span class="na">maxwCutoff                                                                 Cutoff for the maxwellian distribution</span>
+
+<span class="k">[Harris]</span>
+<span class="na">Scale_size                                                                 Harris sheet scale size (m)</span>
+<span class="na">BX0                                                                        Magnetic field at infinity (T)</span>
+<span class="na">BY0                                                                        Magnetic field at infinity (T)</span>
+<span class="na">BZ0                                                                        Magnetic field at infinity (T)</span>
+
+<span class="k">[&lt;population&gt;_Harris]</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">rho                                                                        Number density at infinity (m^-3)</span>
+
+<span class="k">[KHB]</span>
+<span class="na">rho1                                                                       Number density, this-&gt;TOP state (m^-3)</span>
+<span class="na">rho2                                                                       Number density, this-&gt;BOTTOM state (m^-3)</span>
+<span class="na">T1                                                                         Temperature, this-&gt;TOP state (K)</span>
+<span class="na">T2                                                                         Temperature, this-&gt;BOTTOM state (K)</span>
+<span class="na">Vx1                                                                        Bulk velocity x component, this-&gt;TOP state (m/s)</span>
+<span class="na">Vx2                                                                        Bulk velocity x component, this-&gt;BOTTOM state (m/s)</span>
+<span class="na">Vy1                                                                        Bulk velocity y component, this-&gt;TOP state (m/s)</span>
+<span class="na">Vy2                                                                        Bulk velocity y component, this-&gt;BOTTOM state (m/s)</span>
+<span class="na">Vz1                                                                        Bulk velocity z component, this-&gt;TOP state (m/s)</span>
+<span class="na">Vz2                                                                        Bulk velocity z component, this-&gt;BOTTOM state (m/s)</span>
+<span class="na">Bx1                                                                        Magnetic field x component, this-&gt;TOP state (T)</span>
+<span class="na">Bx2                                                                        Magnetic field x component, this-&gt;BOTTOM state (T)</span>
+<span class="na">By1                                                                        Magnetic field y component, this-&gt;TOP state (T)</span>
+<span class="na">By2                                                                        Magnetic field y component, this-&gt;BOTTOM state (T)</span>
+<span class="na">Bz1                                                                        Magnetic field z component, this-&gt;TOP state (T)</span>
+<span class="na">Bz2                                                                        Magnetic field z component, this-&gt;BOTTOM state (T)</span>
+<span class="na">lambda                                                                     Initial perturbation wavelength (m)</span>
+<span class="na">amp                                                                        Initial perturbation amplitude (m)</span>
+<span class="na">offset                                                                     Boundaries offset from 0 (m)</span>
+<span class="na">transitionWidth                                                            Width of tanh transition for all changing values</span>
+
+<span class="k">[Larmor]</span>
+<span class="na">BX0                                                                        Background field value (T)</span>
+<span class="na">BY0                                                                        Background field value (T)</span>
+<span class="na">BZ0                                                                        Background field value (T)</span>
+<span class="na">VX0                                                                        Bulk velocity in x</span>
+<span class="na">VY0                                                                        Bulk velocity in y</span>
+<span class="na">VZ0                                                                        Bulk velocuty in z</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">maxwCutoff                                                                 Cutoff for the maxwellian distribution</span>
+<span class="na">Scale_x                                                                    Scale length in x (m)</span>
+<span class="na">Scale_y                                                                    Scale length in y (m)</span>
+
+<span class="k">[Magnetosphere]</span>
+<span class="na">constBgBX                                                                  Constant flat Bx component in the whole simulation box. Default is none.</span>
+<span class="na">constBgBY                                                                  Constant flat By component in the whole simulation box. Default is none.</span>
+<span class="na">constBgBZ                                                                  Constant flat Bz component in the whole simulation box. Default is none.</span>
+<span class="na">noDipoleInSW                                                               If set to 1, the dipole magnetic field is not set in the solar wind inflowcells. Default 0.</span>
+<span class="na">dipoleScalingFactor                                                        Scales the field strength of the magnetic dipole compared to Earths.</span>
+<span class="na">dipoleType                                                                 0</span><span class="o">:</span><span class="w"> </span><span class="s">Normal 3D dipole, 1: line-dipole for 2D polar simulations, 2: line-dipolewith mirror, 3: 3D dipole with mirror</span>
+<span class="na">dipoleMirrorLocationX                                                      x-coordinate of dipole Mirror</span>
+<span class="na">refine_L4radius                                                            Radius of L3-refined sphere or cap</span>
+<span class="na">refine_L4nosexmin                                                          Low x-value of nose L3-refined box</span>
+<span class="na">refine_L3radius                                                            Radius of L3-refined sphere or cap</span>
+<span class="na">refine_L3nosexmin                                                          Low x-value of nose L3-refined box</span>
+<span class="na">refine_L3tailheight                                                        Height in +-z of tail L3-refined box</span>
+<span class="na">refine_L3tailwidth                                                         Width in +-y of tail L3-refined box</span>
+<span class="na">refine_L3tailxmin                                                          Low x-value of tail L3-refined box</span>
+<span class="na">refine_L3tailxmax                                                          High x-value of tail L3-refined box</span>
+<span class="na">refine_L2radius                                                            Radius of L2-refined sphere</span>
+<span class="na">refine_L2tailthick                                                         Thickness of L2-refined tail region</span>
+<span class="na">refine_L1radius                                                            Radius of L1-refined sphere</span>
+<span class="na">refine_L1tailthick                                                         Thickness of L1-refined tail region</span>
+<span class="na">dipoleTiltPhi                                                              Magnitude of dipole tilt, in degrees</span>
+<span class="na">dipoleTiltTheta                                                            Direction of dipole tilt from Sun-Earth-line, in degrees</span>
+<span class="na">dipoleXFull                                                                X-coordinate up to which dipole is at full strength, in metres</span>
+<span class="na">dipoleXZero                                                                X-coordinate after which dipole is at zero strength, in metres</span>
+<span class="na">dipoleInflowBX                                                             Inflow magnetic field Bx component to which the vector potential dipoleconverges. Default is none.</span>
+<span class="na">dipoleInflowBY                                                             Inflow magnetic field By component to which the vector potential dipoleconverges. Default is none.</span>
+<span class="na">dipoleInflowBZ                                                             Inflow magnetic field Bz component to which the vector potential dipoleconverges. Default is none.</span>
+<span class="na">zeroOutDerivativesX                                                        Zero Out Perpendicular components</span>
+<span class="na">zeroOutDerivativesY                                                        Zero Out Perpendicular components</span>
+<span class="na">zeroOutDerivativesZ                                                        Zero Out Perpendicular components</span>
+
+<span class="k">[&lt;population&gt;_Magnetosphere]</span>
+<span class="na">rho                                                                        Tail region number density (m^-3)</span>
+<span class="na">T                                                                          Temperature (K)</span>
+<span class="na">VX0                                                                        Initial bulk velocity in x-direction</span>
+<span class="na">VY0                                                                        Initial bulk velocity in y-direction</span>
+<span class="na">VZ0                                                                        Initial bulk velocity in z-direction</span>
+<span class="na">taperInnerRadius                                                           Inner radius of the zone with a density tapering from the ionospheric value tothe background (m)</span>
+<span class="na">taperOuterRadius                                                           Outer radius of the zone with a density tapering from the ionospheric value tothe background (m)</span>
+
+<span class="k">[MultiPeak]</span>
+<span class="na">Bx                                                                         Magnetic field x component (T)</span>
+<span class="na">By                                                                         Magnetic field y component (T)</span>
+<span class="na">Bz                                                                         Magnetic field z component (T)</span>
+<span class="na">dBx                                                                        Magnetic field x component cosine perturbation amplitude (T)</span>
+<span class="na">dBy                                                                        Magnetic field y component cosine perturbation amplitude (T)</span>
+<span class="na">dBz                                                                        Magnetic field z component cosine perturbation amplitude (T)</span>
+<span class="na">magXPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along x (T)</span>
+<span class="na">magYPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along y (T)</span>
+<span class="na">magZPertAbsAmp                                                             Absolute amplitude of the random magnetic perturbation along z (T)</span>
+<span class="na">lambda                                                                     B cosine perturbation wavelength (m)</span>
+<span class="na">densityModel                                                               Which spatial density model is used?</span>
+
+<span class="k">[&lt;population&gt;_MultiPeak]</span>
+<span class="na">n                                                                          Number of peaks to create</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Tx                                                                         Temperature (K)</span>
+<span class="na">Ty                                                                         Temperature</span>
+<span class="na">Tz                                                                         Temperature</span>
+<span class="na">Vx                                                                         Bulk velocity x component (m/s)</span>
+<span class="na">Vy                                                                         Bulk velocity y component (m/s)</span>
+<span class="na">Vz                                                                         Bulk velocity z component (m/s)</span>
+<span class="na">rhoPertAbsAmp                                                              Absolute amplitude of the density perturbation</span>
+
+<span class="k">[VelocityBox]</span>
+<span class="na">rho                                                                        Number density in full 6 dimensions (m^-6 s^3)</span>
+<span class="na">Vx1                                                                        Box min x (m/s)</span>
+<span class="na">Vx2                                                                        Box max x (m/s)</span>
+<span class="na">Vy1                                                                        Box min y (m/s)</span>
+<span class="na">Vy2                                                                        Box max y (m/s)</span>
+<span class="na">Vz1                                                                        Box min z (m/s)</span>
+<span class="na">Vz2                                                                        Box max z (m/s)</span>
+<span class="na">Bx                                                                         Magnetic field x component (T)</span>
+<span class="na">By                                                                         Magnetic field y component (T)</span>
+<span class="na">Bz                                                                         Magnetic field z component (T)</span>
+
+<span class="k">[Riemann]</span>
+<span class="na">rho1                                                                       Number density, left state (m^-3)</span>
+<span class="na">rho2                                                                       Number density, right state (m^-3)</span>
+<span class="na">T1                                                                         Temperature, left state (K)</span>
+<span class="na">T2                                                                         Temperature, right state (K)</span>
+<span class="na">Vx1                                                                        Bulk velocity x component, left state (m/s)</span>
+<span class="na">Vx2                                                                        Bulk velocity x component, right state (m/s)</span>
+<span class="na">Vy1                                                                        Bulk velocity y component, left state (m/s)</span>
+<span class="na">Vy2                                                                        Bulk velocity y component, right state (m/s)</span>
+<span class="na">Vz1                                                                        Bulk velocity z component, left state (m/s)</span>
+<span class="na">Vz2                                                                        Bulk velocity z component, right state (m/s)</span>
+<span class="na">Bx1                                                                        Magnetic field x component, left state (T)</span>
+<span class="na">Bx2                                                                        Magnetic field x component, right state (T)</span>
+<span class="na">By1                                                                        Magnetic field y component, left state (T)</span>
+<span class="na">By2                                                                        Magnetic field y component, right state (T)</span>
+<span class="na">Bz1                                                                        Magnetic field z component, left state (T)</span>
+<span class="na">Bz2                                                                        Magnetic field z component, right state (T)</span>
+
+<span class="k">[Shock]</span>
+<span class="na">BX0                                                                        Background field value (T)</span>
+<span class="na">BY0                                                                        Background field value (T)</span>
+<span class="na">BZ0                                                                        Background field value (T)</span>
+<span class="na">EX0                                                                        Background electric field</span>
+<span class="na">VX0                                                                        Bulk velocity in x</span>
+<span class="na">VY0                                                                        Bulk velocity in y</span>
+<span class="na">VZ0                                                                        Bulk velocuty in z</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">magPertAmp                                                                 Amplitude of the magnetic perturbation</span>
+<span class="na">densityPertAmp                                                             Amplitude factor of the density perturbation</span>
+<span class="na">velocityPertAmp                                                            Amplitude of the velocity perturbation</span>
+<span class="na">maxwCutoff                                                                 Cutoff for the maxwellian distribution</span>
+<span class="na">Scale_x                                                                    Scale length in x (m)</span>
+<span class="na">Scale_y                                                                    Scale length in y (m)</span>
+<span class="na">Sharp_Y                                                                    Sharpness of tannh</span>
+
+<span class="k">[IPShock]</span>
+<span class="na">BX0u                                                                       Upstream mag. field value (T)</span>
+<span class="na">BY0u                                                                       Upstream mag. field value (T)</span>
+<span class="na">BZ0u                                                                       Upstream mag. field value (T)</span>
+<span class="na">BX0d                                                                       Downstream mag. field value (T)</span>
+<span class="na">BY0d                                                                       Downstream mag. field value (T)</span>
+<span class="na">BZ0d                                                                       Downstream mag. field value (T)</span>
+<span class="na">Width                                                                      Shock Width (m)</span>
+<span class="na">AMR_L1width                                                                L1 AMR region width (m)</span>
+<span class="na">AMR_L2width                                                                L2 AMR region width (m)</span>
+<span class="na">AMR_L3width                                                                L3 AMR region width (m)</span>
+<span class="na">AMR_L4width                                                                L4 AMR region width (m)</span>
+
+<span class="k">[&lt;population&gt;_IPShock]</span>
+<span class="na">VX0u                                                                       Upstream Bulk velocity in x</span>
+<span class="na">VY0u                                                                       Upstream Bulk velocity in y</span>
+<span class="na">VZ0u                                                                       Upstream Bulk velocuty in z</span>
+<span class="na">rhou                                                                       Upstream Number density (m^-3)</span>
+<span class="na">Temperatureu                                                               Upstream Temperature (K)</span>
+<span class="na">VX0d                                                                       Downstream Bulk velocity in x</span>
+<span class="na">VY0d                                                                       Downstream Bulk velocity in y</span>
+<span class="na">VZ0d                                                                       Downstream Bulk velocuty in z</span>
+<span class="na">rhod                                                                       Downstream Number density (m^-3)</span>
+<span class="na">Temperatured                                                               Downstream Temperature (K)</span>
+<span class="na">maxwCutoff                                                                 Cutoff for the maxwellian distribution</span>
+
+<span class="k">[Template]</span>
+<span class="na">param                                                                      This is my project&#39;s parameter. Default is 0.0</span>
+
+<span class="k">[test_fp]</span>
+<span class="na">V0                                                                         Velocity magnitude (m/s)</span>
+<span class="na">B0                                                                         Magnetic field value in the non-zero patch (T)</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">angle                                                                      Orientation of the propagation expressed in pi/4</span>
+<span class="na">Bdirection                                                                 Direction of the magnetic field (0</span><span class="o">:</span><span class="s">x, 1:y, 2:z, 3:all)</span>
+<span class="na">shear                                                                      Add a shear (if false, V</span><span class="o">=</span><span class="s">0.5 everywhere).</span>
+
+<span class="k">[TestHall]</span>
+<span class="na">BX0                                                                        Magnetic field x (T)</span>
+<span class="na">BY0                                                                        Magnetic field y (T)</span>
+<span class="na">BZ0                                                                        Magnetic field z (T)</span>
+<span class="na">VX0                                                                        velocity x (m/s)</span>
+<span class="na">VY0                                                                        velocity y (m/s)</span>
+<span class="na">VZ0                                                                        velocity z (m/s)</span>
+<span class="na">Temperature                                                                Temperature (K)</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+
+<span class="k">[test_trans]</span>
+<span class="na">cellPosition                                                               Position of the centre of the cells initiated (same used in velocity and space).</span>
+<span class="na">peakValue                                                                  Value of the distribution function</span>
+
+<span class="k">[VerificationLarmor]</span>
+<span class="na">BX0                                                                        Background field value (T)</span>
+<span class="na">BY0                                                                        Background field value (T)</span>
+<span class="na">BZ0                                                                        Background field value (T)</span>
+<span class="na">VX0                                                                        Bulk velocity in x</span>
+<span class="na">VY0                                                                        Bulk velocity in y</span>
+<span class="na">VZ0                                                                        Bulk velocity in z</span>
+<span class="na">X0                                                                         Initial Position</span>
+<span class="na">Y0                                                                         Initial Position</span>
+<span class="na">Z0                                                                         Initial Position</span>
+<span class="na">rho                                                                        Number density (m^-3)</span>
+
+<span class="k">[Shocktest]</span>
+<span class="na">rho1                                                                       Number density, left state (m^-3)</span>
+<span class="na">rho2                                                                       Number density, right state (m^-3)</span>
+<span class="na">T1                                                                         Temperature, left state (K)</span>
+<span class="na">T2                                                                         Temperature, right state (K)</span>
+<span class="na">Vx1                                                                        Bulk velocity x component, left state (m/s)</span>
+<span class="na">Vx2                                                                        Bulk velocity x component, right state (m/s)</span>
+<span class="na">Vy1                                                                        Bulk velocity y component, left state (m/s)</span>
+<span class="na">Vy2                                                                        Bulk velocity y component, right state (m/s)</span>
+<span class="na">Vz1                                                                        Bulk velocity z component, left state (m/s)</span>
+<span class="na">Vz2                                                                        Bulk velocity z component, right state (m/s)</span>
+<span class="na">Bx1                                                                        Magnetic field x component, left state (T)</span>
+<span class="na">Bx2                                                                        Magnetic field x component, right state (T)</span>
+<span class="na">By1                                                                        Magnetic field y component, left state (T)</span>
+<span class="na">By2                                                                        Magnetic field y component, right state (T)</span>
+<span class="na">Bz1                                                                        Magnetic field z component, left state (T)</span>
+<span class="na">Bz2                                                                        Magnetic field z component, right state (T)</span>
+
+<span class="k">[Project_common]</span>
+<span class="na">seed                                                                       Seed for the RNG</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quick-reference/" class="btn btn-neutral float-left" title="Quick Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../analysator_supported/" class="btn btn-neutral float-right" title="Analysator supported data reducers and vlasiator variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

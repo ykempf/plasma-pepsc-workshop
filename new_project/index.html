@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New project from template &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=187304be"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Analysator supported data reducers and vlasiator variables" href="../analysator_supported/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">New project from template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-new-project">Setting up a new project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-a-project-folder">Set up a project folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-the-project-code-files">Set up the project code files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-the-project">Code the project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#base-class">Base class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-structure">Basic structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#write-a-sensible-default-configuration-file">Write a sensible default configuration file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrate-the-project-to-vlasiator">Integrate the project to Vlasiator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-project-compilation">Set up the project compilation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#make-debug">(“make”, “debug”)+</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">New project from template</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/new_project.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="new-project-from-template">
+<h1>New project from template<a class="headerlink" href="#new-project-from-template" title="Link to this heading"></a></h1>
+<section id="timing">
+<h2>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h2>
+<p>Thursday, maybe.</p>
+</section>
+<section id="setting-up-a-new-project">
+<h2>Setting up a new project<a class="headerlink" href="#setting-up-a-new-project" title="Link to this heading"></a></h2>
+<section id="set-up-a-project-folder">
+<h3>Set up a project folder<a class="headerlink" href="#set-up-a-project-folder" title="Link to this heading"></a></h3>
+<p>First you need to create a subdirectory in the <code class="docutils literal notranslate"><span class="pre">projects/</span></code> directory. We will for this tutorial create the project <code class="docutils literal notranslate"><span class="pre">MyPetProject</span></code>, by convention we use capitalized words. Do <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">projects</span></code> and <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">MyPetProject</span></code>.</p>
+</section>
+<section id="set-up-the-project-code-files">
+<h3>Set up the project code files<a class="headerlink" href="#set-up-the-project-code-files" title="Link to this heading"></a></h3>
+<p>We need three files in <code class="docutils literal notranslate"><span class="pre">projects/MyPetProject</span></code>, the code file <code class="docutils literal notranslate"><span class="pre">MyPetProject.cpp</span></code>, its header file <code class="docutils literal notranslate"><span class="pre">MyPetProject.h</span></code> and a template/example configuration file used at runtime (waaaay later, not yet), <code class="docutils literal notranslate"><span class="pre">MyPetProject.cfg</span></code>. The first two should be named like that for ease later in the coding process, the configuration file can have any name as that name is being passed as an option <code class="docutils literal notranslate"><span class="pre">--run_config</span> <span class="pre">MyPetProject.cfg</span></code> to the code at execution.</p>
+<p>You can start with three empty files or copy them from a suitably similar existing project.</p>
+</section>
+<section id="code-the-project">
+<h3>Code the project<a class="headerlink" href="#code-the-project" title="Link to this heading"></a></h3>
+<section id="base-class">
+<h4>Base class<a class="headerlink" href="#base-class" title="Link to this heading"></a></h4>
+<p>Projects are classes in the <code class="docutils literal notranslate"><span class="pre">projects</span></code> namespace in Vlasiator. Individual projects are derived from the general <code class="docutils literal notranslate"><span class="pre">Project</span></code> class or from some special classes derived from that. The derived special classes are used to optimize the initialization of the velocity space by defining a different <code class="docutils literal notranslate"><span class="pre">findBlocksToInitialize()</span></code> function. This function gives a list of the velocity space blocks which will need to be initialized.</p>
+<ul class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">Project</span></code>, all blocks are returned. If you know that a significant fraction will be below the threshold and thus won’t need to be initialized, this is not the good one to choose.</p></li>
+<li><p>In the derived class <code class="docutils literal notranslate"><span class="pre">TriAxisSearch</span></code> the project needs to define the function <code class="docutils literal notranslate"><span class="pre">getV0()</span></code> (see below). This is the origin of the Maxwellian population you want, the code then finds out how far around that point it needs to go to catch all velocity cells above the threshold. It is a major gain in efficiency and memory when you have a small Maxwellian in your velocity box, with respect to the default way of looping through the whole velocity space and discarding cells below threshold afterwards.</p></li>
+</ul>
+<p>If none of the above suits your needs then you are welcome to code a new derived class to provide an efficient algorithm to select the blocks to initialize.</p>
+</section>
+<section id="basic-structure">
+<h4>Basic structure<a class="headerlink" href="#basic-structure" title="Link to this heading"></a></h4>
+<p>We present here the backbone of the project files.</p>
+<section id="mypetproject-h">
+<h5>MyPetProject.h<a class="headerlink" href="#mypetproject-h" title="Link to this heading"></a></h5>
+<p>The basic backbone of the header file is</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MYPETPROJECT_H</span>
+<span class="cp">#define MYPETPROJECT_H</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../../definitions.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../project.h&quot;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">projects</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">class</span><span class="w"> </span><span class="nc">MyPetProject</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">public</span><span class="o">:</span>
+<span class="w">         </span><span class="n">MyPetProject</span><span class="p">();</span>
+<span class="w">         </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">MyPetProject</span><span class="p">();</span>
+<span class="w">         </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="w">         </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addParameters</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="w">         </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getParameters</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="w">         </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">calcCellParameters</span><span class="p">(</span><span class="n">Real</span><span class="o">*</span><span class="w"> </span><span class="n">cellParams</span><span class="p">,</span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="w">         </span><span class="k">virtual</span><span class="w"> </span><span class="n">Real</span><span class="w"> </span><span class="nf">calcPhaseSpaceDensity</span><span class="p">(</span>
+<span class="w">            </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
+<span class="w">            </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dy</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dz</span><span class="p">,</span>
+<span class="w">            </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vy</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vz</span><span class="p">,</span>
+<span class="w">            </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dvx</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dvy</span><span class="p">,</span><span class="w"> </span><span class="n">creal</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dvz</span>
+<span class="w">         </span><span class="p">);</span>
+<span class="w">      </span><span class="k">protected</span><span class="o">:</span>
+<span class="w">         </span><span class="c1">// (whatever you need)</span>
+<span class="w">   </span><span class="p">};</span><span class="w"> </span><span class="c1">// class MyPetProject</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+<section id="mypetproject-cpp">
+<h5>MyPetProject.cpp<a class="headerlink" href="#mypetproject-cpp" title="Link to this heading"></a></h5>
+<p>The basic backbone of the code file is (functions are explained below, not included here)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../../common.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../../readparameters.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../../backgroundfield/backgroundfield.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MyPetProject.h&quot;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">projects</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">MyPetProject</span><span class="o">::</span><span class="n">MyPetProject</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="n">Project</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="n">MyPetProject</span><span class="o">::~</span><span class="n">MyPetProject</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="c1">// we do not use the constructor/destructor at the moment</span>
+<span class="w">   </span><span class="c1">// your code, see functions below</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace projects</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h4>
+<p>In the following we explain the functions you need in your project, i.e. the functions the code expects you to have in order to work. Not having them usually leads to an error message from the base project class informing you that you should use the function from the derived class (your project) and not the base class function. The constructors/destructors are not used at the moment.</p>
+<section id="mypetproject-addparameters">
+<h5>MyPetProject::addParameters()<a class="headerlink" href="#mypetproject-addparameters" title="Link to this heading"></a></h5>
+<p>This is a static function because all <code class="docutils literal notranslate"><span class="pre">addParameters()</span></code> get called by the code to provide complete help. We use the Boost program options, thus to add a parameter use <code class="docutils literal notranslate"><span class="pre">ReadParameters::add(&quot;MyPetProject.param&quot;,</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">parameter</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">MyPetProject</span> <span class="pre">project.&quot;,</span> <span class="pre">0.0);</span></code>. The first is the option name, it can then be used as such in a command line, like <code class="docutils literal notranslate"><span class="pre">--MyPetProject.param</span> <span class="pre">1.0</span></code> or in the configuration file as an entry of the form</p>
+<p>but details on the configuration file come later. The last field is the default value in case the option is not set by the user. Make it a sensible value to avoid head-scratching and bug-hunting when a user wonders why your project does not work.</p>
+</section>
+<section id="mypetproject-getparameters">
+<h5>MyPetProject::getParameters()<a class="headerlink" href="#mypetproject-getparameters" title="Link to this heading"></a></h5>
+<p>This function is used to read in the parameters, it is used only if you actually use this project. The basic syntax is <code class="docutils literal notranslate"><span class="pre">ReadParameters::get(&quot;MyPetProject.param&quot;,</span> <span class="pre">this-&gt;param);</span></code>, where we typically save the parameter’s value into a member of the <code class="docutils literal notranslate"><span class="pre">MyPetProject</span></code> class. Of course it can be local to the function instead if it is not needed anywhere else, or you save it differently, as you wish.</p>
+</section>
+<section id="mypetproject-initialize">
+<h5>MyPetProject::initialize()<a class="headerlink" href="#mypetproject-initialize" title="Link to this heading"></a></h5>
+<p>This function can be used to set up things before any major computation is done, it is called early in the simulation initialization process. If nothing is needed, just <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">true;</span></code>.</p>
+</section>
+<section id="mypetproject-setcellbackgroundfield">
+<h5>MyPetProject::setCellBackgroundField()<a class="headerlink" href="#mypetproject-setcellbackgroundfield" title="Link to this heading"></a></h5>
+<p>Using the capabilities offered by the background field classes, you can set what you need here (constant or dipole at the moment). If you wish to do it by hand, make sure you also set all relevant derivative terms and not only the fields. Note that the background field is assumed to be curl-free, if it is not the calculations involving the current density in the Vlasov and field solvers are wrong.</p>
+</section>
+<section id="mypetproject-calccellparameters">
+<h5>MyPetProject::calcCellParameters()<a class="headerlink" href="#mypetproject-calccellparameters" title="Link to this heading"></a></h5>
+<p>This function is used to set the cell’s (perturbed) magnetic field components. The electric field is computed self-consistently by the field solver.</p>
+</section>
+<section id="mypetproject-calcphasespacedensity">
+<h5>MyPetProject::calcPhaseSpaceDensity()<a class="headerlink" href="#mypetproject-calcphasespacedensity" title="Link to this heading"></a></h5>
+<p>This function is used to calculate the phase space density in each of the simulation cells in six dimensions. Typical examples are Maxwellians. Often one can code some form of averaging loops in that function and call one further function which has the actual distribution function calculation.</p>
+</section>
+<section id="triaxissearch-mypetproject-getv0">
+<h5>(TriAxisSearch) MyPetProject::getV0()<a class="headerlink" href="#triaxissearch-mypetproject-getv0" title="Link to this heading"></a></h5>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">TriAxisSearch</span></code> base class you have to provide this function. It must give the centre coordinate of the Maxwellian you want so that the <code class="docutils literal notranslate"><span class="pre">findBlocksToInitialize()</span></code> function can find out within what radius around this centre velocity blocks should be initialized.</p>
+</section>
+</section>
+</section>
+<section id="write-a-sensible-default-configuration-file">
+<h3>Write a sensible default configuration file<a class="headerlink" href="#write-a-sensible-default-configuration-file" title="Link to this heading"></a></h3>
+<p>Once you coded your project and you know what parameters you will need, write a default configuration file to document workable and sensible options for your project. This file will be saved along in the repository for reference. Try to keep it up-to-date during the life of the project so that it still reflects a sensible state and not what you had in your crazy mind when you just made that file to comply with this paragraph. Otherwise you will incur the wrath of the next user trying to quickly run your project for a test and the pain of figuring out a new set of sensible parameters after failing to back up the configuration files you were actually using.</p>
+<p>The only compulsory parameter in this file is the line</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MyPetProject</span>
+</pre></div>
+</div>
+<p>otherwise Vlasiator will not run your project, no matter what.</p>
+<p>A useful tool to check a cfg file is <code class="docutils literal notranslate"><span class="pre">tools/check_vlasiator_cfg.sh</span></code>. It takes the <code class="docutils literal notranslate"><span class="pre">vlasiator</span></code> executable as a first argument and the cfg to check as second argument and returns a list of unused available options as well as a list of invalid options.</p>
+</section>
+<section id="integrate-the-project-to-vlasiator">
+<h3>Integrate the project to Vlasiator<a class="headerlink" href="#integrate-the-project-to-vlasiator" title="Link to this heading"></a></h3>
+<p>We decided that all projects should be compiled when compiling Vlasiator. This avoids hassle with the Makefile and it also helps to keep projects supported when coding new things related to the project class infrastructure (… or shuffled into the <code class="docutils literal notranslate"><span class="pre">unsupported</span></code> folder…). But this comes at the cost of adding some bits here and there. The file <code class="docutils literal notranslate"><span class="pre">projects/project.cpp</span></code> must be edited.</p>
+<ul>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;MyPetProject/MyPetProject.h&quot;</span></code> in the top section. Please use alphabetic ordering.</p></li>
+<li><p>Edit <code class="docutils literal notranslate"><span class="pre">Project::addParameters()</span></code> so that it also calls <code class="docutils literal notranslate"><span class="pre">projects::MyPetProject::addParameters();</span></code>. You see, that’s why it is static, we told you. Please use alphabetic ordering.</p></li>
+<li><p>If your project is so cool it created a new parameter that might be useful to other projects, add it to the <code class="docutils literal notranslate"><span class="pre">Project_common</span></code> category in this function and in <code class="docutils literal notranslate"><span class="pre">Project::getParameters()</span></code>. If now you see that you need a parameter that actually was already available through the <code class="docutils literal notranslate"><span class="pre">Project_common</span></code> parameters, edit your code accordingly, no need to import twice the same stuff.</p></li>
+<li><p>In the function <code class="docutils literal notranslate"><span class="pre">createProject()</span></code>, add</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">Parameters</span><span class="o">::</span><span class="n">projectName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;MyPetProject&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">projects</span><span class="o">::</span><span class="n">MyPetProject</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>and yes, you guessed it, please use alphabetic ordering.</p>
+<section id="set-up-the-project-compilation">
+<h4>Set up the project compilation<a class="headerlink" href="#set-up-the-project-compilation" title="Link to this heading"></a></h4>
+<p>You’re almost there. Now the code is ready, it needs to be compiled. For that, obviously, the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> needs to be edited.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEPS_PROJECTS</span></code> lists all project files, so add <code class="docutils literal notranslate"><span class="pre">projects/MyPetProject/MyPetProject.h</span></code> and <code class="docutils literal notranslate"><span class="pre">projects/MyPetProject/MyPetProject.cpp</span></code>. Please use alphabetic ordering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJS</span></code> should now include <code class="docutils literal notranslate"><span class="pre">MyPetProject.o</span></code>. Please…</p></li>
+<li><p>Down in the actual making commands, add the relevant lines. Guess what order?</p></li>
+</ul>
+<p>As a savvy <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> guru you will remember that before <code class="docutils literal notranslate"><span class="pre">${CMP}</span></code> it is a tab character, not spaces.</p>
+</section>
+</section>
+</section>
+<section id="make-debug">
+<h2>(“make”, “debug”)+<a class="headerlink" href="#make-debug" title="Link to this heading"></a></h2>
+<p>Now starts the actual work. In the base folder (where the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> is), use <code class="docutils literal notranslate"><span class="pre">make</span></code> to compile. If possible, use multiple processes to accelerate compilation by using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-j</span> <span class="pre">N</span></code> where N is the number of concurrent compiling processes you want to use. It should be close to the number of physical cores available but not too much higher. In the unlikely event that the compilation should stop because it did not understand your code, debug, and iterate the above…</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../analysator_supported/" class="btn btn-neutral float-left" title="Analysator supported data reducers and vlasiator variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

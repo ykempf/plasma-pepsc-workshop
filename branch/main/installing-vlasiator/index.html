@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing Vlasiator &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=187304be"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="How to configure Vlasiator for performance" href="../benchmarks_and_running/" />
+    <link rel="prev" title="Preparations for the workshop" href="../prepare_workspace/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing Vlasiator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-teach-this-lesson">Why we teach this lesson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intended-learning-outcomes">Intended learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install-vlasiator">How to install Vlasiator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-vlasiator">Cloning Vlasiator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vlasiator-main-branches">Vlasiator main branches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-libraries">Building libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#library-reference">Library reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#require-building">Require building</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-libraries-fetched-via-submodules">Header libraries fetched via submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-libraries">Optional libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#make-a-new-makefile">Make a new makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compile">Compile!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-installation-instructions-for-libraries">Detailed installation instructions for Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-practical-aspects">Other practical aspects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interesting-questions-you-might-get">Interesting questions you might get</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-pitfalls">Typical pitfalls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new_project/">New project from template</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installing Vlasiator</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/installing-vlasiator.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installing-vlasiator">
+<span id="id1"></span><h1>Installing Vlasiator<a class="headerlink" href="#installing-vlasiator" title="Link to this heading"></a></h1>
+<section id="why-we-teach-this-lesson">
+<h2>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Link to this heading"></a></h2>
+<p>Vlasiator is hosted on GitHub and is open source, but it is, still, a specialist code under development. Here we show how to obtain the up-to-date stable Vlasiator version with the requisite libraries, and go through what the libraries are and what are they used for.</p>
+</section>
+<section id="intended-learning-outcomes">
+<h2>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Link to this heading"></a></h2>
+<p>You can install a correct version of Vlasiator, required libraries and build everything.</p>
+</section>
+<section id="timing">
+<h2>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h2>
+<p>Tuesday pre-lunch.</p>
+</section>
+<section id="how-to-install-vlasiator">
+<h2>How to install Vlasiator<a class="headerlink" href="#how-to-install-vlasiator" title="Link to this heading"></a></h2>
+<p>Installing Vlasiator is easy and straightforward!</p>
+<p>Tasks:</p>
+<ol class="arabic simple">
+<li><p>Clone Vlasiator <em>with submodule support</em></p></li>
+<li><p>Build libraries</p></li>
+<li><p>Make new makefile for your machine in MAKE folder</p></li>
+<li><p>Compile!</p></li>
+</ol>
+<p>Here are some general steps. More machine-specific details may be detailed on one of the following pages:</p>
+<section id="cloning-vlasiator">
+<h3>Cloning Vlasiator<a class="headerlink" href="#cloning-vlasiator" title="Link to this heading"></a></h3>
+<p>We are transferring to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodules</span></code> for the dependent libraries. So far, some of the header libraries have been moved to this framework, and some need to be installed manually (see above).</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code> when cloning, pulling, or checking out branches:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/fmihpc/Vlasiator
+git<span class="w"> </span>checkout<span class="w"> </span>master<span class="w"> </span>--recurse-submodules
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+</pre></div>
+</div>
+<p>Task: create a folder with your username under <code class="docutils literal notranslate"><span class="pre">/projappl/project_465000693</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into it and clone Vlasiator master branch into it.</p>
+<section id="vlasiator-main-branches">
+<h4>Vlasiator main branches<a class="headerlink" href="#vlasiator-main-branches" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">master</span></code>: Main branch, stable, lagging behind from development branch. Main releases.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dev</span></code>: Latest features, but potentially not stable.</p></li>
+</ul>
+<p>… plus a plethora of topic branches.</p>
+</section>
+</section>
+</section>
+<section id="building-libraries">
+<h2>Building libraries<a class="headerlink" href="#building-libraries" title="Link to this heading"></a></h2>
+<p>Vlasiator needs a number of libraries, a part of which need to be built. Some header libraries have been transferred to submodules, and those are automatically fetched with git (… when <code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code> is used correctly!).</p>
+<p>When building libraries and the code, we want to stick to a particular toolchain of compilers and MPI libraries, etc. On LUMI, we use the following modules:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>LUMI/22.08
+module<span class="w"> </span>load<span class="w"> </span>cpeGNU
+module<span class="w"> </span>load<span class="w"> </span>papi
+module<span class="w"> </span>load<span class="w"> </span>Eigen
+module<span class="w"> </span>load<span class="w"> </span>Boost/1.79.0-cpeGNU-22.08
+</pre></div>
+</div>
+<p>Each cluster and supercomputer will have different modules available. If the prerequisite libraries are not available as modules, they need to be downloaded and built by the user. On debian-based system (such as ubuntu and cubbli), some of the dependencies are provided as packages, installable via <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libeigen3-dev</span> <span class="pre">libboost-dev</span> <span class="pre">libboost-program-options-dev</span> <span class="pre">libopenmpi-dev</span></code>. Use of the <a class="reference external" href="https://launchpad.net/~boost-latest/+archive/ppa">boost-latest ppa</a> is recommended on Ubuntu.</p>
+<p>Building the prerequisite libraries of Vlasiator can be done with the following script, included in the Vlasiator repository: <a class="reference external" href="https://github.com/fmihpc/vlasiator/blob/master/build_libraries.sh">build_libraries.sh</a>. Our usual practice is to use a centralized library folder, but we’ll set up one for each user as an exercise.</p>
+<p>Tasks:</p>
+<ol class="arabic simple">
+<li><p>copy <code class="docutils literal notranslate"><span class="pre">build_libraries.sh</span></code> from Vlasiator root to <code class="docutils literal notranslate"><span class="pre">projappl/project_465000693/&lt;user&gt;</span></code>.</p></li>
+<li><p>load the above toolchain with the module load commands.</p></li>
+<li><p>Build the libraries with a descriptive name for the toolchain: <code class="docutils literal notranslate"><span class="pre">./build_libraries.sh</span> <span class="pre">LUMI-22.08-GNU-PEPSC</span></code></p></li>
+<li><p>Find the built libraries then under <code class="docutils literal notranslate"><span class="pre">libraries-LUMI-22.08-GNU-PEPSC/</span></code>. We’ll use this path for our Makefile.</p></li>
+</ol>
+<p>That’s done! Below, the libraries used for reference.</p>
+<section id="library-reference">
+<h3>Library reference<a class="headerlink" href="#library-reference" title="Link to this heading"></a></h3>
+<section id="require-building">
+<h4>Require building<a class="headerlink" href="#require-building" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.cs.sandia.gov/zoltan/">Zoltan</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#zoltan">install instructions</a>)</p>
+<ul>
+<li><p>Load balancing library.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://www.boost.org/">Boost</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#boost">install instructions</a>)</p>
+<ul>
+<li><p>Configuration parser.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#eigen">install instructions</a>)</p>
+<ul>
+<li><p>Linear algebra</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/fmihpc/phiprof">Phiprof</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#phiprof">install instructions</a>)</p>
+<ul>
+<li><p>Lightweight profiling.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/fmihpc/vlsv">VLSV</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#vlsv">install instructions</a>)</p>
+<ul>
+<li><p>Custom file format library, with parallel MPI I/O support.</p></li>
+<li><p>NB: Contains the buildable VLSV plugin for VisIt.</p></li>
+</ul>
+</li>
+<li><p>MPI</p></li>
+<li><p>C++17 compiler with OpenMP &gt;=3 support</p></li>
+</ul>
+</section>
+<section id="header-libraries-fetched-via-submodules">
+<h4>Header libraries fetched via submodules<a class="headerlink" href="#header-libraries-fetched-via-submodules" title="Link to this heading"></a></h4>
+<p>These libraries are handled via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodules</span></code> (nb. clone/pull instructions for submodules below), you do not need to install these separately.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fmihpc/dccrg">DCCRG</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#dccrg">install instructions</a>)</p>
+<ul>
+<li><p>Generic MPI grid library used for the Vlasov solver grid with AMR.</p></li>
+<li><p>DCCRG has its own prerequisites (MPI 2, Zoltan, and Boost). See the linked install instructions for required libraries!</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/fmihpc/fsgrid">FsGrid</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#fsgrid">install instructions</a>)</p>
+<ul>
+<li><p>Lightweight parallel grid library used for the uniform field solver grid.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://www.agner.org/optimize/#vectorclass">Vectorclass</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#vectorclass">install instructions</a>)</p>
+<ul>
+<li><p>SIMD support</p></li>
+<li><p>See instructions for the required addon library if installing manually.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="optional-libraries">
+<h4>Optional libraries<a class="headerlink" href="#optional-libraries" title="Link to this heading"></a></h4>
+<p>And also a number of optional but useful libraries</p>
+<ul class="simple">
+<li><p><a class="reference external" href="www.canonware.com/jemalloc/download.html">Jemalloc</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#jemalloc">install instructions</a>)</p>
+<ul>
+<li><p>Memory allocator with reduced memory fragmentation (recommended for performance)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://icl.cs.utk.edu/papi/">Papi</a> (<a class="reference external" href="https://github.com/fmihpc/Vlasiator/wiki/Installing-Vlasiator#papi">install instructions</a>)</p>
+<ul>
+<li><p>Memory measurement, module often available on-site</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="make-a-new-makefile">
+<h3>Make a new makefile<a class="headerlink" href="#make-a-new-makefile" title="Link to this heading"></a></h3>
+<p>The main makefile is in the vlasiator main folder. There should be no need to modify that. All settings are in a separate machine specific file that is in the MAKE folder, where compiler names, compiler flags and library locations are set. In the MAKE folder there are several examples from various machines. The file name is <code class="docutils literal notranslate"><span class="pre">Makefile.machine_name</span></code>, where machine_name is whatever you want to call your machine. It is best to start from a makefile that is similar to the machine you are compiling on. The Makefile.home corresponds to a Linux computer with all libraries in <code class="docutils literal notranslate"><span class="pre">${HOME}/lib</span></code> and <code class="docutils literal notranslate"><span class="pre">${HOME}/include</span></code>.</p>
+<p>We’ll do a new Makefile based on <a class="reference external" href="shared_files/Makefile.lumi-template">a template</a>.</p>
+<p>Firstly, note that mark, as comments, the module toolchain that we use with this Makefile:</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># Modules loaded</span>
+<span class="c"># module load LUMI/22.08 ; module load cpeGNU ; module load papi; module load Eigen; module load Boost/1.79.0-cpeGNU-22.08</span>
+</pre></div>
+</div>
+<p>These will need to be loaded while compiling and running, and need to match your library toolchain.</p>
+<p>Find the LIBRARY_PREFIX variables and modify them to match your library paths:</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">LIBRARY_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;library-dir/lib&gt;
+<span class="nv">LIBRARY_PREFIX_HEADERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;library-dir/include&gt;
+</pre></div>
+</div>
+<p>This is enough! But note how these are used later, for example:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">INC_ZOLTAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-isystem<span class="k">$(</span>LIBRARY_PREFIX_HEADERS<span class="k">)</span>
+<span class="nv">LIB_ZOLTAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-L<span class="k">$(</span>LIBRARY_PREFIX<span class="k">)</span><span class="w"> </span>-lzoltan<span class="w"> </span>-Wl,-rpath<span class="o">=</span><span class="k">$(</span>LIBRARY_PREFIX<span class="k">)</span>
+</pre></div>
+</div>
+<p>If you wish, you can choose to point to different libraries via modifying these paths.</p>
+</section>
+<section id="compile">
+<h3>Compile!<a class="headerlink" href="#compile" title="Link to this heading"></a></h3>
+<p>After one has created the makefile, one should set an environment variable with the name of your machine, matching the name used for the MAKE/Makefile.machine_name file. For example, to use the home makefile one can set it like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">VLASIATOR_ARCH</span><span class="o">=</span>home
+</pre></div>
+</div>
+<p>To make the environment variable one can put it into the initialization files for your shell, e.g. .profile. or .bashrc.</p>
+<p>After ensuring all libraries and compile options are made available for Vlasiator, and the correct machine-specific makefile has been set, one can simply</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
+make<span class="w"> </span>-j<span class="w"> </span><span class="m">12</span>
+</pre></div>
+</div>
+<p>to make Vlasiator, or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
+make<span class="w"> </span>-j<span class="w"> </span><span class="m">12</span><span class="w"> </span>tools
+</pre></div>
+</div>
+<p>to make the Vlasiator tools.</p>
+<p>Note: The -j flag tells GNU Make to build the program in parallel on several threads. If you are building on a smaller computer, it is not recommended to have a -j count greater than the number of available cores on the frontend where you are compiling. This will not impact how many threads the actual simulation will run on.</p>
+</section>
+</section>
+<section id="detailed-installation-instructions-for-libraries">
+<h2>Detailed installation instructions for Libraries<a class="headerlink" href="#detailed-installation-instructions-for-libraries" title="Link to this heading"></a></h2>
+<p>If the install script or fetching submodules fails, you can review the more in-depth guidelines available at <a class="reference external" href="https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator">https://github.com/fmihpc/vlasiator/wiki/Installing-Vlasiator</a> though it should not be necessary for the purposes of this tutorial.</p>
+</section>
+<section id="other-practical-aspects">
+<h2>Other practical aspects<a class="headerlink" href="#other-practical-aspects" title="Link to this heading"></a></h2>
+</section>
+<section id="interesting-questions-you-might-get">
+<h2>Interesting questions you might get<a class="headerlink" href="#interesting-questions-you-might-get" title="Link to this heading"></a></h2>
+</section>
+<section id="typical-pitfalls">
+<h2>Typical pitfalls<a class="headerlink" href="#typical-pitfalls" title="Link to this heading"></a></h2>
+<p>Some wise words of the pitfalls of submodules and git commands:
+So trying with a fresh clone with <strong>no</strong> <code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code>, this gets the correct vlasiator-version target for dccrg:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span> <span class="pre">--recurse-submodules</span></code></p>
+<p>This works as well</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span> <span class="pre">--recurse-submodules</span></code>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code></p>
+<p>This however does not fetch the correct submodule commits:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code></p>
+<p>This does not fetch submodules by itself:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span> <span class="pre">--recurse-submodules</span></code></p>
+<p>but it needs then</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code></p>
+<p>But,</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code></p>
+<p>is bad, since that will get the default master branch tip as the submodule commits and then updates the submodules to those ones. But then, if you start with</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span> <span class="pre">https://github.com/fmihpc/vlasiator</span></code></p>
+<p>you can do</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../prepare_workspace/" class="btn btn-neutral float-left" title="Preparations for the workshop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../benchmarks_and_running/" class="btn btn-neutral float-right" title="How to configure Vlasiator for performance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

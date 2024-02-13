@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Vlasiator &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=187304be"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Preparations for the workshop" href="../prepare_workspace/" />
+    <link rel="prev" title="Space Plasma Simulations with Vlasiator on LUMI Supercomputer" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Vlasiator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-teach-this-lesson">Why we teach this lesson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intended-learning-outcomes">Intended learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-exercises">Preparing exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vlasiator">Vlasiator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#state-of-the-art">State-of-the-art</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#practical-aspects-of-running-vlasiator">Practical aspects of running Vlasiator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-can-i-do">What can I do?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#rules-of-the-road">Rules of the Road</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pi-and-the-pi-team">PI and the PI-team</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vlasiator-enthusiasts">Vlasiator enthusiasts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications-and-presentations">Publications and presentations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acknowledgement-for-publications-and-presentations">Acknowledgement for publications and presentations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#presentations">Presentations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publications">Publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-informative-technological-publications">Additional informative technological publications:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interesting-questions-you-might-get">Interesting questions you might get</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-pitfalls">Typical pitfalls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new_project/">New project from template</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction to Vlasiator</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/introduction.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-vlasiator">
+<h1>Introduction to Vlasiator<a class="headerlink" href="#introduction-to-vlasiator" title="Link to this heading"></a></h1>
+<section id="why-we-teach-this-lesson">
+<h2>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Link to this heading"></a></h2>
+<p>Here we introduce what is Vlasiator.</p>
+</section>
+<section id="intended-learning-outcomes">
+<h2>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Know what Vlasiator is and does</p></li>
+<li><p>Understand what you can do with Vlasiator</p></li>
+<li><p>What resources do I need to run Vlasiator for some given task?</p></li>
+<li><p>Rules of the Road for using Vlasiator</p></li>
+</ul>
+</section>
+<section id="timing">
+<h2>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h2>
+<p>Tuesday morning, 1h</p>
+</section>
+<section id="preparing-exercises">
+<h2>Preparing exercises<a class="headerlink" href="#preparing-exercises" title="Link to this heading"></a></h2>
+<p>Here you can find <a class="reference external" href="https://datacloud.helsinki.fi/index.php/s/wEZdF3szjBfapSs">Vlasiator introductory lectures</a>.</p>
+<p>Reference papers for Vlasiator simulation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1016/j.jastp.2014.08.012">Alfthan et al., 2014</a>, Vlasiator: First global hybrid-Vlasov simulations of Earth’s foreshock and magnetosheath. <em>JASTP</em>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1007/s41115-018-0003-2">Palmroth et al., 2018</a>, Vlasov methods in space physics and astrophysics. <em>LRCA</em>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1063/5.0134387">Ganse et al., 2023</a>,  Enabling technology for global 3D + 3V hybrid-Vlasov simulations of near-Earth space. <em>Phys. Plasmas</em>.</p></li>
+</ul>
+<p>Highlight results:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1038/s41567-022-01837-z">Turc et al., 2022</a>, Transmission of foreshock waves through Earth’s bow shock. <em>Nat. Phys</em>.</p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1038/s41561-023-01206-2">Palmroth et al. 2023</a>, Magnetotail plasma eruptions driven by magnetic reconnection and kinetic instabilities. <em>Nat. Geosci</em>.</p></li>
+</ul>
+<p>Find more at <a class="reference external" href="https://www.helsinki.fi/en/researchgroups/vlasiator/publications-and-presentations">the group website</a>.</p>
+</section>
+<section id="vlasiator">
+<h2>Vlasiator<a class="headerlink" href="#vlasiator" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://www.helsinki.fi/en/researchgroups/vlasiator">**Vlasiator**</a> (<a class="reference external" href="https://github.com/fmihpc/vlasiator">GitHub</a>) is the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating the Earth’s magnetosphere. In Vlasiator, ions are represented as velocity distribution functions, while electrons are massless charge-neutralizing fluid, enabling a self-consistent global plasma simulation that can describe multi-temperature plasmas to resolve non-MHD processes that currently cannot be self-consistently described by the existing global space weather simulations. The novelty is that by modelling ions as velocity distribution functions the outcome will be numerically noiseless. Due to the multi-dimensional approach at ion scales, Vlasiator’s computational challenges are immense.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/BCH_LRCA.webp"><img alt="Example of a Vlasiator 5D run (LRCA)" src="../_images/BCH_LRCA.webp" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">A Vlasiator view of the Earth’s magnetosphere (5D, Palmroth+2018)</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Vlasiator simulates the dynamics of plasma using a hybrid-Vlasov model, where protons are described by their distribution function f(r,v,t) in ordinary (r) and velocity (v) space, and electrons are a charge-neutralising fluid. This approach neglects electron kinetic effects but retains ion kinetics. The time-evolution of f(r,v,t) is given by Vlasov’s equation,</p>
+<a class="reference internal image-reference" href="../_images/vlasov-eq.webp"><img alt="Vlasov's equation" src="../_images/vlasov-eq.webp" style="width: 600px;" /></a>
+<p>which is coupled self-consistently to Maxwell’s equations giving the evolution of the electric and magnetic fields E and B. Maxwell’s equations neglect the displacement current.</p>
+<a class="reference internal image-reference" href="../_images/faraday.png"><img alt="Faraday's law" src="../_images/faraday.png" style="width: 200px;" /></a>
+<p>and</p>
+<a class="reference internal image-reference" href="../_images/ampere.png"><img alt="Ampere's law" src="../_images/ampere.png" style="width: 250px;" /></a>
+<p>The equations are closed by a generalised Ohm’s law including the Hall term (and the electron pressure term, not shown below).</p>
+<a class="reference internal image-reference" href="../_images/ohm.webp"><img alt="Vlasov's equation" src="../_images/ohm.webp" style="width: 300px;" /></a>
+</section>
+<section id="state-of-the-art">
+<h2>State-of-the-art<a class="headerlink" href="#state-of-the-art" title="Link to this heading"></a></h2>
+<p>Vlasiator is parallelized at multiple scales via MPI, threading support and vectorization, and we are continuously improving the performance and the feature set. GPU porting is in progress: solvers have been ported, but they need to be optimized for GPUs to be useful in production.</p>
+<p>The data structures in Vlasiator have been optimized to propagate the 6D solution efficiently with explicit solvers. The velocity distribution functions are associated with a spatial, hierarchically-adapted Cartesian grid (the Vlasov grid, SpatialGrid or the AMR grid), with each such spatial cell containing a VDF for each ion species in the simulation. The VDF themselves are stored on a Cartesian velocity-space grid as a sparse data structure - otherwise the production simulations could not fit any available computers. This implies slight loss of mass at the fringes (under a set sparsity threshold, the VDF is not stored), but the VDF can optionally be re-scaled to conserve mass. Suitably chosen sparsity thresholds enable global runs with negligible adverse effects. Some 98% of the phase-space volume is discarded.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/sparse-YPK2016.webp"><img alt="Example of sparse velocity grid." src="../_images/sparse-YPK2016.webp" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of sparse velocity grid, Yann Pfau-Kempf, 2016.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/aBlockyVDF.png"><img alt="Example of sparse velocity grid." src="../_images/aBlockyVDF.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of sparse velocity grid. The 4x4x4 structure stems from the block data structure.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The numerical algorithm for the propagation of the Vlasov equation is based on operator splitting: spatial translation and velocity-space acceleration are leapfrogged. Spatial translation remaps the VDF as 1D shears. The acceleration re-mapping of the VDF is handled by the semi-Lagrangian SLICE-3D method by Zerroukat and Allen (2012), by decomposing v-space rotation and translation to a series of shear operations. These mappings are conservative by themselves.</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/Strang-Splitting.png"><img alt="../_images/Strang-Splitting.png" src="../_images/Strang-Splitting.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Schematic of Strang-splitting the Vlasov propagation, left (yellow) the translation part, right (green) the acceleration part.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Spatial AMR has lately enabled truly 6D simulations of the Earth’s magnetosphere (see Ganse+2023). The initial 6D production runs have used statically-refined grid, with a dynamic AMR currently being tested in production.</p>
+<p>Spatial AMR, however, is <em>not</em> extended to the field solver (<em>heterologous</em> grids): Field solver has simple load balancing, while the Vlasov solver does not. The solution is to have <em>two</em> grids, with the field solver grid at the highest resolution of the Vlasov grid, throughout the entire domain. There are some details in cross-coupling e.g. plasma moments across these grids. With four levels of refinement, the field solver is contributing about 10% of runtime as it is - Vlasov solver is still the bottleneck.</p>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/FsGrid_LB.png"><img alt="../_images/FsGrid_LB.png" src="../_images/FsGrid_LB.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of fieldsolver load balancing</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="../_images/SpatialGrid_LB_RCB.png"><img alt="../_images/SpatialGrid_LB_RCB.png" src="../_images/SpatialGrid_LB_RCB.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of SpatialGrid load balancing, legacy RCB</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Improved load balancing algorithms matter. In the above Recursive Coordinate Bisection (RCB) example, one can see small-scale structure in the domain boundaries, which is not optimal for MPI communication buffers. Forcing rectilinear domains for RCB helps, but so do using other methods, like Recursive Inertial Bisection (RIB, below), that can balance MPI communications over the three principal directions.</p>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="../_images/SpatialGrid_LB_RIB.png"><img alt="Example of load balancing of SpatialGrid, MPI ranks" src="../_images/SpatialGrid_LB_RIB.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of load balancing of SpatialGrid, showing the decomposition to MPI ranks, currently used in production.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="../_images/SpatialGrid_LB_blocks.png"><img alt="Example of load balancing of SpatialGrid" src="../_images/SpatialGrid_LB_blocks.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of load balancing of SpatialGrid, showing the velocity-space block-counts.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Recently, we have also included a proper ionospheric inner boundary condition, with an ionosphere solver along the lines of MHD solvers. Further developments are ongoing, incl. better ionization and conductivity profiles. Outer boundary conditions now include the possibility of time-varying solar wind parameters.</p>
+<p>Lately, we have included an electron module, eVlasiator (<a class="reference external" href="https://doi.org/10.5194/angeo-39-85-2021">Battarbee+2021</a>, <a class="reference external" href="https://doi.org/10.1029/2022GL098329">Alho+2022</a>), that takes an existing Vlasiator solution and runs electron VDFs against that background.</p>
+<p>Deploying Vlasiator to various environments has lately (with Plasma-PEPSC!) been made much easier, including compilation on ARM. We’ll look at the build process later!</p>
+</section>
+<section id="practical-aspects-of-running-vlasiator">
+<h2>Practical aspects of running Vlasiator<a class="headerlink" href="#practical-aspects-of-running-vlasiator" title="Link to this heading"></a></h2>
+<p>What sorts on constraints does Vlasiator have?</p>
+<p>Six-dimensional simulations are expensive! Further, there are some constraints from physics on resolution - if you want to be accurate, you will need to resolve some scales.</p>
+<ol class="arabic">
+<li><p>Timestep: Ion cyclotron frequency.</p>
+<p>Especially restrictive with global magnetospheric simulations with high magnetic field values close to the poles, with an r^-3 dependence.</p>
+<p>We constrain the timestep to provide a maximum of 22 degrees of cyclotron rotation per step. Further, the Vlasov solver timestep is <em>so far</em> a global timestep. This is a bottleneck for the inner boundary.</p>
+</li>
+<li><p>Velocity-space resolution: numerical heating</p>
+<p>Low velocity-space resolution is constrained by thermal velocity: dv ~&lt; v_th/3. For exampe, solar wind Maxwellians exhibit numerical heating for dv &gt;~ v_th/3.</p>
+</li>
+<li><p>Velocity-space sparsity threshold</p>
+<p>Around 10^-15 m^6 s^-3 has been found a decent compromise for the sparsity threshold, retaining the parts of VDFs that are relevant for the dynamics of the system. If you wish to model high-energy tails, the threshold should be pushed down… at the cost of significantly increased memory footprint.</p>
+</li>
+<li><p>Velocity-space extents</p>
+<p>+- 4000…8000 km/s are decent extents for terrestrial magnetospheric simulations with the current sparsity thresholds. Usually VDFs ‘hit the walls’ only when there is anomalous acceleration, or otherwise very fast and/or hot flows. This results in 200..400 velocity cells per dimension in our usual runs. Sparsity really saves on the memory footprint!</p>
+</li>
+<li><p>Spatial resolution</p>
+<p>Preferably, ion kinetic scale should be resolved (~200 km in Earth’s magnetosphere). In 6D global production runs, we have not yet reached this (max resolution 1000 km). 5D runs can go to sufficient resolution - plenty of foreshock studies!</p>
+<p>Anomalous effects can be seen in the magnetosheath, for example. 1000 km resolution does not resolve all relevant EMIC waves, leading to anomalous loss-cone distributions. See e.g. <a class="reference external" href="https://doi.org/10.1063/5.0176376">Dubart+2023</a> for ongoing work towards a subgrid diffusion model to mimic the effects of these waves.</p>
+</li>
+<li><p>Spatial extents</p>
+<p>Outflow boundaries are simple copy-condition boundaries. For example, the bow shock hitting the outer walls should be avoided, leading to approx. +- 60 RE simulation extents for the Earth.</p>
+</li>
+</ol>
+</section>
+<section id="what-can-i-do">
+<h2>What can I do?<a class="headerlink" href="#what-can-i-do" title="Link to this heading"></a></h2>
+<p>Let’s see what <em>has</em> been done.</p>
+<ul>
+<li><p>ULF wave field studies, see <a class="reference external" href="https://doi.org/10.1038/s41567-022-01837-z">Turc et al., 2022</a>, Transmission of foreshock waves through Earth’s bow shock. <em>Nat. Phys</em>.</p>
+<p>5D/2D runs - can resolve ion kinetic scales. Topics include generation of counterstreaming foreshock populations, resulting ULF wave fields, and their effects!</p>
+<p>Similar runs are now being run at O(10M) CPUh on Mahti (CSC/Finland). Smaller 2D runs have been nowaways performed also on our local cluster of 10 nodes of 2x AMD Epyc 7302/32 cores per node.</p>
+</li>
+<li><p>Relatedly: Jets and SLAMS, see the works by Joonas Suni, e.g., <a class="reference external" href="https://doi.org/10.1029/2021GL095655">Suni et al.,</a></p></li>
+<li><p>Reconnection in a global context <a class="reference external" href="https://doi.org/10.1038/s41561-023-01206-2">Palmroth et al. 2023</a>, Magnetotail plasma eruptions driven by magnetic reconnection and kinetic instabilities. <em>Nat. Geosci</em>.</p>
+<p>These are huge runs at several tens of MCPU-hours.</p>
+<p>Ion kinetics make the reconnection phenomena very dynamic, presenting need for more tools for finding them. See <a class="reference external" href="https://doi.org/10.5194/egusphere-2023-2300">Alho et al., 2023 (revised)</a></p>
+</li>
+<li><p>Directly utilize the VDF data of the global simulations, e.g. in precipitation of particles from magnetospheric processes, both from 2D (<a class="reference external" href="https://doi.org/10.5194/angeo-37-791-2019">Grandin et al. 2019</a>) and 3D simulations (<cite>Grandin et al. 2023 &lt;https://doi.org/10.1051/swsc/2023017&gt;</cite>)</p></li>
+<li><p>Local ion-kinetic simulations, e.g. Kelvin-Helmholz instabilities (Tarvus et al, in prep.), EMIC wave studies (<a class="reference external" href="https://doi.org/10.1063/5.0176376">Dubart et al. 2023</a>, with <em>many</em> small simulations), shock tube simulations (YPK)… More discussion on Vlasiator projects later.</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://www.helsinki.fi/en/researchgroups/vlasiator/publications-and-presentations">Vlasiator website/publications</a> for more examples!</p>
+<p>We note that since these runs are expensive, we often mine multiple papers out of a single run.</p>
+</section>
+</section>
+<section id="rules-of-the-road">
+<h1>Rules of the Road<a class="headerlink" href="#rules-of-the-road" title="Link to this heading"></a></h1>
+<p>As noted at the <a class="reference external" href="https://www.helsinki.fi/en/researchgroups/vlasiator/rules-of-the-road">Vlasiator website</a>.</p>
+<p><em>Vlasiator is a significant investment, and its development has taken many years (since 2008).</em></p>
+<p>Vlasiator is funded by the European Research Council and the Research Council of Finland.</p>
+<p>Vlasiator requires considerable amount of human resources. The code is being developed by external funding. Runs are carried out with supercomputer resources that the PI team applies for from competitive sources (such as PRACE and CSC Grand Challenge). Each run needs to be babysat.</p>
+<p>While Vlasiator is licensed under GPL-2, these rules of the road have a similar philosophy as are generally in use for instruments. Vlasiator is the only one of its kind in the world, having no similar benchmark. Hence we need to make sure that all Vlasiator results have been verified by by the PI-team.</p>
+<p>The user is strongly advised to utilise Vlasiator as described below.</p>
+<section id="pi-and-the-pi-team">
+<h2>PI and the PI-team<a class="headerlink" href="#pi-and-the-pi-team" title="Link to this heading"></a></h2>
+<p>The PI-team makes all decisions pertaining to the Vlasiator master version. All data requests and other support questions should be addressed to the PI. The PI-team decides about the time and place in which the peer-reviewed data becomes public.</p>
+</section>
+<section id="vlasiator-enthusiasts">
+<h2>Vlasiator enthusiasts<a class="headerlink" href="#vlasiator-enthusiasts" title="Link to this heading"></a></h2>
+<p>The PI-team welcomes collaborations! Do reach out to us and make a data request, which we handle on the best effort basis. Any publications or presentations need to follow the publication rules below, and the further distribution of the accessed data is not allowed without the consent of the PI-team. The movies made public through the Vlasiator web pages can be freely used in scientific work, presentations and publications, bearing in mind the publications rules of the road below.</p>
+</section>
+<section id="publications-and-presentations">
+<h2>Publications and presentations<a class="headerlink" href="#publications-and-presentations" title="Link to this heading"></a></h2>
+<p>All publications or presentations showing Vlasiator data need to be inspected by someone from the Vlasiator PI-team. The PI and the relevant PI-team members shall be added as co-authors in the publication. The Vlasiator PI-team may publish the Vlasiator data shown in the publication through the Vlasiator web page.</p>
+<section id="acknowledgement-for-publications-and-presentations">
+<h3>Acknowledgement for publications and presentations<a class="headerlink" href="#acknowledgement-for-publications-and-presentations" title="Link to this heading"></a></h3>
+<p>Vlasiator is developed by the European Research Council Starting grant 200141-QuESpace, and Consolidator grant GA682068-PRESTISSIMO received by the Vlasiator PI. Vlasiator has also received funding from the Academy of Finland. See www.helsinki.fi/vlasiator</p>
+</section>
+<section id="presentations">
+<h3>Presentations<a class="headerlink" href="#presentations" title="Link to this heading"></a></h3>
+<p>All presentations showing Vlasiator data shall include a Vlasiator slide given by the PI-team. The presentation shall also include the Vlasiator logo. The slide and acknowledgement are available from the PI time upon request.</p>
+</section>
+<section id="publications">
+<h3>Publications<a class="headerlink" href="#publications" title="Link to this heading"></a></h3>
+<p>All publications showing Vlasiator data shall cite these two Vlasiator architectural papers:</p>
+<p>Enabling technology for global 3D+3V hybrid-Vlasov simulations of near Earth space, U. Ganse, T. Koskela, M. Battarbee, Y. Pfau-Kempf, K. Papadakis, M. Alho, M. Bussov, G. Cozzani, M. Dubart, H. George, E. Gordeev, M. Grandin, K. Horaites, J. Suni,
+V. Tarvus, F. Tesema Kebede, L. Turc, H Zhou, and M. Palmroth. Physics of Plasmas 30, 042902 (2023)
+<a class="reference external" href="https://doi.org/10.1063/5.0134387">https://doi.org/10.1063/5.0134387</a></p>
+<p>Palmroth, M., Ganse, U., Pfau-Kempf, Y., Battarbee, M., Turc, L., Brito, T., Grandin, M., Hoilijoki, S., Sandroos, A., and von Alfthan, S., “Vlasov methods in space physics and astrophysics”, Living Rev Comput Astrophys., 4:1, <a class="reference external" href="doi:10.1007/s41115-018-0003-2">doi:10.1007/s41115-018-0003-2</a>, 2018.</p>
+</section>
+<section id="additional-informative-technological-publications">
+<h3>Additional informative technological publications:<a class="headerlink" href="#additional-informative-technological-publications" title="Link to this heading"></a></h3>
+<p>Parametrization of coefficients for sub-grid modeling of pitch-angle diffusion in global magnetospheric hybrid-Vlasov simulations, M. Dubart, M. Battarbee, U. Ganse, A. Osmane, F. Spanier, J. Suni, G. Cozzani, K. Horaites, K. Papadakis, Y. Pfau-Kempf, V. Tarvus, and M. Palmroth, Physics of Plasmas 30, 123903 (2023)
+<a class="reference external" href="https://doi.org/10.1063/5.0176376">https://doi.org/10.1063/5.0176376</a></p>
+<p>Spatial filtering in a 6D hybrid-Vlasov scheme for alleviating AMR artifacts: a case study with Vlasiator, versions 5.0, 5.1, 5.2.1, K. Papadakis, Y. Pfau-Kempf, U. Ganse, M. Battarbee, M. Alho, M. Grandin, M. Dubart, L. Turc, H. Zhou, K. Horaites, I. Zaitsev, G. Cozzani, M. Bussov, E. Gordeev, F. Tesema, H. George, J. Suni, V. Tarvus, and M. Palmroth. Geosci. Model Dev., 15, 7903–7912 (2022)
+<a class="reference external" href="https://doi.org/10.5194/gmd-15-7903-2022">https://doi.org/10.5194/gmd-15-7903-2022</a></p>
+<p>Vlasov simulation of electrons in the context of hybrid global models: an eVlasiator approach, M. Battarbee, T. Brito, M. Alho, Y. Pfau-Kempf, M. Grandin, U. ganse, K. Papadakis, A. Johlander, L. Turc, M. Dubart, and M. Palmroth. Ann. Geophys. 39, 85–103 (2021)
+<a class="reference external" href="https://doi.org/10.5194/angeo-39-85-2021">https://doi.org/10.5194/angeo-39-85-2021</a></p>
+<p>Vlasiator: First global hybrid-Vlasov simulations of Earth’s foreshock and magnetosheath, S. von Alfthan, D. Pokhotelov, Y. Kempf, S. Hoilijoki, I. Honkonen, A. Sandroos, M. Palmroth. Journal of Atmospheric and Solar-Terrestrial Physics, Volume 120, December 2014, Pages 24-35, <a class="reference external" href="https://doi.org/10.1016/j.jastp.2014.08.012">https://doi.org/10.1016/j.jastp.2014.08.012</a></p>
+</section>
+</section>
+<section id="interesting-questions-you-might-get">
+<h2>Interesting questions you might get<a class="headerlink" href="#interesting-questions-you-might-get" title="Link to this heading"></a></h2>
+</section>
+<section id="typical-pitfalls">
+<h2>Typical pitfalls<a class="headerlink" href="#typical-pitfalls" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Space Plasma Simulations with Vlasiator on LUMI Supercomputer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../prepare_workspace/" class="btn btn-neutral float-right" title="Preparations for the workshop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

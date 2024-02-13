@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Plasma Simulations with Vlasiator on LUMI Supercomputer &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=187304be"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex/" />
+    <link rel="search" title="Search" href="search/" />
+    <link rel="next" title="Introduction to Vlasiator" href="introduction/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new_project/">New project from template</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="space-plasma-simulations-with-vlasiator-on-lumi-supercomputer">
+<h1>Space Plasma Simulations with Vlasiator on LUMI Supercomputer<a class="headerlink" href="#space-plasma-simulations-with-vlasiator-on-lumi-supercomputer" title="Link to this heading"></a></h1>
+<p>Plasma is one of four fundamental states of matter, characterized by the presence of
+a significant portion of charged particles in any combination of ions or electrons.
+Plasma is a powerful phase of matter as it is key to many applications and technologies,
+from astrophysics to space physics, from clean energy production based on fusion to
+compact and cheap particle accelerators. However, it is still a mysterious phase of matter
+as its dynamics is inherently nonlinear, multidimensional and multiscale.</p>
+<p>The theoretical description of plasma using analytic modeling tools is somewhat limited and
+great progress in plasma physics has been achieved using computer simulations.
+Indeed, advances in massively parallel simulations using high performance computing (HPC)
+resources have have further boosted our understanding of plasma science at an unprecedented
+resolutions and levels of physical fidelity. These simulations have been producing a new
+wealth of knowledge and enabling key applications for science, industry, and society.</p>
+<p><strong>Plasma-PEPSC</strong> (Plasma Exascale-Performance Simulation Centre) is a European Centre of Excellence leading
+plasma science into the era of exascale computing to drive scientific breakthroughs in plasma science’s most
+significant challenges (fusion energy, accelerator devices and space physics) through cutting-edge hardware and
+software advancements.
+The overarching goal of Plasma-PEPSC is to take this technological development to the next level, enabling unprecedented
+simulations on current pre-exascale and future exascale platforms across Europe. Four flagship plasma codes with a
+large user base – BIT, GENE, PIConGPU, and Vlasiator – serve as the focal points of the centre of excellence.
+By maximising their parallel performance and efficiency, we aim to achieve breakthroughs in controlling plasma-material
+interfaces, optimising magnetically confined fusion plasmas, designing next-generation plasma accelerators and predicting
+space plasma dynamics within the Earth’s magnetosphere.</p>
+<p><a class="reference external" href="https://www.helsinki.fi/en/researchgroups/vlasiator">**Vlasiator**</a> (<a class="reference external" href="https://github.com/fmihpc/vlasiator">GitHub</a>) is
+the state-of-the-art hybrid-Vlasov simulation for ion-scale physics in a global
+magnetospheric setting. It is the only 6D hybrid-Vlasov code capable of simulating
+the Earth’s magnetosphere. In Vlasiator, ions are represented as velocity distribution functions,
+while electrons are a massless charge-neutralizing fluid, enabling a self-consistent global plasma simulation
+that can describe multi-temperature plasmas to resolve non-MHD processes that currently
+cannot be self-consistently described by the existing global space weather simulations.
+The novelty is that by modelling ions as velocity distribution functions the outcome will be
+numerically noiseless. Due to the multi-dimensional approach at ion scales, Vlasiator’s
+computational challenges are immense. Advanced HPC techniques will be adopted using tens of
+thousands of cores to perform massively parallel computations.</p>
+<div class="admonition-prerequisites prerequisites admonition" id="prerequisites-0">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>PhD students, postdocs, industry engineers</p></li>
+<li><p>Basic familiarity with general physics and plasma physics</p></li>
+<li><p>Some previous practical experience running some CFD code</p></li>
+<li><p>Basic familiarity with Unix shell and HPC environment</p></li>
+<li><p>Some materials towards advanced users</p></li>
+</ul>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>20 min</p></td>
+<td><p><span class="xref std std-doc">filename</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visit/">VisIt and VLSV bootcamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator_exercises/">Analysator exercises</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new_project/">New project from template</a></li>
+</ul>
+</div>
+<section id="who-is-the-course-for">
+<span id="learner-personas"></span><h2>Who is the course for?<a class="headerlink" href="#who-is-the-course-for" title="Link to this heading"></a></h2>
+<p>This hybrid workshop will bring together code developers, researchers, and research software
+engineers working on plasma science, and create an amazing opportunity for sharing innovative
+ideas and best practice for potential users to use the Vlasiator package and using its
+capabilities and assorted tools for data analysis.</p>
+</section>
+<section id="about-the-course">
+<h2>About the course<a class="headerlink" href="#about-the-course" title="Link to this heading"></a></h2>
+<p>This workshop includes:</p>
+<ul class="simple">
+<li><p>running simulations at scale</p></li>
+<li><p>benchmarking for deploying Vlasiator on supercomputing environments</p></li>
+<li><p>designing a simulation setup, with notes on applicability and resources required</p></li>
+<li><p>Accessing the .vlsv data via Analysator</p></li>
+<li><p>Accessing the .vlsv data via the VisIt plugin</p></li>
+</ul>
+<p>After attending this workshop, you will:</p>
+<ul class="simple">
+<li><p>Understand core features of the Vlasiator package</p></li>
+<li><p>Be efficient using the Vlasiator package to perform plasma simulations</p></li>
+<li><p>Be productive in data analysis and visualization of simulation results</p></li>
+<li><p>Be able to create your own project</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>ENCCS: <a class="reference external" href="https://enccs.se/">https://enccs.se/</a></p></li>
+<li><p>Plasma-PEPSC CoE: <a class="reference external" href="https://plasma-pepsc.eu/">https://plasma-pepsc.eu/</a></p></li>
+<li><p>Follow ENCCS on <a class="reference external" href="https://www.linkedin.com/company/enccs">LinkedIn</a>, or <a class="reference external" href="https://twitter.com/EuroCC_Sweden">Twitter</a></p></li>
+</ul>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>The lesson file structure and browsing layout is inspired by and derived from
+<a class="reference external" href="https://github.com/coderefinery/sphinx-lesson">work</a> by <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> licensed under the <a class="reference external" href="http://opensource.org/licenses/mit-license.html">MIT license</a>. We have copied and adapted
+most of their license text.</p>
+<section id="instructional-material">
+<h3>Instructional Material<a class="headerlink" href="#instructional-material" title="Link to this heading"></a></h3>
+<p>This instructional material is made available under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license (CC-BY-4.0)</a>.
+The following is a human-readable summary of (and not a substitute for) the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the CC-BY-4.0 license</a>.
+You are free to:</p>
+<ul class="simple">
+<li><p><strong>share</strong> - copy and redistribute the material in any medium or format</p></li>
+<li><p><strong>adapt</strong> - remix, transform, and build upon the material for any purpose,
+even commercially.</p></li>
+</ul>
+<p>The licensor cannot revoke these freedoms as long as you follow these license terms:</p>
+<ul class="simple">
+<li><p><strong>Attribution</strong> - You must give appropriate credit (mentioning that your work
+is derived from work that is Copyright (c) ENCCS and individual contributors and, where practical, linking
+to <a class="reference external" href="https://enccs.github.io/sphinx-lesson-template">https://enccs.github.io/sphinx-lesson-template</a>), provide a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">link to the license</a>, and indicate if changes were
+made. You may do so in any reasonable manner, but not in any way that suggests
+the licensor endorses you or your use.</p></li>
+<li><p><strong>No additional restrictions</strong> - You may not apply legal terms or
+technological measures that legally restrict others from doing anything the
+license permits.</p></li>
+</ul>
+<p>With the understanding that:</p>
+<ul class="simple">
+<li><p>You do not have to comply with the license for elements of the material in
+the public domain or where your use is permitted by an applicable exception
+or limitation.</p></li>
+<li><p>No warranties are given. The license may not give you all of the permissions
+necessary for your intended use. For example, other rights such as
+publicity, privacy, or moral rights may limit how you use the material.</p></li>
+</ul>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h3>
+<p>Except where otherwise noted, the example programs and other software provided
+with this repository are made available under the <a class="reference external" href="http://opensource.org/">OSI</a>-approved
+<a class="reference external" href="https://opensource.org/licenses/mit-license.html">MIT license</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction/" class="btn btn-neutral float-right" title="Introduction to Vlasiator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

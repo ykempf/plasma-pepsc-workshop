@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisIt and VLSV bootcamp &mdash; Space Plasma Simulations with Vlasiator on LUMI Supercomputer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=187304be"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Introduction to Analysator" href="../analysator/" />
+    <link rel="prev" title="Vlasiator output data" href="../vlasiator_outputs/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Space Plasma Simulations with Vlasiator on LUMI Supercomputer
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/#rules-of-the-road">Rules of the Road</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prepare_workspace/">Preparations for the workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The lessons</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installing-vlasiator/">Installing Vlasiator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/">How to configure Vlasiator for performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks_and_running/#exercises">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator_outputs/">Vlasiator output data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VisIt and VLSV bootcamp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-teach-this-lesson">Why we teach this lesson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intended-learning-outcomes">Intended learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparations-for-the-exercises">Preparations for the exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hands-on">The hands-on</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launching-to-client-server">Launching to client-server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while-we-wait-a-bit">While we wait a bit…</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#first-plots">First plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vlasiator-boundaries">Vlasiator boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vector-plots">Vector plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#picking">Picking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#going-3d">Going 3D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-proper-3d-run">A proper 3D run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streamline-plots">Streamline plots</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-practical-aspects">Other practical aspects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-pitfalls">Typical pitfalls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator/">Introduction to Analysator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_exercises/">Analysator exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vlasiator-cfg-reference/">Vlasiator config reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysator_supported/">Analysator supported data reducers and vlasiator variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new_project/">New project from template</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Space Plasma Simulations with Vlasiator on LUMI Supercomputer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">VisIt and VLSV bootcamp</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/content/blob/main/content/visit.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="visit-and-vlsv-bootcamp">
+<h1>VisIt and VLSV bootcamp<a class="headerlink" href="#visit-and-vlsv-bootcamp" title="Link to this heading"></a></h1>
+<section id="why-we-teach-this-lesson">
+<h2>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://visit-dav.github.io/visit-website/index.html">VisIt</a> is a scalable 3D-visualization software, suitable for supercomputing environments. It also has a home-brewed plugin to read and plot .vlsv files, which is why we prefer using it over similar alternatives such as ParaView. In this lesson, we look at configuring a VisIt client-server on LUMI, using VisIt and the .vlsv plugin for data exploration in 3D. VisIt and VLSV plugin are pre-installed on the LUMI workspace.</p>
+</section>
+<section id="intended-learning-outcomes">
+<h2>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Using a client-server with VisIt.</p></li>
+<li><p>Basic exploration of .vlsv files</p>
+<ul>
+<li><p>SpatialGrid</p></li>
+<li><p>FsGrid</p></li>
+<li><p>Finding stored VDFs</p></li>
+</ul>
+</li>
+<li><p>Plotting fieldlines and streamlines</p></li>
+<li><p>Plotting contours</p></li>
+<li><p>vlsvextract and plotting a VDF</p></li>
+</ul>
+<p>Maybe:</p>
+<ul class="simple">
+<li><p>Compiling and installing the .vlsv plugin</p></li>
+</ul>
+</section>
+<section id="timing">
+<h2>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h2>
+<p>Wednesday morning</p>
+</section>
+<section id="preparations-for-the-exercises">
+<h2>Preparations for the exercises<a class="headerlink" href="#preparations-for-the-exercises" title="Link to this heading"></a></h2>
+<p>If you haven’t yet done so, please:</p>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://visit-dav.github.io/visit-website/releases-as-tables/#series-33">VisIt 3.3</a> locally.</p></li>
+<li><p>Download <a class="reference external" href="https://github.com/ENCCS/plasma-pepsc-workshop/raw/main/content/visit/host_lumi_pepsc.xml">host_lumi_pepsc.xml</a> and place it into your local <code class="docutils literal notranslate"><span class="pre">$HOME/.visit/hosts</span></code></p></li>
+<li><p>Open VisIt, go to Options - Host profiles.. and change the Account to your username under the lumi-pepsc host.</p></li>
+<li><p>From options, click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">settings</span></code> so the username is saved to your config.</p></li>
+</ol>
+<p>Feel free to get to know the <a href="#id2"><span class="problematic" id="id3">`VisIt manuals&lt;https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/getting_started/index.html&gt;`_</span></a> as well!</p>
+</section>
+<section id="the-hands-on">
+<h2>The hands-on<a class="headerlink" href="#the-hands-on" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Launch your local VisIt</p></li>
+</ol>
+<p>VisIt produces a plentiful amount of windows.</p>
+<p>The main one (<code class="docutils literal notranslate"><span class="pre">gui</span></code>) is the tall one with plotting tools, from database list on the top, a time slider, and a plotting pipeline window, currently empty.</p>
+<p>The other one you encounter by default is the <code class="docutils literal notranslate"><span class="pre">viewer</span></code> window. This will render your plots and let you navigate them - see the toolbar on the top for navigation, zooming, saving viewpoints, etc. You can have multiple windows as well, and there are handy layout buttons available.</p>
+<section id="launching-to-client-server">
+<h3>Launching to client-server<a class="headerlink" href="#launching-to-client-server" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Click “Open”</p></li>
+<li><p>Choose <em>Host</em> <code class="docutils literal notranslate"><span class="pre">lumi-pepsc</span></code>, as given by the host configuration</p>
+<ul class="simple">
+<li><p>This opens a VisIt metadata server on the frontend.</p></li>
+</ul>
+</li>
+<li><p>Navigate <em>Path</em> to <code class="docutils literal notranslate"><span class="pre">/pfs/lustrep2/scratch/project_465000693/example_runs/Mercury5D/bulk</span></code></p></li>
+<li><p>With file grouping at on/smart, open the bulk files as a database</p></li>
+<li><p>A <em>Compute engine launch</em> prompt appears. Launch one on <code class="docutils literal notranslate"><span class="pre">small</span></code>, adjust cpu counts if needed.</p>
+<ul class="simple">
+<li><p>Might take a bit to queue…</p></li>
+<li><p>A larger number of cores helps esp. with loading data from the .vlsv files!</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="while-we-wait-a-bit">
+<h3>While we wait a bit…<a class="headerlink" href="#while-we-wait-a-bit" title="Link to this heading"></a></h3>
+<p>VisIt works by handling 3D data in pipelines, with two noteworthy concepts. Firstly, we can consider the mesh: the spatial structure that tells us where we have data, and how these data points are connected. In other words, this contains the geometry and topology of the dataset. We can extract new meshes from the existing ones via geometric operations, such as slicing. These operations can also be chained, and at the end we choose what data we actually want show on the mesh at the end of the pipeline. We’ll see plenty of examples soon!</p>
+</section>
+<section id="first-plots">
+<h3>First plots<a class="headerlink" href="#first-plots" title="Link to this heading"></a></h3>
+<p>Mostly, we’ll be using pseudocolor plots. Let’s get a feel for the 2D dataset!</p>
+<ol class="arabic simple">
+<li><p>Set the time slider to the end</p></li>
+<li><p>Add a Pseudocolor plot -&gt; <code class="docutils literal notranslate"><span class="pre">proton/vg_rho</span></code> to get the proton number density</p></li>
+<li><p>Notice we have now the full domain plotted - including the 3rd dimension, which is included even in the 2D/5D runs.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_0_rho.png"><img alt="../_images/2d_0_rho.png" src="../_images/2d_0_rho.png" style="width: 600px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Select the plot and use the Operator button, navigate to Slicing -&gt; Slice</p>
+<ul class="simple">
+<li><p>Double-click on the new operator in the pipeline menu.</p></li>
+<li><p>De-select “Project to 2D”</p></li>
+<li><p>Set Normal axis as Z, with intercept at 0</p></li>
+<li><p>Click Apply in the dialog</p></li>
+<li><p>Click Draw in the main window!</p></li>
+</ul>
+</li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_1_slice.png"><img alt="../_images/2d_1_slice.png" src="../_images/2d_1_slice.png" style="width: 600px;" /></a>
+</figure>
+<p>Double-clicking on the operators or or the plots opens attribure windows for those objects. Feel free to e.g. adjust the Pseudocolor colormaps or variable ranges from Pseudocolor attributes!</p>
+<p>Let’s identify the system boundaries next.</p>
+</section>
+<section id="vlasiator-boundaries">
+<h3>Vlasiator boundaries<a class="headerlink" href="#vlasiator-boundaries" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Set the pseudocolor variable to <code class="docutils literal notranslate"><span class="pre">vg_boundarytype</span></code>.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="visit/2d_2_boundary.png"><img alt="visit/2d_2_boundary.png" src="visit/2d_2_boundary.png" style="width: 600px;" /></a>
+</figure>
+<p>Let’s compare that to the <a class="reference external" href="https://github.com/fmihpc/vlasiator/blob/676f26a5e74c4c2b40e6d5e3294c413da0157ac3/common.h#L450">sysboundarytype enum</a>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">sysboundarytype</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">DO_NOT_COMPUTE</span><span class="p">,</span><span class="w">   </span><span class="cm">/*!&lt; E.g. cells within the ionospheric outer radius should not be computed at all. */</span>
+<span class="w">      </span><span class="n">NOT_SYSBOUNDARY</span><span class="p">,</span><span class="w">  </span><span class="cm">/*!&lt; Cells within the simulation domain are not boundary cells. */</span>
+<span class="w">      </span><span class="n">IONOSPHERE</span><span class="p">,</span><span class="w">       </span><span class="cm">/*!&lt; Ionospheric current model. */</span>
+<span class="w">      </span><span class="n">OUTFLOW</span><span class="p">,</span><span class="w">          </span><span class="cm">/*!&lt; No fixed conditions on the fields and distribution function. */</span>
+<span class="w">      </span><span class="n">MAXWELLIAN</span><span class="p">,</span><span class="w">       </span><span class="cm">/*!&lt; Set Maxwellian boundary condition, i.e. set fields and distribution function. */</span>
+<span class="w">      </span><span class="n">COPYSPHERE</span><span class="p">,</span><span class="w">       </span><span class="cm">/*!&lt; A sphere with copy-condition for perturbed B as the simple inner boundary */</span>
+<span class="w">      </span><span class="n">OUTER_BOUNDARY_PADDING</span><span class="p">,</span><span class="w"> </span><span class="cm">/*!&lt; These cells only occur on FSGrid, where boundaries are not at the highest refinement level */</span>
+<span class="w">      </span><span class="n">N_SYSBOUNDARY_CONDITIONS</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We find here the <code class="docutils literal notranslate"><span class="pre">COPYSPHERE</span></code> (5) boundary and <code class="docutils literal notranslate"><span class="pre">DO_NOT_COMPUTE</span></code> (1) cells covering the planet, approximately, as the inner boundary. Then, we can focus on the actual simulation domain:</p>
+<ol class="arabic simple">
+<li><p>Add an operator to the plot: Selection -&gt; threshold</p></li>
+<li><p>Open the threshold window, remove the “default” variable</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">vg_boundarytype</span></code> as a threshold variable, set min and max to 1 (<code class="docutils literal notranslate"><span class="pre">NOT_SYSBOUNDARY</span></code>)</p></li>
+<li><p>Click apply</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_3_threshold.png"><img alt="../_images/2d_3_threshold.png" src="../_images/2d_3_threshold.png" style="width: 600px;" /></a>
+</figure>
+<p>Now you can change the variable to e.g. <code class="docutils literal notranslate"><span class="pre">proton/vg_rho</span></code>, without system boundaries confounding the plot.</p>
+</section>
+<section id="vector-plots">
+<h3>Vector plots<a class="headerlink" href="#vector-plots" title="Link to this heading"></a></h3>
+<p>Let’s look at the vector plot type. Add one of <code class="docutils literal notranslate"><span class="pre">vg_b_vol</span></code>, and click Draw. This probably looks very empty:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_4_vector.png"><img alt="../_images/2d_4_vector.png" src="../_images/2d_4_vector.png" style="width: 600px;" /></a>
+</figure>
+<p>Let’s go to Vector plot attributes, Geometry tab, and unselect Scale by magnitude, Apply:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_5_vector.png"><img alt="../_images/2d_5_vector.png" src="../_images/2d_5_vector.png" style="width: 600px;" /></a>
+</figure>
+</section>
+<section id="picking">
+<h3>Picking<a class="headerlink" href="#picking" title="Link to this heading"></a></h3>
+<p>Let’s see how to find an interesting cell and its CellID with VisIt.</p>
+<p>Let’s use the plot of <code class="docutils literal notranslate"><span class="pre">proton/vg_rho</span></code> as a reference value slice in the background. Add another pseudocolor plot of <code class="docutils literal notranslate"><span class="pre">vg_f_saved</span></code>, and add a Threshold operator to diplay only cells with vg_f_saved = 1. Draw, and we should have cells with VDFs stored visible on top of the background slice.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2d_6_fsaved.png"><img alt="../_images/2d_6_fsaved.png" src="../_images/2d_6_fsaved.png" style="width: 600px;" /></a>
+</figure>
+<p>Zoom in to the foreshock, select the Zonal pick operator, and click on a cell that looks like it could have interesting dynamics:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/visit_pick.png"><img alt="../_images/visit_pick.png" src="../_images/visit_pick.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-text">Pick operators in the VisIt viewer. Z for zonal, N for nodal. S for spreadsheet.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The following Pick window should open, showing the picked coordinates and the plotted variable.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/visit-pick-window-default.png"><img alt="../_images/visit-pick-window-default.png" src="../_images/visit-pick-window-default.png" style="width: 400px;" /></a>
+</figure>
+<p>That is not yet very useful. Adding <code class="docutils literal notranslate"><span class="pre">CellID</span></code> to the query variables helps! We should get a large-ish number, like 332776.</p>
+</section>
+</section>
+<section id="going-3d">
+<h2>Going 3D<a class="headerlink" href="#going-3d" title="Link to this heading"></a></h2>
+<p>Let’s add a dimension to our plotting, and inspect one of these VDFs. The file <code class="docutils literal notranslate"><span class="pre">/scratch/project_465000693/example_runs/Mercury5D/velgrid.332776.0000122.vlsv</span></code> contains an extracted VDF (with <code class="docutils literal notranslate"><span class="pre">vlsvextract</span></code>) from the foreshock area, open it, and add a new window!</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="visit/new_window.png"><img alt="visit/new_window.png" src="visit/new_window.png" style="width: 300px;" /></a>
+</figure>
+<p>Let’s start by plotting the full proton v-space mesh: Pseudocolor-&gt;proton</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/vdf_0_pseudocolor.png"><img alt="../_images/vdf_0_pseudocolor.png" src="../_images/vdf_0_pseudocolor.png" style="width: 600px;" /></a>
+</figure>
+<p>This is now the outer edge of the VDF. We need to do something else if we want to have a look inside. Let’s add a Threeslice operator and Draw again.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/vdf_1_threeslice.png"><img alt="../_images/vdf_1_threeslice.png" src="../_images/vdf_1_threeslice.png" style="width: 600px;" /></a>
+</figure>
+<p>Quite a bit of structure there! But we still have the blocky v-space halo with values below the threshold. Let’s add an aptly-named thresholding operator:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/vdf_2_threshold.png"><img alt="../_images/vdf_2_threshold.png" src="../_images/vdf_2_threshold.png" style="width: 600px;" /></a>
+</figure>
+<p>Slices are good, but what if we want to have a more thorough view of the 3D structure of the VDF? Let’s remove the Threeslice operator from the plot, and draw. Now that we still have the threshold operator, we should see the outer edge of the VDF at the threshold value.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/vdf_3_just_threshold.png"><img alt="../_images/vdf_3_just_threshold.png" src="../_images/vdf_3_just_threshold.png" style="width: 600px;" /></a>
+</figure>
+<p>Try adjusting the threshold value e.g. to <code class="docutils literal notranslate"><span class="pre">1e-13</span></code>!</p>
+<section id="a-proper-3d-run">
+<h3>A proper 3D run<a class="headerlink" href="#a-proper-3d-run" title="Link to this heading"></a></h3>
+<p>Next, let’s see what one of our old low-resolution 3D tests looked like. Open the database at <code class="docutils literal notranslate"><span class="pre">/scratch/project_465000693/example_data/EGE</span></code>.</p>
+<p>Let’s start by getting a quick overview with a pseudocolor plot of <code class="docutils literal notranslate"><span class="pre">proton/vg_rho</span></code> once more, and add a threeslice operator.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/3d_0_threeslice.png"><img alt="../_images/3d_0_threeslice.png" src="../_images/3d_0_threeslice.png" style="width: 600px;" /></a>
+</figure>
+</section>
+<section id="streamline-plots">
+<h3>Streamline plots<a class="headerlink" href="#streamline-plots" title="Link to this heading"></a></h3>
+<p>Let’s add some fieldlines! These are produced in VisIt through an IntegralCurve system, which can be a bit hard to get into. Add a new pseudocolor plot with the <em>variable</em>: operators-&gt;IntegralCurve-&gt;vg_b_vol:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/3d_1_integralcurves.png"><img alt="../_images/3d_1_integralcurves.png" src="../_images/3d_1_integralcurves.png" style="width: 600px;" /></a>
+</figure>
+<p>Double-clicking on the integralcurve operator let’s you adjust the seeding of the lines. Let’s do something like the following - a spherical region with some radius of ~5e7 meters:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/3d_2_integralcurves.png"><img alt="../_images/3d_2_integralcurves.png" src="../_images/3d_2_integralcurves.png" style="width: 600px;" /></a>
+</figure>
+</section>
+</section>
+<section id="other-practical-aspects">
+<h2>Other practical aspects<a class="headerlink" href="#other-practical-aspects" title="Link to this heading"></a></h2>
+<p>VisIt may crash from time to time. Save your session often!</p>
+<p>There are plenty of levers and clever tricks to pull in VisIt, this is really just scratching the surface in a short time.</p>
+</section>
+<section id="typical-pitfalls">
+<h2>Typical pitfalls<a class="headerlink" href="#typical-pitfalls" title="Link to this heading"></a></h2>
+<p>Forgetting to click <code class="docutils literal notranslate"><span class="pre">Apply</span></code> or <code class="docutils literal notranslate"><span class="pre">Draw</span></code> buttons.</p>
+<p>Not noticing the small button with arrows to display</p>
+<p>Not saving your session often.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../vlasiator_outputs/" class="btn btn-neutral float-left" title="Vlasiator output data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../analysator/" class="btn btn-neutral float-right" title="Introduction to Analysator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
