@@ -12,6 +12,7 @@ that most plotting routines accept **keywords** with certain pre-determined defa
 
 Outputs
 -------
+
 Running Analysator within a Jupyter interface will by default show the results on-screen, but will also store the image as a .png file in the default Analysator output directory. You can deactivate .png output by providing a plotting routine with the ``draw=True`` keyword.
 
 VlsvReader
@@ -67,9 +68,9 @@ Select a handful of output variables from ``f2d.list()`` and try plotting them. 
 
 For scalar variables such as number densities, the default setting is to use a logarithmic colour scale. When selecting a vector variable such as ``proton/vg_v``, the default option is to reduce the value to the scalar magnitude of the vector. To view a singular component of a vector, you can select the component via the ``operator`` or ``op`` keyword:,  ``op='x'``, ``op='y'``, or  ``op='z'``. This will automatically swap the colour scale to be linear, facilitating both positive and negative values. If, on the other hand, you want to plot the magnitude of a component, you can fold the output into an absolute value with the keyword ``absolute=True``. As the default color map for a linear plot is a diverging map with white in the centre, it is possible to enforce white mapping to zero by forcing the range to be symmetric with ```symmetric=True``.
 
-Next, try zooming around. You can adjust the plot domain by cropping it, selecting a plotting box either in metres or in units of Earth radius. You can select the crop box as either ``boxm=[xmin,xmax,ymin,ymax]`` in metres, or ``boxre=[xmin,xmax,ymin,ymax]`` in units of Earth radius. The default unit used for plot axes is Earth radii, but you can change them to metres with ``àxisunit=0``, kilometres with ``àxisunit=3``, or e.g. megametres with ``àxisunit=6``. 
+Next, try zooming around. You can adjust the plot domain by cropping it, selecting a plotting box either in metres or in units of Earth radius. You can select the crop box as either ``boxm=[xmin,xmax,ymin,ymax]`` in metres, or ``boxre=[xmin,xmax,ymin,ymax]`` in units of Earth radius. The default unit used for plot axes is Earth radii, but you can change them to metres with ``axisunit=0``, kilometres with ``axisunit=3``, or e.g. megametres with ``axisunit=6``. 
 
- ltering the colour scale
+Altering the colour scale
 *************************
 
 Plotting is all about pretty pictures, and pretty pictures are all about colormaps. `https://matplotlib.org/stable/users/explain/colors/colormaps.html`_ contains a list of available matplotlib colormaps, supported by analysator. In addition to the standard colormaps, we have created some extra ones such as ``hot_desaturated`` and ``warhol``. Try plotting some of your variables with various colormaps e.g. with the keywords ``colormap='viridis'`` or ``colormap='plasma'``. 
@@ -80,7 +81,7 @@ By default, the minimum and maximum values of the colourbar axis are selected fr
 
 When plotting magnetospheric magnetic field values, you might note that having the field strength in Tesla is not always smart. By providing the keyword ``vscale=None``, you allow the routine to auto-scale to a suggested value, e.g. nanotesla. Setting the value manually as ``vscale=1e9`` provides the same result. Other scaling factors can also be used, and they may or may not offer suitable unit names.
 
-The tick marks of the colourbar default to using scientific notation, which may be deactivated with the keyword ``ùsesci=False``.
+The tick marks of the colourbar default to using scientific notation, which may be deactivated with the keyword ``usesci=False``.
 
 Should you wish to evaluate a wide range of variability whist still allowing both positive and negative values, Analysator allows the use of the symmetric logarithmic colour scale. Try it by plotting the out-of-plane magnetic field component ``var=fg_b, op='z', symlog=0`` where giving symlog the value of zero allows it to self-determine the extent of the linear range at the centre between two mirrored logarithmic ranges.
 
