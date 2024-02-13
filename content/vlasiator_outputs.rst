@@ -105,31 +105,33 @@ Spatial ordering: Vlasov- vs. FSGrid vs. Velocity space variables
 Note that the XML tags in the file do not yet give sufficient
 information to describe the spatial structure of the variable arrays.
 The construction differs depending on the grid they are linked to
-(denoted by the ``mesh=`` attribute): \* **Vlasov grid variables**,
-typically marked with a ``vg_`` in their name, are stored as cell
-parameters in the `DCCRG <https://github.com/fmihpc/dccrg>`__ grid
-underlying the vlasov solver. As the simulation is dynamically load
-balanced, their memory order changes unpredictably, so the data must be
-presumed completely unordered in the file.
+(denoted by the ``mesh=`` attribute):
 
-Fortunately, the ``CellID`` variable gets written into the file first,
-which contains the flattened spatial index of the given simulation cells
-in the same order as all further Vlasov grid variables. In the simplest,
-non mesh-refined version, the CellID is defined as
+- **Vlasov grid variables**,
+  typically marked with a ``vg_`` in their name, are stored as cell
+  parameters in the `DCCRG <https://github.com/fmihpc/dccrg>`__ grid
+  underlying the vlasov solver. As the simulation is dynamically load
+  balanced, their memory order changes unpredictably, so the data must be
+  presumed completely unordered in the file.
+  
+  Fortunately, the ``CellID`` variable gets written into the file first,
+  which contains the flattened spatial index of the given simulation cells
+  in the same order as all further Vlasov grid variables. In the simplest,
+  non mesh-refined version, the CellID is defined as
+  
+  ``CellID = x_index + x_size * y_index + x_size * y_size * z_index + 1``
+  
+  By reading both the intended target variable and the CellID, the data
+  can thus be brought into flattened spatial order by simply sorting both
+  arrays in the same order. In analysator, this is typically achieved by
+  running
+  
+  .. code:: python
 
-``CellID = x_index + x_size * y_index + x_size * y_size * z_index + 1``
-
-By reading both the intended target variable and the CellID, the data
-can thus be brought into flattened spatial order by simply sorting both
-arrays in the same order. In analysator, this is typically achieved by
-running
-
-.. code:: python
-
-          c = file.read_variable("CellID")
-          b = file.read_variable("rho")
-          b = b[numpy.argsort(c)]
-          b.reshape(f.get_spatial_mesh_size())
+     c = file.read_variable("CellID")
+     b = file.read_variable("rho")
+     b = b[numpy.argsort(c)]
+     b.reshape(f.get_spatial_mesh_size())
           
 -  **FSGrid variables** are stored on the simulations `fieldsolver
    grid <https://github.com/fmihpc/fsgrid>`__, which is partitioned
@@ -166,11 +168,9 @@ development.
 VLSV data tools
 -------------------
 
-A short note on the included tools, compiled by 
+A short note on the included tools, compiled by:
 
-..code-block::bash
-
-   make vlsvextract vlsvdiff
+``make vlsvextract vlsvdiff``
    
 Some older tools included in ``make tools`` are not currently supported.
 
@@ -197,15 +197,12 @@ vlsvextract
   --point1 arg          Set the starting point x y z of a line
   --point2 arg          Set the ending point x y z of a line
   --pointamount arg     Number of points along a line (OPTIONAL)
-  --outputdirectory arg The directory where the file is saved (default current 
-                        folder) (OPTIONAL)
+  --outputdirectory arg The directory where the file is saved (default current folder) (OPTIONAL)
 
 
 For example, let's pick a VDF from the foreshock of the Mercury 5D example run; see VisIt lecture one method on how we can find the cellID, here we have a cellID pre-picked.
 
-.. code-block::bash
-
-  ./vlsvextract_DP /scratch/project_465000693/example_runs/Mercury5D/bulk/bulk.0000122.vlsv --cellid 332776
+``./vlsvextract_DP /scratch/project_465000693/example_runs/Mercury5D/bulk/bulk.0000122.vlsv --cellid 332776``
 
 This can be used to extract VDFs over lines and multiple files as well.
 
@@ -215,7 +212,7 @@ vlsvdiff
 
 ``vlsvdiff`` we use for e.g. continuous integration testing. There is an included testpackage, from which one can generate reference data and compare the effects of one's code edits locally.
 
-Other use is to extract differences between different files - for example, time differences. However, 
+Other use is to extract differences between different files - for example, time differences. 
 
 
 
