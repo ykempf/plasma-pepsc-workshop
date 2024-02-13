@@ -191,6 +191,15 @@ External functions
 
 External functions act in many ways like expressions, but they are also given the axes of the plot along with coordinate information. An external function does not replace the main variable of the plotting routine, but can be used to overlay information, variables, or other information on top of the main plot. 
 
+Advanced methods 2: energy spectrograms, virtual spacecraft
+***********************************************************
+
+More involved data analysis is also outside the scope of this tutorial, but the interested reader should look at topics within the Analysator wiki.
+
+Plotting a virtual spacecraft time profile involves deciding on the position for the spacecraft and choosing a time extent for the measurement. There is no quick tool for this, as for each case the required variables are likely different, but a simple example script can be found as ``examples/plot_VSC.py``
+
+Plotting time-energy spectrograms is a highly requested feature, and rudimentary scripts do exist within the Analysator repository, e.g. ``scripts/plot_time_energy_spectrogram.py``. Future updates will most likely add a full-fledged plotting routine to the toolkit.
+
 Interesting questions you might get
 -----------------------------------
 
