@@ -73,6 +73,7 @@ thousands of cores to perform massively parallel computations.
    benchmarks_and_running
    vlasiator_outputs
    analysator
+   analysator_exercises
    visit
 ..
    vlasiator_projects
