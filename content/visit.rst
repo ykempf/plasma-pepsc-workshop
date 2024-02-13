@@ -123,7 +123,7 @@ Vlasiator boundaries
 .. figure:: visit/2d_2_boundary.png
    :width: 600
 
-Let's compare that to the `sysboundarytype enum <https://github.com/fmihpc/vlasiator/blob/676f26a5e74c4c2b40e6d5e3294c413da0157ac3/common.h#L450>`_`:
+Let's compare that to the `sysboundarytype enum <https://github.com/fmihpc/vlasiator/blob/676f26a5e74c4c2b40e6d5e3294c413da0157ac3/common.h#L450>`_:
 
 .. code-block:: c++
 
