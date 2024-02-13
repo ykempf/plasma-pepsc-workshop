@@ -737,6 +737,8 @@ To calculate weak scaling, we will expand the Y and Z dimensions of the domain w
 
 Pick a line or two for yourselves and modify your config and job script accordingly. The shared sheet has some predetermined values, but feel free to experiment further (and add lines with notes).
 
+To begin with, we inspect the ``logfile.txt`` produced by the simulation run - at the end of a successful run, the file will show you total wall-clock runtime and some other counters - mark up these for the exercise results! The logfile is handy for surface-level checks, but for in-depth analysis of performance one should consult the phiprof outputs.
+
 Prototype: Magnetosphere3D/Ionosphere3D
 ---------------------------------------
 
