@@ -20,7 +20,7 @@ proton\_vg\_rho\_nonthermal,``populations_moments_nonthermal``,1/m³,Number dens
 proton\_vg\_v\_nonthermal,-''-,m/s,Velocity (vector) for the **nonthermal** component of every population
 proton\_vg\_ptensor\_diagonal\_nonthermal,-''-,Pa,Diagonal components of the pressure tensor for the **nonthermal** component of every population
 proton\_vg\_ptensor\_offdiagonal\_nonthermal,-''-,Pa,Off-Diagonal components of the pressure tensor for the **nonthermal** component of every population
-proton\_minvalue,``populations_vg_effectivesparsitythreshold``,m^6/s³,Effective sparsity threshold for every cell.,[Yann's PhD Thesis](http://urn.fi/URN:ISBN:978-952-336-001-3) page 91
+proton\_minvalue,``populations_vg_effectivesparsitythreshold``,m⁻⁶s³,Effective sparsity threshold for every cell.,[Yann's PhD Thesis](http://urn.fi/URN:ISBN:978-952-336-001-3) page 91
 proton\_rholossadjust,``populations_vg_rho_loss_adjust``,1/m³,Tracks how much mass was lost in the sparse velocity space block removal,[Yann's PhD Thesis](http://urn.fi/URN:ISBN:978-952-336-001-3) page 90
 vg\_lbweight,``vg_lbweight``,arb. unit,Load balance metric, used for dynamic rebalancing of computational load between mpi tasks
 vg\_maxdt\_acceleration,``vg_maxdt_acceleration``,s,Maximum timestep limit of the acceleration solver
