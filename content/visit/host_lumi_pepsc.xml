@@ -2,7 +2,7 @@
 <Object name="MachineProfile">
     <Field name="hostNickname" type="string">lumi-pepsc</Field>
     <Field name="host" type="string">lumi.csc.fi</Field>
-    <Field name="userName" type="string">user_name</Field>
+    <Field name="userName" type="string">your_user_name</Field>
     <Field name="hostAliases" type="string"></Field>
     <Field name="directory" type="string">/scratch/project_465000693/visit</Field>
     <Field name="shareOneBatchJob" type="bool">false</Field>
@@ -42,7 +42,7 @@
         <Field name="sublaunchArgsSet" type="bool">false</Field>
         <Field name="sublaunchArgs" type="string"></Field>
         <Field name="sublaunchPreCmdSet" type="bool">true</Field>
-        <Field name="sublaunchPreCmd" type="string">"source /scratch/project_465000287/visit-install/modules.sh"</Field>
+        <Field name="sublaunchPreCmd" type="string">"source /scratch/project_465000693/visit/modules.sh"</Field>
         <Field name="sublaunchPostCmdSet" type="bool">false</Field>
         <Field name="sublaunchPostCmd" type="string"></Field>
         <Field name="machinefileSet" type="bool">false</Field>
@@ -82,7 +82,7 @@
         <Field name="sublaunchArgsSet" type="bool">false</Field>
         <Field name="sublaunchArgs" type="string"></Field>
         <Field name="sublaunchPreCmdSet" type="bool">true</Field>
-        <Field name="sublaunchPreCmd" type="string">"source /scratch/project_465000287/visit-install/modules.sh"</Field>
+        <Field name="sublaunchPreCmd" type="string">"source /scratch/project_465000693/visit/modules.sh"</Field>
         <Field name="sublaunchPostCmdSet" type="bool">false</Field>
         <Field name="sublaunchPostCmd" type="string"></Field>
         <Field name="machinefileSet" type="bool">false</Field>
