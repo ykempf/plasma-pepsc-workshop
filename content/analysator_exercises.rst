@@ -73,7 +73,7 @@ Next, try zooming around. You can adjust the plot domain by cropping it, selecti
 Altering the colour scale
 *************************
 
-Plotting is all about pretty pictures, and pretty pictures are all about colormaps. `https://matplotlib.org/stable/users/explain/colors/colormaps.html`_ contains a list of available matplotlib colormaps, supported by analysator. In addition to the standard colormaps, we have created some extra ones such as ``hot_desaturated`` and ``warhol``. Try plotting some of your variables with various colormaps e.g. with the keywords ``colormap='viridis'`` or ``colormap='plasma'``. 
+Plotting is all about pretty pictures, and pretty pictures are all about colormaps. https://matplotlib.org/stable/users/explain/colors/colormaps.html contains a list of available matplotlib colormaps, supported by analysator. In addition to the standard colormaps, we have created some extra ones such as ``hot_desaturated`` and ``warhol``. Try plotting some of your variables with various colormaps e.g. with the keywords ``colormap='viridis'`` or ``colormap='plasma'``. 
 
 Next, try plotting a variable which would make sense to plot on a linear scale, such as ``vg_rank``. To activate a linear scale, give the keyword ``lin=True``. To adjust the number of tick marks on the colourbar axis, you can provide them as e.g. ``lin=5``.
 
@@ -170,6 +170,21 @@ A separate routine exists for plotting ionospheric values flattened on a polar p
 .. code-block:: python
                 
    pt.plot.plot_ionosphere(vlsvobj=fiono, var='ig_fac',viewdir=1, symlog=0, draw=1)
+
+Plotting velocity distribution functions
+----------------------------------------
+
+For some spatial cells, Vlasiator stores VDFs in addition to reduced data such as moments. These velocity distribution functions can also be evaluated using Analysator. The VDF plotter routine accepts either direct CellID values as a list, or alternatively coordinates in units metres or Earth radii, from which it can search for the closest cell with a stored VDF. An example:
+
+.. code-block:: python
+
+   pt.plot.plot_vdf(filename=“/scratch/project_465000693/example_data/AGD/bulk.0000904.vlsv”,draw=1,
+   coordre=[5,-10,0],center="peak",bpara1=1,slicethick=0)
+                   
+Since VDFs are a sparse blob of phase-space, which may or may not intersect the origin, it's usually a smart move to either plot a projection with ``slicethick=0`` and/or re-centre the plot on either the bulk velocity of the plasma or the peak position of phase-space density. Various rotations are available, providing directions evaluated from the bulk flow, the magnetic field, etc.
+
+Advanced plotting methods
+-------------------------
 
 Advanced methods: axes, post-processing, overlaying
 ***************************************************
