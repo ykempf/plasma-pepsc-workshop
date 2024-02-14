@@ -73,7 +73,7 @@ Next, try zooming around. You can adjust the plot domain by cropping it, selecti
 Altering the colour scale
 *************************
 
-Plotting is all about pretty pictures, and pretty pictures are all about colormaps. `https://matplotlib.org/stable/users/explain/colors/colormaps.html`_ contains a list of available matplotlib colormaps, supported by analysator. In addition to the standard colormaps, we have created some extra ones such as ``hot_desaturated`` and ``warhol``. Try plotting some of your variables with various colormaps e.g. with the keywords ``colormap='viridis'`` or ``colormap='plasma'``. 
+Plotting is all about pretty pictures, and pretty pictures are all about colormaps. https://matplotlib.org/stable/users/explain/colors/colormaps.html contains a list of available matplotlib colormaps, supported by analysator. In addition to the standard colormaps, we have created some extra ones such as ``hot_desaturated`` and ``warhol``. Try plotting some of your variables with various colormaps e.g. with the keywords ``colormap='viridis'`` or ``colormap='plasma'``. 
 
 Next, try plotting a variable which would make sense to plot on a linear scale, such as ``vg_rank``. To activate a linear scale, give the keyword ``lin=True``. To adjust the number of tick marks on the colourbar axis, you can provide them as e.g. ``lin=5``.
 
