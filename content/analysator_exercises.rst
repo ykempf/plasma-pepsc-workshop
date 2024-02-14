@@ -171,6 +171,21 @@ A separate routine exists for plotting ionospheric values flattened on a polar p
                 
    pt.plot.plot_ionosphere(vlsvobj=fiono, var='ig_fac',viewdir=1, symlog=0, draw=1)
 
+Plotting velocity distribution functions
+----------------------------------------
+
+For some spatial cells, Vlasiator stores VDFs in addition to reduced data such as moments. These velocity distribution functions can also be evaluated using Analysator. The VDF plotter routine accepts either direct CellID values as a list, or alternatively coordinates in units metres or Earth radii, from which it can search for the closest cell with a stored VDF. An example:
+
+.. code-block:: python
+
+   pt.plot.plot_vdf(filename=“/scratch/project_465000693/example_data/AGD/bulk.0000904.vlsv”,draw=1,
+   coordre=[5,-10,0],center="peak",bpara1=1,slicethick=0)
+                   
+Since VDFs are a sparse blob of phase-space, which may or may not intersect the origin, it's usually a smart move to either plot a projection with ``slicethick=0`` and/or re-centre the plot on either the bulk velocity of the plasma or the peak position of phase-space density. Various rotations are available, providing directions evaluated from the bulk flow, the magnetic field, etc.
+
+Advanced plotting methods
+-------------------------
+
 Advanced methods: axes, post-processing, overlaying
 ***************************************************
 
