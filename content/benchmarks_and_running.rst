@@ -259,6 +259,20 @@ Let's inspect the benchmark case config, here:
   velocity_space_wall_block_margin = 0
   
   
+Checking the configuration file
+-------------------------------
+In the source code we have a script `tools/check_vlasiator_cfg.sh` that helps you checking that every option in your config file is sane. As of February 2024 needs a slight modification to run on LUMI, remove "mpirun" from the quotes in the first line and just leave a space `" "`. If you have to use a specific launcher to run the binary in your system, insert that instead.
+Run with
+```
+./check_vlasiator_cfg.sh ./vlasiator ./<your cfg file>
+```
+and it prints
+- a list of options you could have used but are not explicitly in your cfg file
+- a list of output variables you could have listed but are not using
+- a list of invalid options in your cfg file (fix/remove those!)
+- a list of invalid output variables in your cfg file (fix/remove those too!)
+
+
 Performance monitoring
 ----------------------
 
